@@ -1,18 +1,46 @@
-[gd_scene load_steps=6 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=8 format=3 uid="uid://c11wyfu81t43c"]
 
-[ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/Cards/CardSpawner.cs" id="1_emt2l"]
+[ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
 [ext_resource type="Script" uid="uid://by8qbi7m0uy4h" path="res://Core/Scripts/DI/DIContatiner.cs" id="3_02ccp"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/mouse_manager.tscn" id="4_7wo0x"]
 [ext_resource type="PackedScene" uid="uid://c50v1ucr061bo" path="res://Core/Scenes/Cards/card_mouse_manager.tscn" id="4_h5vl4"]
+[ext_resource type="PackedScene" uid="uid://cnkrvk0unotil" path="res://Core/Scenes/Cards/slot_mouse_manager.tscn" id="6_28gni"]
+[ext_resource type="PackedScene" uid="uid://cip7rjiwfv6il" path="res://Core/Scenes/Cards/card_slot.tscn" id="6_tk1h4"]
 
 [node name="Node2D" type="Node2D"]
 
+[node name="Camera2D" type="Camera2D" parent="."]
+
 [node name="CardSpawner" type="Node2D" parent="."]
+position = Vector2(1, 0)
 script = ExtResource("1_emt2l")
+cardCount = 5
+cardDistance = 150.0
+startY = 200.0
 cardViewScene = ExtResource("2_mycjp")
 
-[node name="Card" parent="." instance=ExtResource("2_mycjp")]
+[node name="Slots" type="Node2D" parent="CardSpawner"]
+
+[node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-458, -204)
+
+[node name="CardSlot2" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(0, -204)
+
+[node name="CardSlot3" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(433, -204)
+
+[node name="CardSlot4" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(435, 20)
+
+[node name="CardSlot5" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(0, 21)
+
+[node name="CardSlot6" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-454, 21)
+
+[node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
 visible = false
 script = null
 
@@ -22,8 +50,11 @@ script = null
 
 [node name="CardMouseManager" parent="Managers" instance=ExtResource("4_h5vl4")]
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("cardSpawner", "mouseManager", "cardMouseManager")]
+[node name="SlotMouseManager" parent="Managers" instance=ExtResource("6_28gni")]
+
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager")]
 script = ExtResource("3_02ccp")
+slotMouseManager = NodePath("../Managers/SlotMouseManager")
 cardSpawner = NodePath("../CardSpawner")
 mouseManager = NodePath("../Managers/MouseManager")
 cardMouseManager = NodePath("../Managers/CardMouseManager")

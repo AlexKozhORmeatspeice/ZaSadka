@@ -69,18 +69,12 @@ namespace Cards
 
         private void OnClickCard()
         {
-            if (hoveredCard == null)
-            {
-                onPointerDown?.Invoke(hoveredCard);
-            }
+            onPointerDown?.Invoke(hoveredCard);
         }
 
         private void OnReleaseCard()
         {
-            if (hoveredCard == null)
-            {
-                onPointerUp?.Invoke(hoveredCard);
-            }
+            onPointerUp?.Invoke(hoveredCard);
         }
     }
 }

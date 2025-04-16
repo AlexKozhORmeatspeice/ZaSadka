@@ -33,10 +33,12 @@ namespace DI
     /// TODO: сделать опцию автоматического добавления объекта из иерархии сцены
     /// TODO: удаление зависимостей после выхода со сцены
     /// TODO: попробовать все же подключить мап-ы для хранения, чтобы log(n) сделать и меньше памяти тратить
+    /// TODO: сделать возможность делать разные DI для разных сцен (Буквально просто вынести логику Register<T>())
     /// </summary>
 
     public partial class DIContatiner : Node2D, IDIContatiner
     {
+        [Export] public SlotMouseManager slotMouseManager;
         [Export] public CardSpawner cardSpawner;
         [Export] public MouseManager mouseManager;
         [Export] public CardMouseManager cardMouseManager;
@@ -46,8 +48,13 @@ namespace DI
 
             Register<ICardSpawner>(cardSpawner);
             Register<IPointerManager>(mouseManager);
-            Register<ICardView>(new CardView());
             Register<ICardMouseManager>(cardMouseManager);
+            Register<ISlotMouseManager>(slotMouseManager);
+
+            //не уверен как править эту хуйню, но регаю, чтобы потом можно было обратиться к реализации этой хуйни при raycast.
+            //В ГОДОТЕ НЕТ ПОИСКА ПО ИНТЕРФЕЙСАМ ПРИКРЕПЛЕННЫМ К ОБЪЕКТАМ (хотя логично с учетом того, что они их GDScript даже не реализуют)
+            Register<ICardSlot>(new CardSlot());
+            Register<ICardView>(new CardView());
         }
 
         /// Не трогать все что после. Лень было пока что выносить логику в отдельный класс

@@ -85,7 +85,6 @@ public partial class MouseManager : Node2D, IPointerManager
         if (!isMouseDown && tap == true && Time.Singleton.GetUnixTimeFromSystem() > tapTimer + tapThreshold)
         {
             tap = false;
-            onPointerDown?.Invoke();
         }
     }
 
@@ -130,9 +129,16 @@ public partial class MouseManager : Node2D, IPointerManager
 
         if (results.Count > 0)
         {
-            var collider = results[0]["collider"].As<Area2D>();
-            
-            return collider.GetParent() as T;
+            foreach (var result in results)
+            {
+                Area2D collider = result["collider"].As<Area2D>();
+                T val = collider.GetParent() as T;
+
+                if (val != null)
+                {
+                    return val;
+                }
+            }
         }
 
         return null;
