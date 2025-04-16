@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://c11wyfu81t43c"]
+
+[ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/Cards/CardSpawner.cs" id="1_emt2l"]
+[ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
+[ext_resource type="Script" uid="uid://by8qbi7m0uy4h" path="res://Core/Scripts/DI/DIContatiner.cs" id="3_02ccp"]
+[ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/mouse_manager.tscn" id="4_7wo0x"]
+[ext_resource type="PackedScene" uid="uid://c50v1ucr061bo" path="res://Core/Scenes/Cards/card_mouse_manager.tscn" id="4_h5vl4"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CardSpawner" type="Node2D" parent="."]
+script = ExtResource("1_emt2l")
+cardViewScene = ExtResource("2_mycjp")
+
+[node name="Card" parent="." instance=ExtResource("2_mycjp")]
+visible = false
+script = null
+
+[node name="Managers" type="Node2D" parent="."]
+
+[node name="MouseManager" parent="Managers" instance=ExtResource("4_7wo0x")]
+
+[node name="CardMouseManager" parent="Managers" instance=ExtResource("4_h5vl4")]
+
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("cardSpawner", "mouseManager", "cardMouseManager")]
+script = ExtResource("3_02ccp")
+cardSpawner = NodePath("../CardSpawner")
+mouseManager = NodePath("../Managers/MouseManager")
+cardMouseManager = NodePath("../Managers/CardMouseManager")

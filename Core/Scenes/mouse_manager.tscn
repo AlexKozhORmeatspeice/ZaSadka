@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfexddtip5dgf"]
+
+[ext_resource type="Script" uid="uid://byneioqm8p1e7" path="res://Core/Scripts/Managers/MouseManager.cs" id="1_ai8gh"]
+
+[node name="MouseManager" type="Node2D"]
+script = ExtResource("1_ai8gh")
