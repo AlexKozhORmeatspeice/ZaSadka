@@ -13,9 +13,9 @@ namespace ZaSadka
         int StartMoney { get; }
     }
 
-    public partial class MoneyManager : Node2D, IMoneyManager, IStartable
+    public partial class MoneyManager : IMoneyManager, IStartable
     {
-        [Export] private int startMoney = 100;
+        private const int startMoney = 100;
         private int nowMoney;
 
         public int StartMoney => startMoney;

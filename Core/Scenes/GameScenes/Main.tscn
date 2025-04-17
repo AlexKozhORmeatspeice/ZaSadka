@@ -1,14 +1,12 @@
-[gd_scene load_steps=10 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=8 format=3 uid="uid://c11wyfu81t43c"]
 
-[ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
+[ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
 [ext_resource type="Script" uid="uid://by8qbi7m0uy4h" path="res://Core/Scripts/DI/Containers/MainDIContatiner.cs" id="3_02ccp"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="4_7wo0x"]
 [ext_resource type="PackedScene" uid="uid://c50v1ucr061bo" path="res://Core/Scenes/Cards/Managers/card_mouse_manager.tscn" id="4_h5vl4"]
 [ext_resource type="PackedScene" uid="uid://cnkrvk0unotil" path="res://Core/Scenes/Cards/Managers/slot_mouse_manager.tscn" id="6_28gni"]
 [ext_resource type="PackedScene" uid="uid://cip7rjiwfv6il" path="res://Core/Scenes/Cards/card_slot.tscn" id="6_tk1h4"]
-[ext_resource type="PackedScene" uid="uid://cn743pk3s7aow" path="res://Core/Scenes/AllGameManagers/money_manager.tscn" id="7_ydenv"]
-[ext_resource type="PackedScene" uid="uid://c24cyv1pte6p6" path="res://Core/Scenes/AllGameManagers/inventory_manager.tscn" id="8_e7b4r"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -53,10 +51,6 @@ script = null
 [node name="CardMouseManager" parent="Managers" instance=ExtResource("4_h5vl4")]
 
 [node name="SlotMouseManager" parent="Managers" instance=ExtResource("6_28gni")]
-
-[node name="MoneyManager" parent="Managers" instance=ExtResource("7_ydenv")]
-
-[node name="InventoryManager" parent="Managers" instance=ExtResource("8_e7b4r")]
 
 [node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager")]
 script = ExtResource("3_02ccp")

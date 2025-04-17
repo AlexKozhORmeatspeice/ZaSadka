@@ -1,18 +1,15 @@
-[gd_scene load_steps=14 format=3 uid="uid://82fnuqgf23br"]
+[gd_scene load_steps=11 format=3 uid="uid://82fnuqgf23br"]
 
-[ext_resource type="Script" uid="uid://4r41hoj2bpaj" path="res://Core/Scripts/Market/MarketUI.cs" id="1_4j3vf"]
-[ext_resource type="Script" uid="uid://do3eugcvbho0h" path="res://Core/Scripts/Market/Item/ItemsSpawner.cs" id="1_jw0pw"]
+[ext_resource type="Script" uid="uid://4r41hoj2bpaj" path="res://Core/Scripts/GameScenes/Market/MarketUI.cs" id="1_4j3vf"]
+[ext_resource type="Script" uid="uid://do3eugcvbho0h" path="res://Core/Scripts/GameScenes/Market/Item/ItemsSpawner.cs" id="1_jw0pw"]
 [ext_resource type="PackedScene" uid="uid://cj4s1ceq8kdpy" path="res://Core/Scenes/Market/market_item.tscn" id="2_fm7oo"]
-[ext_resource type="Script" uid="uid://cpl5xaqqthog5" path="res://Core/Scripts/Market/UI/GoToTownButton.cs" id="3_ct4m4"]
-[ext_resource type="PackedScene" uid="uid://cn743pk3s7aow" path="res://Core/Scenes/AllGameManagers/money_manager.tscn" id="3_p083n"]
+[ext_resource type="Script" uid="uid://cpl5xaqqthog5" path="res://Core/Scripts/GameScenes/Market/UI/GoToTownButton.cs" id="3_ct4m4"]
 [ext_resource type="Script" uid="uid://igi4vr1iu33g" path="res://Core/Scripts/DI/Containers/MarketDIContainer.cs" id="4_0v2d1"]
-[ext_resource type="Script" uid="uid://bg6xhuv2ifx21" path="res://Core/Scripts/Market/UI/MoneyText.cs" id="4_226ee"]
+[ext_resource type="Script" uid="uid://bg6xhuv2ifx21" path="res://Core/Scripts/GameScenes/Market/UI/MoneyText.cs" id="4_226ee"]
 [ext_resource type="PackedScene" uid="uid://c11wyfu81t43c" path="res://Core/Scenes/GameScenes/Main.tscn" id="4_a4wfx"]
-[ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="4_fm7oo"]
 [ext_resource type="PackedScene" uid="uid://bmvtjotkurujb" path="res://Core/Scenes/Market/Managers/item_mouse_manager.tscn" id="5_p083n"]
 [ext_resource type="PackedScene" uid="uid://cqcyjivlj00y1" path="res://Core/Scenes/Market/Managers/market_manager.tscn" id="6_0v2d1"]
-[ext_resource type="PackedScene" uid="uid://c24cyv1pte6p6" path="res://Core/Scenes/AllGameManagers/inventory_manager.tscn" id="7_omjsn"]
-[ext_resource type="Script" uid="uid://breb361l5sp3p" path="res://Core/Scripts/Market/UI/BuyItemButton.cs" id="9_2yurv"]
+[ext_resource type="Script" uid="uid://breb361l5sp3p" path="res://Core/Scripts/GameScenes/Market/UI/BuyItemButton.cs" id="9_2yurv"]
 
 [node name="CardMarket" type="Node2D"]
 
@@ -66,23 +63,16 @@ itemDistance = 250.0
 
 [node name="MarketManager" parent="Managers" instance=ExtResource("6_0v2d1")]
 
-[node name="InventoryManager" parent="Managers" instance=ExtResource("7_omjsn")]
-position = Vector2(984, -298)
-
-[node name="MoneyManager" parent="Managers" instance=ExtResource("3_p083n")]
-
-[node name="MouseManager" parent="Managers" instance=ExtResource("4_fm7oo")]
-
 [node name="ItemMouseManager" parent="Managers" instance=ExtResource("5_p083n")]
 
 [node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("itemsSpawner", "pointer", "itemMouseManager", "marketManager", "moneyManager", "inventoryManager", "marketUI", "buyItemButton", "goToTownButton", "moneyText")]
 script = ExtResource("4_0v2d1")
 itemsSpawner = NodePath("../MarketUI/ItemsSpawner")
-pointer = NodePath("../Managers/MouseManager")
+pointer = NodePath("")
 itemMouseManager = NodePath("../Managers/ItemMouseManager")
 marketManager = NodePath("../Managers/MarketManager")
-moneyManager = NodePath("../Managers/MoneyManager")
-inventoryManager = NodePath("../Managers/InventoryManager")
+moneyManager = NodePath("")
+inventoryManager = NodePath("")
 marketUI = NodePath("../MarketUI")
 buyItemButton = NodePath("../MarketUI/<btn> Buy")
 goToTownButton = NodePath("../MarketUI/<btn> GoToTown")

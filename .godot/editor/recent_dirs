@@ -1,12 +1,12 @@
-res://Core/Scripts/Market/UI
-res://Core/Scripts/Market
+res://Core/Scenes/Events
+res://Core/Scripts/GameScenes/GameEvents
+res://Core/Scripts/GameScenes/GameEvents/Managers
+res://Core/Scenes/Events/Managers
+res://Core/Scenes/GameScenes
 res://Core/Scripts/GameDataManagers
 res://Core/Scenes/AllGameManagers
-res://Core/Scripts/Market/Managers
 res://Core/Scenes/Market/Managers
-res://Core/Scripts/Market/Item
 res://Core/Scenes/Market
-res://Core/Scenes/GameScenes
 res://Core/Scenes/Cards
 res://Core/Scenes
 res://Core/Scripts

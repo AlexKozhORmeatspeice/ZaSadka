@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cqcyjivlj00y1"]
 
-[ext_resource type="Script" uid="uid://tu2tti4y73wf" path="res://Core/Scripts/Market/Managers/MarketManager.cs" id="1_td48f"]
+[ext_resource type="Script" uid="uid://tu2tti4y73wf" path="res://Core/Scripts/GameScenes/Market/Managers/MarketManager.cs" id="1_td48f"]
 
 [node name="MarketManager" type="Node2D"]
 script = ExtResource("1_td48f")

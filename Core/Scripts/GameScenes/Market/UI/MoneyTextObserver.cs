@@ -36,8 +36,6 @@ namespace Market
 
         private void OnChangeMoney(int nowMoney)
         {
-            GD.Print(descText + nowMoney.ToString());
-
             view.MoneyText = GetLableText(nowMoney);
         }
 

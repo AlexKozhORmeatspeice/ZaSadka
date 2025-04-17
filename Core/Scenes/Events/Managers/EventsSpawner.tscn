@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://1mtr6dubfac"]
+
+[ext_resource type="Script" uid="uid://cwk3lexq5o023" path="res://Core/Scripts/GameScenes/GameEvents/Managers/EventsSpawner.cs" id="1_as8fr"]
+
+[node name="EventsSpawner" type="Node2D"]
+script = ExtResource("1_as8fr")
