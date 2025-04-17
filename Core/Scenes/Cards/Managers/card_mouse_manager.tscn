@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c50v1ucr061bo"]
 
-[ext_resource type="Script" uid="uid://cmoxgyyikhu7s" path="res://Core/Scripts/Managers/CardMouseManager.cs" id="1_38apb"]
+[ext_resource type="Script" uid="uid://cmoxgyyikhu7s" path="res://Core/Scripts/City/Managers/CardMouseManager.cs" id="1_38apb"]
 
 [node name="CardMouseManager" type="Node2D"]
 script = ExtResource("1_38apb")

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpu5xx3wc3f70"]
 
-[ext_resource type="Script" uid="uid://du14xpyir4tuy" path="res://Core/Scripts/CardLogic/Card/CardView.cs" id="1_v1gsj"]
+[ext_resource type="Script" uid="uid://du14xpyir4tuy" path="res://Core/Scripts/City/CardLogic/Card/CardView.cs" id="1_v1gsj"]
 [ext_resource type="Texture2D" uid="uid://b2eb476tax0ej" path="res://Core/Art/pixelCardAssest.png" id="2_datqy"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkl3"]
@@ -10,8 +10,8 @@ size = Vector2(99, 129)
 script = ExtResource("1_v1gsj")
 mouseDistToDetect = 120.0
 sprite = NodePath("Sprite2D")
-maxSize = Vector2(1.3, 1.3)
-minSize = Vector2(1, 1)
+minScale = Vector2(1, 1)
+maxScale = Vector2(1.3, 1.3)
 
 [node name="Area2D" type="Area2D" parent="."]
 

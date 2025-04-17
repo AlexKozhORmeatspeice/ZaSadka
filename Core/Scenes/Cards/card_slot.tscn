@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cip7rjiwfv6il"]
 
 [ext_resource type="Texture2D" uid="uid://b2eb476tax0ej" path="res://Core/Art/pixelCardAssest.png" id="1_od7ih"]
-[ext_resource type="Script" uid="uid://2dd8qlhfmb8x" path="res://Core/Scripts/CardLogic/Slot/CardSlot.cs" id="1_srj3u"]
+[ext_resource type="Script" uid="uid://2dd8qlhfmb8x" path="res://Core/Scripts/City/CardLogic/Slot/CardSlot.cs" id="1_srj3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a20ru"]
 size = Vector2(99, 129)
