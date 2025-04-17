@@ -1,5 +1,12 @@
+res://Core/Scripts/Market/UI
+res://Core/Scripts/Market
+res://Core/Scripts/GameDataManagers
+res://Core/Scenes/AllGameManagers
+res://Core/Scripts/Market/Managers
+res://Core/Scenes/Market/Managers
+res://Core/Scripts/Market/Item
+res://Core/Scenes/Market
+res://Core/Scenes/GameScenes
 res://Core/Scenes/Cards
-res://Core/Scripts/Cards
 res://Core/Scenes
 res://Core/Scripts
-res://Core/Scenes/GameScenes

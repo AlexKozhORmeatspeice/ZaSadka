@@ -15,8 +15,8 @@ namespace Cards
     {
         [Export] private float mouseDistToDetect = 80.0f;
         [Export] public Sprite2D sprite { get; set; }
-        [Export] private Vector2 maxSize;
-        [Export] private Vector2 minSize;
+        [Export] private Vector2 minScale;
+        [Export] private Vector2 maxScale;
         
         public Vector2 WorldPosition 
         {
@@ -48,8 +48,8 @@ namespace Cards
             t01 = Mathf.Clamp(t01, 0.0f, 1.0f);
 
             Vector2 newScale = sprite.GlobalScale;
-            newScale.X = Mathf.Lerp(minSize.X, maxSize.X, t01);
-            newScale.Y = Mathf.Lerp(minSize.Y, maxSize.Y, t01);
+            newScale.X = Mathf.Lerp(minScale.X, maxScale.X, t01);
+            newScale.Y = Mathf.Lerp(minScale.Y, maxScale.Y, t01);
 
             sprite.Scale = newScale;
         }

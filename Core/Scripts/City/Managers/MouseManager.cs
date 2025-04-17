@@ -21,8 +21,6 @@ public interface IPointerManager
 
 public partial class MouseManager : Node2D, IPointerManager
 {
-    [Inject] private IObjectResolver objectResolver;
-
     private const float tapThreshold = 0.25f;
     private double tapTimer = 0.0;
     private bool tap = false;

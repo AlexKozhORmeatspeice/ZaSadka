@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cnkrvk0unotil"]
 
-[ext_resource type="Script" uid="uid://d20y6tdyoeq0e" path="res://Core/Scripts/Managers/SlotMouseManager.cs" id="1_jqq6s"]
+[ext_resource type="Script" uid="uid://d20y6tdyoeq0e" path="res://Core/Scripts/City/Managers/SlotMouseManager.cs" id="1_jqq6s"]
 
 [node name="SlotMouseManager" type="Node2D"]
 script = ExtResource("1_jqq6s")
