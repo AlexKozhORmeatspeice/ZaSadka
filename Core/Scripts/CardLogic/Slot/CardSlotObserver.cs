@@ -11,7 +11,7 @@ namespace Cards
 
     }
 
-    internal class CardSlotObserver
+    internal class CardSlotObserver : ICardSlotObserver
     {
         
     }

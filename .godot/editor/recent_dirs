@@ -1,5 +1,6 @@
 res://Core/Scenes/Cards
-res://Core/Scripts/Cards
+res://Core/Scripts/GameObjects
+res://Core/Scenes/GameObjects
 res://Core/Scenes
 res://Core/Scripts
 res://Core/Scenes/GameScenes
