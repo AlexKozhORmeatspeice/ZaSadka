@@ -15,7 +15,7 @@ namespace ZaSadka
         void RemoveItem(IItem item);
     }
 
-    public partial class InventoryManager : Node2D, IInventoryManager, IStartable
+    public partial class InventoryManager : IInventoryManager, IStartable
     {
         private List<IItem> items;
 

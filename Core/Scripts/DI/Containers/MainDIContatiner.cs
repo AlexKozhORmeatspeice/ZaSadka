@@ -18,7 +18,6 @@ namespace DI
         [Export] public MouseManager mouseManager;
         [Export] public CardMouseManager cardMouseManager;
         
-
         override protected void RegisterObjects()
         {
             builder.Register<ICardSpawner>(cardSpawner);

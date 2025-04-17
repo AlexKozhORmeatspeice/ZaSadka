@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj4s1ceq8kdpy"]
 
-[ext_resource type="Script" uid="uid://c3horj6o50kb2" path="res://Core/Scripts/Market/Item/Item.cs" id="1_gci03"]
+[ext_resource type="Script" uid="uid://c3horj6o50kb2" path="res://Core/Scripts/GameScenes/Market/Item/Item.cs" id="1_gci03"]
 [ext_resource type="Texture2D" uid="uid://b2eb476tax0ej" path="res://Core/Art/pixelCardAssest.png" id="1_kvell"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvell"]

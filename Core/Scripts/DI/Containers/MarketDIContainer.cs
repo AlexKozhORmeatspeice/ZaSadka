@@ -18,8 +18,6 @@ namespace DI
         [Export] private MouseManager pointer;
         [Export] private ItemMouseManager itemMouseManager;
         [Export] private MarketManager marketManager;
-        [Export] private MoneyManager moneyManager;
-        [Export] private InventoryManager inventoryManager;
         [Export] private MarketUI marketUI;
         [Export] private BuyItemButton buyItemButton;
         [Export] private GoToTownButton goToTownButton;
@@ -31,11 +29,11 @@ namespace DI
             builder.Register<IItemsSpawner>(itemsSpawner);
             builder.Register<IPointerManager>(pointer);
             builder.Register<IMarketManager>(marketManager);
-            builder.Register<IInventoryManager>(inventoryManager);
+            builder.Register<IInventoryManager>(new InventoryManager());
             
             builder.Register<IMarketUI>(marketUI);
             
-            builder.Register<IMoneyManager>(moneyManager);
+            builder.Register<IMoneyManager>(new MoneyManager());
             builder.Register<IMoneyText>(moneyText);
 
             builder.Register<IBuyItemButton>(buyItemButton);

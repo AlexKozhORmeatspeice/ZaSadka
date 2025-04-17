@@ -1,9 +1,9 @@
-Label
-TextEdit
 Node2D
-Button
 CollisionShape2D
 Area2D
+Label
 Sprite2D
 Camera2D
+TextEdit
+Button
 AnimatedSprite2D

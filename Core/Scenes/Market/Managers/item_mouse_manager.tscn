@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bmvtjotkurujb"]
 
-[ext_resource type="Script" uid="uid://dbgk3j5qq4c1y" path="res://Core/Scripts/Market/Managers/ItemMouseManager.cs" id="1_48rck"]
+[ext_resource type="Script" uid="uid://dbgk3j5qq4c1y" path="res://Core/Scripts/GameScenes/Market/Managers/ItemMouseManager.cs" id="1_48rck"]
 
 [node name="ItemMouseManager" type="Node2D"]
 script = ExtResource("1_48rck")
