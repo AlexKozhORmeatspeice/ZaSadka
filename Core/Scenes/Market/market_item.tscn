@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvell"]
 size = Vector2(99, 130)
 
-[node name="MarketItem" type="Node2D" node_paths=PackedStringArray("_collisionShape", "sprite")]
+[node name="MarketItem" type="Node2D" node_paths=PackedStringArray("_collisionShape", "sprite", "label", "vBox")]
 script = ExtResource("1_gci03")
 _collisionShape = NodePath("Area2D/CollisionShape2D")
 sprite = NodePath("Sprite2D")
@@ -16,6 +16,8 @@ price = 100
 mouseDistToDetect = 150.0
 maxScale = Vector2(2.1, 2.1)
 minScale = Vector2(2, 2)
+label = NodePath("Sprite2D/Label")
+vBox = NodePath("Sprite2D/DataShower")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kvell")

@@ -23,7 +23,7 @@ namespace Market
         float MouseDistToDetect { get; }
 
         int Price {  get; }
-        void setInfo(ItemInfo info);
+        void SetInfo(ItemInfo info);
     }
 
     public partial class Item : Node2D, IItem
@@ -39,6 +39,8 @@ namespace Market
 
         [Export] private Vector2 maxScale;
         [Export] private Vector2 minScale;
+        [Export] private Label label;
+        [Export] private VBoxContainer vBox;
 
         public Vector2 SpriteScale
         { 
@@ -97,55 +99,37 @@ namespace Market
             sprite.Visible = isVisible;
         }
 
-        public void setInfo(ItemInfo info)
+        private void AddBonus(int bonus, string bonusName, bool inverse = false)
         {
-            GD.Print("hi!");
-            GetNode<Label>("Label").Text = info.name;
+            Color green = new(0, 1, 0);
+            Color red = new(1, 0, 0);
 
-            Color green = new Color(0, 1, 0);
-            Color red = new Color(1, 0, 0);
+            if (bonus != 0)
+            {
+                bool isPositive = bonus > 0;
+                Label info = new()
+                {
+                    Text = bonusName + ": " + (isPositive ? "+" : "") + bonus.ToString()
+                };
+                var font = info.GetThemeFont("font_color");
+                if (inverse)
+                {
+                    isPositive = !isPositive;
+                }
+                info.AddThemeColorOverride("font_color", isPositive ? green : red);
+                info.AddThemeFontSizeOverride("font_size", 9);
+                vBox.AddChild(info);
+            }
+        }
 
-            VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
-            if (info.supply != 0)
-            {
-                Label supplyInfo = new()
-                {
-                    Text = info.supply.ToString()
-                };
-                supplyInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
-                supplyInfo.AddThemeFontSizeOverride("font_color", 8);
-                dataShower.AddChild(supplyInfo);
-            }
-            if (info.demand != 0)
-            {
-                Label demandInfo = new()
-                {
-                    Text = info.demand.ToString()
-                };
-                demandInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
-                demandInfo.AddThemeFontSizeOverride("font_color", 8);
-                dataShower.AddChild(demandInfo);
-            }
-            if (info.influence != 0)
-            {
-                Label influenceInfo = new()
-                {
-                    Text = info.influence.ToString()
-                };
-                influenceInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
-                influenceInfo.AddThemeFontSizeOverride("font_color", 8);
-                dataShower.AddChild(influenceInfo);
-            }
-            if (info.suspicion != 0)
-            {
-                Label suspicionInfo = new()
-                {
-                    Text = info.suspicion.ToString()
-                };
-                suspicionInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
-                suspicionInfo.AddThemeFontSizeOverride("font_color", 8);
-                dataShower.AddChild(suspicionInfo);
-            }
+        public void SetInfo(ItemInfo info)
+        {
+            label.Text = info.name;
+
+            AddBonus(info.demand, "Спрос");
+            AddBonus(info.supply, "Предложение");
+            AddBonus(info.influence, "Влияние");
+            AddBonus(info.suspicion, "Подозрение", true);
         }
     }
 

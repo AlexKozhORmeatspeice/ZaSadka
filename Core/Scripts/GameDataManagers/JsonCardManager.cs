@@ -4,6 +4,7 @@ using System;
 using Market;
 using System.Linq;
 using DI;
+using System.Runtime.CompilerServices;
 
 namespace ZaSadka
 {
@@ -43,7 +44,6 @@ namespace ZaSadka
 	public partial class JsonCardManager : IJsonCardManager, IStartable
 	{
 		private Godot.Collections.Dictionary cards;
-        // Called when the node enters the scene tree for the first time.
 
         void IStartable.Start()
         {
@@ -60,9 +60,8 @@ namespace ZaSadka
 			Godot.Collections.Dictionary loadedData = (Godot.Collections.Dictionary)jsonLoader.Data;
 
 			cards = loadedData["cards"].AsGodotDictionary();
-
-			file.Close();
         }
+
 
 		public ItemInfo GetItemInfo(ItemType type, int id)
 		{
@@ -89,7 +88,7 @@ namespace ZaSadka
 			{
 				info.suspicion = neededCard["suspicion"].AsInt16();
 			}
-
+			
 			return info;
 		}
 		public UnitAdditionalInfo GetUnitAdditionalInfo(int id)
@@ -128,7 +127,6 @@ namespace ZaSadka
 		}
         int IJsonCardManager.GetCardsAmount(ItemType type)
         {
-            GD.Print("we are here");
 			string cardType = type == ItemType.Building ? "buildings" : "units";
 			return cards[cardType].AsGodotArray().ToArray().Length;
         }
