@@ -3,28 +3,32 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\managers\\slotmousemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\managers\\slotmousemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\cardlogic\\card\\cardspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\cardlogic\\card\\cardspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\cardlogic\\card\\cardobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\cardlogic\\card\\cardobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\managers\\mousemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\managers\\mousemanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Managers\\SlotMouseManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\Managers\\SlotMouseManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Cards\\CardSlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\Cards\\CardSlot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\di\\dicontatiner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\di\\dicontatiner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\CardLogic\\Card\\CardObserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\CardLogic\\Card\\CardObserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\CardLogic\\Card\\CardSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\CardLogic\\Card\\CardSpawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Managers\\MouseManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\Managers\\MouseManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\DI\\DIContatiner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\DI\\DIContatiner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -39,19 +43,30 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "ItemObserver.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
+              "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
+              "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-17T09:18:50.671Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
               "Title": "SlotMouseManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Managers\\SlotMouseManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\Managers\\SlotMouseManager.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Managers\\SlotMouseManager.cs",
               "RelativeToolTip": "Core\\Scripts\\Managers\\SlotMouseManager.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAQwCgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T16:14:25.65Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T16:14:25.65Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "CardObserver.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\CardLogic\\Card\\CardObserver.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\CardLogic\\Card\\CardObserver.cs",
@@ -59,12 +74,11 @@
               "RelativeToolTip": "Core\\Scripts\\CardLogic\\Card\\CardObserver.cs",
               "ViewState": "AgIAAB8AAAAAAAAAAAAowDAAAABFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T16:01:01.891Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T16:01:01.891Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "CardSpawner.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\CardLogic\\Card\\CardSpawner.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\CardLogic\\Card\\CardSpawner.cs",
@@ -72,12 +86,11 @@
               "RelativeToolTip": "Core\\Scripts\\CardLogic\\Card\\CardSpawner.cs",
               "ViewState": "AgIAADMAAAAAAAAAAAAtwEkAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T15:55:32.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T15:55:32.391Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 2,
               "Title": "CardSlot.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Cards\\CardSlot.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\Cards\\CardSlot.cs",
@@ -85,12 +98,11 @@
               "RelativeToolTip": "Core\\Scripts\\Cards\\CardSlot.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-16T15:43:26.85Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-16T15:43:26.85Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "MouseManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\Managers\\MouseManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\Managers\\MouseManager.cs",
@@ -98,12 +110,11 @@
               "RelativeToolTip": "Core\\Scripts\\Managers\\MouseManager.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAcwC4AAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-14T23:12:27.475Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-14T23:12:27.475Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "DIContatiner.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\DI\\DIContatiner.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\DI\\DIContatiner.cs",
@@ -111,8 +122,7 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\DIContatiner.cs",
               "ViewState": "AgIAABsAAAAAAAAAAAAAADQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-15T00:57:03.945Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-15T00:57:03.945Z"
             }
           ]
         }
