@@ -100,49 +100,49 @@ namespace Market
         public void setInfo(ItemInfo info)
         {
             GD.Print("hi!");
-            GetNode<Label>("Label").Text = info.name;
+            GetNode<Label>("Label").Text = info.Name;
 
             Color green = new Color(0, 1, 0);
             Color red = new Color(1, 0, 0);
 
             VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
-            if (info.supply != 0)
+            if (info.Supply != 0)
             {
                 Label supplyInfo = new()
                 {
-                    Text = info.supply.ToString()
+                    Text = info.Supply.ToString()
                 };
-                supplyInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                supplyInfo.AddThemeColorOverride("font_color", info.Supply > 0 ? green : red);
                 supplyInfo.AddThemeFontSizeOverride("font_color", 8);
                 dataShower.AddChild(supplyInfo);
             }
-            if (info.demand != 0)
+            if (info.Demand != 0)
             {
                 Label demandInfo = new()
                 {
-                    Text = info.demand.ToString()
+                    Text = info.Demand.ToString()
                 };
-                demandInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                demandInfo.AddThemeColorOverride("font_color", info.Supply > 0 ? green : red);
                 demandInfo.AddThemeFontSizeOverride("font_color", 8);
                 dataShower.AddChild(demandInfo);
             }
-            if (info.influence != 0)
+            if (info.Influence != 0)
             {
                 Label influenceInfo = new()
                 {
-                    Text = info.influence.ToString()
+                    Text = info.Influence.ToString()
                 };
-                influenceInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                influenceInfo.AddThemeColorOverride("font_color", info.Supply > 0 ? green : red);
                 influenceInfo.AddThemeFontSizeOverride("font_color", 8);
                 dataShower.AddChild(influenceInfo);
             }
-            if (info.suspicion != 0)
+            if (info.Suspicion != 0)
             {
                 Label suspicionInfo = new()
                 {
-                    Text = info.suspicion.ToString()
+                    Text = info.Suspicion.ToString()
                 };
-                suspicionInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                suspicionInfo.AddThemeColorOverride("font_color", info.Supply > 0 ? green : red);
                 suspicionInfo.AddThemeFontSizeOverride("font_color", 8);
                 dataShower.AddChild(suspicionInfo);
             }

@@ -15,20 +15,20 @@ namespace ZaSadka
 	}
 	public struct ItemInfo
 	{
-		public string name {get; set;}
-		public int supply {get; set;}
-		public int demand {get; set;}
-		public int influence {get; set;}
-		public int suspicion {get; set;}
+		public string Name {get; set;}
+		public int Supply {get; set;}
+		public int Demand {get; set;}
+		public int Influence {get; set;}
+		public int Suspicion {get; set;}
 	}
 
 	public struct UnitAdditionalInfo
 	{
-		public float eventChance {get; set;}
-		public string debuffName {get; set;}
-		public int debuffDistrictId {get; set;}
-		public StatsType debuffStat {get; set;}
-		public int debuffAmount {get; set;}
+		public float EventChance {get; set;}
+		public string DebuffName {get; set;}
+		public int DebuffDistrictId {get; set;}
+		public StatsType DebuffStat {get; set;}
+		public int DebuffAmount {get; set;}
 	}
 	public interface IJsonCardManager
 	{
@@ -62,28 +62,28 @@ namespace ZaSadka
 
 		public ItemInfo GetItemInfo(ItemType type, int id)
 		{
-			ItemInfo info = new ItemInfo();
+			ItemInfo info = new();
 			string itemType = type == ItemType.Building ? "buildings" : "units";
 			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
 			if (neededCard.ContainsKey("name"))
 			{
-				info.name = neededCard["name"].AsString();
+				info.Name = neededCard["name"].AsString();
 			}
 			if (neededCard.ContainsKey("supply"))
 			{
-				info.supply = neededCard["supply"].AsInt16();
+				info.Supply = neededCard["supply"].AsInt16();
 			}
 			if (neededCard.ContainsKey("demand"))
 			{
-				info.demand = neededCard["demand"].AsInt16();
+				info.Demand = neededCard["demand"].AsInt16();
 			}
 			if (neededCard.ContainsKey("influence"))
 			{
-				info.influence = neededCard["influence"].AsInt16();
+				info.Influence = neededCard["influence"].AsInt16();
 			}
 			if (neededCard.ContainsKey("suspicion"))
 			{
-				info.suspicion = neededCard["suspicion"].AsInt16();
+				info.Suspicion = neededCard["suspicion"].AsInt16();
 			}
 
 			return info;
@@ -94,38 +94,30 @@ namespace ZaSadka
 			var neededCard = cards["units"].AsGodotArray()[id].AsGodotDictionary();
 			if (neededCard.ContainsKey("event_chance"))
 			{
-				info.eventChance = (float)neededCard["event_chance"].AsDouble();
+				info.EventChance = (float)neededCard["event_chance"].AsDouble();
 			}
 			if (neededCard.ContainsKey("debuff_name"))
 			{
-				info.debuffName = neededCard["debuff_name"].AsString();
+				info.DebuffName = neededCard["debuff_name"].AsString();
 			}
 			if (neededCard.ContainsKey("debuff_district_id"))
 			{
-				info.debuffDistrictId = neededCard["debuff_district_id"].AsInt16();
+				info.DebuffDistrictId = neededCard["debuff_district_id"].AsInt16();
 			}
 			if (neededCard.ContainsKey("debuff_item"))
 			{
 				string debuffStat = neededCard["debuff_item"].AsString();
-				switch (debuffStat)
-				{
-					case "supply":
-					info.debuffStat = StatsType.Supply;
-					break;
-					case "demand":
-					info.debuffStat = StatsType.Demand;
-					break;
-					case "suspicion":
-					info.debuffStat = StatsType.Suspicion;
-					break;
-					default:
-					info.debuffStat = StatsType.Influence;
-					break;
-				}
-			}
+                info.DebuffStat = debuffStat switch
+                {
+                    "supply" => StatsType.Supply,
+                    "demand" => StatsType.Demand,
+                    "suspicion" => StatsType.Suspicion,
+                    _ => StatsType.Influence,
+                };
+            }
 			if (neededCard.ContainsKey("debuff_amount"))
 			{
-				info.debuffAmount = neededCard["debuff_amount"].AsInt16();
+				info.DebuffAmount = neededCard["debuff_amount"].AsInt16();
 			}
 
 			return info;
