@@ -14,7 +14,7 @@ namespace Market
         ItemInfo GetItemInfoByID(int id);
     }
 
-    public partial class ItemsSpawner : Node2D, IItemsSpawner
+    public partial class ItemsSpawner : Node2D, IItemsSpawner, ILateStartable
     {
         [Export] private int itemsCount;
         [Export] private PackedScene[] packedScenes;
@@ -28,18 +28,13 @@ namespace Market
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
         [Inject] private IJsonCardManager jsonCardManager;
-
-        [Inject]
-        private void Construct(IObjectResolver resolver)
-        {
-            CreateCards(resolver);
-        }
+        [Inject] private IObjectResolver resolver;
 
         public override void _Ready()
         {
             CreateStartPositions();
-            CreateItemData();
         }
+
 
         private void CreateCards(IObjectResolver resolver)
         {
@@ -75,12 +70,14 @@ namespace Market
         }
         void CreateItemData()
         {
-            itemData = [];
+            itemData = new List<ItemInfo>();
+            
             for (int i = 0; i < itemsCount; i++)
             {
                 ItemType itemType = (ItemType)GD.RandRange(0, 1);
-                // int itemID = jsonCardManager.GetCardsAmount(itemType);
-                // itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
+                int itemID = jsonCardManager.GetCardsAmount(itemType);
+                GD.Print(itemID);
+                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
             }
         }
 
@@ -107,8 +104,15 @@ namespace Market
             {
                 return new ItemInfo();
             }
-
+            
             return itemData[id];
+        }
+
+        public void LateStart()
+        {
+            CreateItemData();
+
+            CreateCards(resolver);
         }
     }
 }

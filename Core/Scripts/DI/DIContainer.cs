@@ -49,6 +49,7 @@ namespace DI
             RegisterObjects();
             builder.InjectDependencies();
             builder.EnableStarts();
+            builder.EnableLateStarts();
         }
 
         void IDIContatiner.InjectDependencie(object obj)
@@ -64,6 +65,11 @@ namespace DI
     public interface IStartable
     {
         void Start();
+    }
+
+    public interface ILateStartable
+    {
+        void LateStart();
     }
 
     public interface IDIContatiner

@@ -28,6 +28,9 @@ namespace Market
 
     public partial class Item : Node2D, IItem
     {
+        [Export] private Label label;
+        [Export] private VBoxContainer dataShower;
+            
         [Export] private CollisionShape2D _collisionShape;
 
         [Export] private Sprite2D sprite;
@@ -100,12 +103,11 @@ namespace Market
         public void setInfo(ItemInfo info)
         {
             GD.Print("hi!");
-            GetNode<Label>("Label").Text = info.name;
+            label.Text = info.name;
 
             Color green = new Color(0, 1, 0);
             Color red = new Color(1, 0, 0);
 
-            VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
             if (info.supply != 0)
             {
                 Label supplyInfo = new()
