@@ -58,31 +58,31 @@ namespace Cards
 
         public void setInfo(ItemInfo info)
         {
-            GetNode<Label>("Label").Text = info.Name;
+            GetNode<Label>("Label").Text = info.name;
 
             VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
-            if (info.Supply != 0)
+            if (info.supply != 0)
             {
                 Label supplyInfo = new Label();
-                supplyInfo.Text = info.Supply.ToString();
+                supplyInfo.Text = info.supply.ToString();
                 dataShower.AddChild(supplyInfo);
             }
-            if (info.Demand != 0)
+            if (info.demand != 0)
             {
                 Label demandInfo = new Label();
-                demandInfo.Text = info.Demand.ToString();
+                demandInfo.Text = info.demand.ToString();
                 dataShower.AddChild(demandInfo);
             }
-            if (info.Influence != 0)
+            if (info.influence != 0)
             {
                 Label influenceInfo = new Label();
-                influenceInfo.Text = info.Influence.ToString();
+                influenceInfo.Text = info.influence.ToString();
                 dataShower.AddChild(influenceInfo);
             }
-            if (info.Suspicion != 0)
+            if (info.suspicion != 0)
             {
                 Label suspicionInfo = new Label();
-                suspicionInfo.Text = info.Suspicion.ToString();
+                suspicionInfo.Text = info.suspicion.ToString();
                 dataShower.AddChild(suspicionInfo);
             }
         }

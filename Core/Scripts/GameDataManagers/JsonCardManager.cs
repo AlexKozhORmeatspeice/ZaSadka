@@ -3,6 +3,7 @@ using Godot.NativeInterop;
 using System;
 using Market;
 using System.Linq;
+using DI;
 
 namespace ZaSadka
 {
@@ -15,20 +16,22 @@ namespace ZaSadka
 	}
 	public struct ItemInfo
 	{
-		public string Name {get; set;}
-		public int Supply {get; set;}
-		public int Demand {get; set;}
-		public int Influence {get; set;}
-		public int Suspicion {get; set;}
+		public ItemInfo() {}
+		public string name = "";
+		public int supply = 0;
+		public int demand = 0;
+		public int influence = 0;
+		public int suspicion = 0;
 	}
 
 	public struct UnitAdditionalInfo
 	{
-		public float EventChance {get; set;}
-		public string DebuffName {get; set;}
-		public int DebuffDistrictId {get; set;}
-		public StatsType DebuffStat {get; set;}
-		public int DebuffAmount {get; set;}
+		public UnitAdditionalInfo() {}
+		public float EventChance = 0;
+		public string DebuffName = "";
+		public int DebuffDistrictId = -1;
+		public StatsType DebuffStat = StatsType.Demand;
+		public int DebuffAmount = 0;
 	}
 	public interface IJsonCardManager
 	{
@@ -37,13 +40,14 @@ namespace ZaSadka
 		int GetCardsAmount(ItemType type);
 	}
 
-	public partial class JsonCardManager : Node2D, IJsonCardManager
+	public partial class JsonCardManager : IJsonCardManager, IStartable
 	{
 		private Godot.Collections.Dictionary cards;
-		// Called when the node enters the scene tree for the first time.
-		public override void _Ready()
-		{
-			using var file = FileAccess.Open("./Core/Data/data.json", FileAccess.ModeFlags.Read);
+        // Called when the node enters the scene tree for the first time.
+
+        void IStartable.Start()
+        {
+            using var file = FileAccess.Open("./Core/Data/data.json", FileAccess.ModeFlags.Read);
 			string json_as_text = file.GetAsText();
 			Json jsonLoader = new Json();
 			Error error = jsonLoader.Parse(json_as_text);
@@ -58,7 +62,7 @@ namespace ZaSadka
 			cards = loadedData["cards"].AsGodotDictionary();
 
 			file.Close();
-		}
+        }
 
 		public ItemInfo GetItemInfo(ItemType type, int id)
 		{
@@ -67,23 +71,23 @@ namespace ZaSadka
 			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
 			if (neededCard.ContainsKey("name"))
 			{
-				info.Name = neededCard["name"].AsString();
+				info.name = neededCard["name"].AsString();
 			}
 			if (neededCard.ContainsKey("supply"))
 			{
-				info.Supply = neededCard["supply"].AsInt16();
+				info.supply = neededCard["supply"].AsInt16();
 			}
 			if (neededCard.ContainsKey("demand"))
 			{
-				info.Demand = neededCard["demand"].AsInt16();
+				info.demand = neededCard["demand"].AsInt16();
 			}
 			if (neededCard.ContainsKey("influence"))
 			{
-				info.Influence = neededCard["influence"].AsInt16();
+				info.influence = neededCard["influence"].AsInt16();
 			}
 			if (neededCard.ContainsKey("suspicion"))
 			{
-				info.Suspicion = neededCard["suspicion"].AsInt16();
+				info.suspicion = neededCard["suspicion"].AsInt16();
 			}
 
 			return info;
@@ -122,11 +126,12 @@ namespace ZaSadka
 
 			return info;
 		}
-		public int GetCardsAmount(ItemType type)
-		{
+        int IJsonCardManager.GetCardsAmount(ItemType type)
+        {
+            GD.Print("we are here");
 			string cardType = type == ItemType.Building ? "buildings" : "units";
 			return cards[cardType].AsGodotArray().ToArray().Length;
-		}
+        }
 	}
 }
 

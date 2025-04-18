@@ -22,16 +22,16 @@ namespace DI
         [Export] private BuyItemButton buyItemButton;
         [Export] private GoToTownButton goToTownButton;
         [Export] private MoneyText moneyText;
-
         override protected void RegisterObjects()
         {
-            builder.Register<IJsonCardManager>(new JsonCardManager());
-
             builder.Register<IItemMouseManager>(itemMouseManager);
             builder.Register<IItemsSpawner>(itemsSpawner);
             builder.Register<IPointerManager>(pointer);
             builder.Register<IMarketManager>(marketManager);
             builder.Register<IInventoryManager>(new InventoryManager());
+
+            builder.Register<IJsonCardManager>(new JsonCardManager());
+
             
             builder.Register<IMarketUI>(marketUI);
             

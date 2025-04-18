@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://b2duguvn22or8"]
+[gd_scene load_steps=2 format=3 uid="uid://dfmosui0x1kq"]
 
 [ext_resource type="Script" uid="uid://cg5n31n7a8gwc" path="res://Core/Scripts/GameDataManagers/JsonCardManager.cs" id="1_wyxks"]
 

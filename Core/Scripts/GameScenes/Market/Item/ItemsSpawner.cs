@@ -27,8 +27,7 @@ namespace Market
         private List<ItemInfo> itemData;
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
-        [Inject] 
-        private IJsonCardManager jsonCardManager;
+        [Inject] private IJsonCardManager jsonCardManager;
 
         [Inject]
         private void Construct(IObjectResolver resolver)
@@ -44,7 +43,7 @@ namespace Market
 
         private void CreateCards(IObjectResolver resolver)
         {
-            itemObservers = new List<IItemObserver>();
+            itemObservers = [];
 
             for (int i = 0; i < itemsCount; i++)
             {
@@ -54,17 +53,16 @@ namespace Market
                 AddChild(newInstance);
                 IItem newCardView = (IItem)newInstance;
 
-                ItemObserver itemObserver = new ItemObserver(newCardView);
+                ItemObserver itemObserver = new(newCardView);
                 resolver.Inject(itemObserver);
                 itemObserver.Enable();
-
                 itemObservers.Add(itemObserver);
             }
         }
 
         private void CreateStartPositions()
         {
-            itemPositions = new List<Vector2>();
+            itemPositions = [];
 
             float startX = -itemsCount / 2 * itemDistance;
 
@@ -77,11 +75,12 @@ namespace Market
         }
         void CreateItemData()
         {
+            itemData = [];
             for (int i = 0; i < itemsCount; i++)
             {
                 ItemType itemType = (ItemType)GD.RandRange(0, 1);
-                int itemID = jsonCardManager.GetCardsAmount(itemType);
-                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
+                // int itemID = jsonCardManager.GetCardsAmount(itemType);
+                // itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
             }
         }
 
@@ -104,13 +103,13 @@ namespace Market
 
         ItemInfo IItemsSpawner.GetItemInfoByID(int id)
         {
-            if (id >= itemPositions.Count)
+            if (id >= itemData.Count)
             {
                 return new ItemInfo();
             }
+
             return itemData[id];
         }
-
     }
 }
 

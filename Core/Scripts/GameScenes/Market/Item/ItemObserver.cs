@@ -42,6 +42,7 @@ namespace Market
             view.WorldPosition = itemsSpawner.GetPositionByID(ID);
             view.setInfo(itemsSpawner.GetItemInfoByID(ID));
 
+            GD.Print("listening to events");
             marketManager.onChoosedItem += SetChoosedItem;
             marketManager.onBuyItem += OnBuy;
 
