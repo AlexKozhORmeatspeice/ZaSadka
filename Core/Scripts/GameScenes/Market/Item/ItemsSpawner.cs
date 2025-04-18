@@ -4,12 +4,14 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static Godot.WebSocketPeer;
+using ZaSadka;
 
 namespace Market
 {
     public interface IItemsSpawner
     {
         Vector2 GetPositionByID(int id);
+        ItemInfo GetItemInfoByID(int id);
     }
 
     public partial class ItemsSpawner : Node2D, IItemsSpawner
@@ -22,8 +24,11 @@ namespace Market
 
         private List<IItemObserver> itemObservers;
         private List<Vector2> itemPositions;
+        private List<ItemInfo> itemData;
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
+        [Inject] 
+        private IJsonCardManager jsonCardManager;
 
         [Inject]
         private void Construct(IObjectResolver resolver)
@@ -34,6 +39,7 @@ namespace Market
         public override void _Ready()
         {
             CreateStartPositions();
+            CreateItemData();
         }
 
         private void CreateCards(IObjectResolver resolver)
@@ -69,6 +75,15 @@ namespace Market
                 startX += itemDistance;
             }
         }
+        void CreateItemData()
+        {
+            for (int i = 0; i < itemsCount; i++)
+            {
+                ItemType itemType = (ItemType)GD.RandRange(0, 1);
+                int itemID = jsonCardManager.GetCardsAmount(itemType);
+                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
+            }
+        }
 
         public override void _ExitTree()
         {
@@ -86,7 +101,16 @@ namespace Market
 
             return itemPositions[id];
         }
-    }
 
+        ItemInfo IItemsSpawner.GetItemInfoByID(int id)
+        {
+            if (id >= itemPositions.Count)
+            {
+                return new ItemInfo();
+            }
+            return itemData[id];
+        }
+
+    }
 }
 

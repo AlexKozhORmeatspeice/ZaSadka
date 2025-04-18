@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://82fnuqgf23br"]
+[gd_scene load_steps=12 format=3 uid="uid://82fnuqgf23br"]
 
 [ext_resource type="Script" uid="uid://4r41hoj2bpaj" path="res://Core/Scripts/GameScenes/Market/MarketUI.cs" id="1_4j3vf"]
 [ext_resource type="Script" uid="uid://do3eugcvbho0h" path="res://Core/Scripts/GameScenes/Market/Item/ItemsSpawner.cs" id="1_jw0pw"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bmvtjotkurujb" path="res://Core/Scenes/Market/Managers/item_mouse_manager.tscn" id="5_p083n"]
 [ext_resource type="PackedScene" uid="uid://cqcyjivlj00y1" path="res://Core/Scenes/Market/Managers/market_manager.tscn" id="6_0v2d1"]
 [ext_resource type="Script" uid="uid://breb361l5sp3p" path="res://Core/Scripts/GameScenes/Market/UI/BuyItemButton.cs" id="9_2yurv"]
+[ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="10_ct4m4"]
 
 [node name="CardMarket" type="Node2D"]
 
@@ -65,14 +66,14 @@ itemDistance = 250.0
 
 [node name="ItemMouseManager" parent="Managers" instance=ExtResource("5_p083n")]
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("itemsSpawner", "pointer", "itemMouseManager", "marketManager", "moneyManager", "inventoryManager", "marketUI", "buyItemButton", "goToTownButton", "moneyText")]
+[node name="MouseManager" parent="Managers" instance=ExtResource("10_ct4m4")]
+
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("itemsSpawner", "pointer", "itemMouseManager", "marketManager", "marketUI", "buyItemButton", "goToTownButton", "moneyText")]
 script = ExtResource("4_0v2d1")
 itemsSpawner = NodePath("../MarketUI/ItemsSpawner")
-pointer = NodePath("")
+pointer = NodePath("../Managers/MouseManager")
 itemMouseManager = NodePath("../Managers/ItemMouseManager")
 marketManager = NodePath("../Managers/MarketManager")
-moneyManager = NodePath("")
-inventoryManager = NodePath("")
 marketUI = NodePath("../MarketUI")
 buyItemButton = NodePath("../MarketUI/<btn> Buy")
 goToTownButton = NodePath("../MarketUI/<btn> GoToTown")

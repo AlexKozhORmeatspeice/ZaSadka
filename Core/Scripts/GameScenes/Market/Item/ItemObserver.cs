@@ -1,6 +1,7 @@
 using Cards;
 using Godot;
 using System;
+using ZaSadka;
 
 namespace Market
 {
@@ -20,6 +21,8 @@ namespace Market
 
         private int ID;
         private static int g_MaxID = 0;
+        private int itemID = 0;
+        private ItemType itemType = ItemType.Building;
 
         private bool isChoosed;
         
@@ -37,6 +40,7 @@ namespace Market
             view.SetChoosed(isChoosed);
 
             view.WorldPosition = itemsSpawner.GetPositionByID(ID);
+            view.setInfo(itemsSpawner.GetItemInfoByID(ID));
 
             marketManager.onChoosedItem += SetChoosedItem;
             marketManager.onBuyItem += OnBuy;

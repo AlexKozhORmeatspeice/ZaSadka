@@ -1,25 +1,14 @@
 using DI;
 using Godot;
 using System;
+using ZaSadka;
 
 namespace Market
 {
     public enum ItemType
     {
-        None,
-        old_docks,
-        historical_center,
-        suburbs,
-        laboratory,
-        point_of_sale,
-        puppet_enterprise,
-        illegal_warehouse,
-        office_facade,
-        dealer,
-        guard,
-        marketer,
-        intern,
-        agent
+        Building = 0,
+        Unit
     }
 
     public interface IItem
@@ -34,6 +23,7 @@ namespace Market
         float MouseDistToDetect { get; }
 
         int Price {  get; }
+        void setInfo(ItemInfo info);
     }
 
     public partial class Item : Node2D, IItem
@@ -45,8 +35,6 @@ namespace Market
         [Export] private Color choosedColor;
         
         [Export] private int price;
-        [Export] private ItemType type;
-        
         [Export] private float mouseDistToDetect = 80.0f;
 
         [Export] private Vector2 maxScale;
@@ -107,6 +95,57 @@ namespace Market
         public void SetVisibility(bool isVisible)
         {
             sprite.Visible = isVisible;
+        }
+
+        public void setInfo(ItemInfo info)
+        {
+            GD.Print("hi!");
+            GetNode<Label>("Label").Text = info.name;
+
+            Color green = new Color(0, 1, 0);
+            Color red = new Color(1, 0, 0);
+
+            VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
+            if (info.supply != 0)
+            {
+                Label supplyInfo = new()
+                {
+                    Text = info.supply.ToString()
+                };
+                supplyInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                supplyInfo.AddThemeFontSizeOverride("font_color", 8);
+                dataShower.AddChild(supplyInfo);
+            }
+            if (info.demand != 0)
+            {
+                Label demandInfo = new()
+                {
+                    Text = info.demand.ToString()
+                };
+                demandInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                demandInfo.AddThemeFontSizeOverride("font_color", 8);
+                dataShower.AddChild(demandInfo);
+            }
+            if (info.influence != 0)
+            {
+                Label influenceInfo = new()
+                {
+                    Text = info.influence.ToString()
+                };
+                influenceInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                influenceInfo.AddThemeFontSizeOverride("font_color", 8);
+                dataShower.AddChild(influenceInfo);
+            }
+            if (info.suspicion != 0)
+            {
+                Label suspicionInfo = new()
+                {
+                    Text = info.suspicion.ToString()
+                };
+                suspicionInfo.AddThemeColorOverride("font_color", info.supply > 0 ? green : red);
+                suspicionInfo.AddThemeFontSizeOverride("font_color", 8);
+                dataShower.AddChild(suspicionInfo);
+            }
         }
     }
 

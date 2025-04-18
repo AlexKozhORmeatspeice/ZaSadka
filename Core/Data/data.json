@@ -1,0 +1,146 @@
+{
+    "cards":
+    {
+        "buildings":
+        [
+            {
+                "id": "0",
+                "name": "Лаборатория",
+                "supply": "3",
+                "demand": "0",
+                "influence": "1",
+                "suspicion": "2"
+            },
+            {
+                "id": "1",
+                "name": "Точка сбыта",
+                "supply": "0",
+                "demand": "3",
+                "influence": "1",
+                "suspicion": "2"
+            },
+            {
+                "id": "2",
+                "name": "Марионеточное предприятие",
+                "supply": "0",
+                "demand": "0",
+                "influence": "1",
+                "suspicion": "-3"
+            },
+            {
+                "id": "3",
+                "name": "Нелегальный склад",
+                "supply": "2",
+                "demand": "1",
+                "influence": "1",
+                "suspicion": "3"
+            },
+            {
+                "id": "4",
+                "name": "Офисный фасад",
+                "supply": "1",
+                "demand": "1",
+                "influence": "2",
+                "suspicion": "0"
+            }
+        ],
+        "units":
+        [
+            {
+                "id": "0",
+                "name": "Дилер",
+                "supply": "3",
+                "demand": "0",
+                "influence": "1",
+                "suspicion": "2",
+                "event_chance": "",
+                "debuff_name": "",
+                "debuff_district_id": "",
+                "debuff_item": "",
+                "debuff_amount": ""
+            },
+            {
+                "id": "1",
+                "name": "Охранник",
+                "supply": "0",
+                "demand": "3",
+                "influence": "1",
+                "suspicion": "2",
+                "event_chance": "",
+                "debuff_name": "",
+                "debuff_district_id": "",
+                "debuff_item": "",
+                "debuff_amount": ""
+            },
+            {
+                "id": "2",
+                "name": "Маркетолог",
+                "supply": "0",
+                "demand": "0",
+                "influence": "1",
+                "suspicion": "-3",
+                "event_chance": "",
+                "debuff_name": "",
+                "debuff_district_id": "",
+                "debuff_item": "",
+                "debuff_amount": ""
+            },
+            {
+                "id": "3",
+                "name": "Стажёр",
+                "supply": "2",
+                "demand": "1",
+                "influence": "1",
+                "suspicion": "3",
+                "event_chance": "",
+                "debuff_name": "",
+                "debuff_district_id": "",
+                "debuff_item": "",
+                "debuff_amount": ""
+            },
+            {
+                "id": "4",
+                "name": "Агент",
+                "supply": "1",
+                "demand": "1",
+                "influence": "2",
+                "suspicion": "0",
+                "event_chance": "",
+                "debuff_name": "",
+                "debuff_district_id": "",
+                "debuff_item": "",
+                "debuff_amount": ""
+            }
+        ]
+    },
+    "districts":
+        [
+            {
+                "id": "0",
+                "name": "Старые доки",
+                "building_max": "4",
+                "supply": "2",
+                "demand": "1",
+                "influence": "0",
+                "suspicion": "3"
+            },
+            {
+                "id": "1",
+                "name": "Исторический центр",
+                "building_max": "3",
+                "supply": "-1",
+                "demand": "-1",
+                "influence": "3",
+                "suspicion": "2"
+            },
+            {
+                "id": "2",
+                "name": "Окраины",
+                "building_max": "5",
+                "supply": "0",
+                "demand": "2",
+                "influence": "1",
+                "suspicion": "2"
+            }
+        ]
+}

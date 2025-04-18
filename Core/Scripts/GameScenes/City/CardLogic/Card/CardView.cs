@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using ZaSadka;
 
 namespace Cards
 {
@@ -9,6 +10,7 @@ namespace Cards
         float MouseDistToDetect { get; }
         void SetCardSprite(Texture2D texture);
         void ChangeScale(float t01);
+        void setInfo(ItemInfo info);
     }
 
     public partial class CardView : Node2D, ICardView
@@ -52,6 +54,37 @@ namespace Cards
             newScale.Y = Mathf.Lerp(minScale.Y, maxScale.Y, t01);
 
             sprite.Scale = newScale;
+        }
+
+        public void setInfo(ItemInfo info)
+        {
+            GetNode<Label>("Label").Text = info.name;
+
+            VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
+            if (info.supply != 0)
+            {
+                Label supplyInfo = new Label();
+                supplyInfo.Text = info.supply.ToString();
+                dataShower.AddChild(supplyInfo);
+            }
+            if (info.demand != 0)
+            {
+                Label demandInfo = new Label();
+                demandInfo.Text = info.demand.ToString();
+                dataShower.AddChild(demandInfo);
+            }
+            if (info.influence != 0)
+            {
+                Label influenceInfo = new Label();
+                influenceInfo.Text = info.influence.ToString();
+                dataShower.AddChild(influenceInfo);
+            }
+            if (info.suspicion != 0)
+            {
+                Label suspicionInfo = new Label();
+                suspicionInfo.Text = info.suspicion.ToString();
+                dataShower.AddChild(suspicionInfo);
+            }
         }
     }
 }

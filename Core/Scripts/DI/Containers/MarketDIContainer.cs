@@ -25,6 +25,8 @@ namespace DI
 
         override protected void RegisterObjects()
         {
+            builder.Register<IJsonCardManager>(new JsonCardManager());
+
             builder.Register<IItemMouseManager>(itemMouseManager);
             builder.Register<IItemsSpawner>(itemsSpawner);
             builder.Register<IPointerManager>(pointer);
