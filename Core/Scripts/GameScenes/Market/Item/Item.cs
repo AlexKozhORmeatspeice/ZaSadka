@@ -28,6 +28,9 @@ namespace Market
 
     public partial class Item : Node2D, IItem
     {
+        [Export] private Label label;
+        [Export] private VBoxContainer dataShower;
+            
         [Export] private CollisionShape2D _collisionShape;
 
         [Export] private Sprite2D sprite;
@@ -39,8 +42,6 @@ namespace Market
 
         [Export] private Vector2 maxScale;
         [Export] private Vector2 minScale;
-        [Export] private Label label;
-        [Export] private VBoxContainer vBox;
 
         public Vector2 SpriteScale
         { 
@@ -111,14 +112,13 @@ namespace Market
                 {
                     Text = bonusName + ": " + (isPositive ? "+" : "") + bonus.ToString()
                 };
-                var font = info.GetThemeFont("font_color");
                 if (inverse)
                 {
                     isPositive = !isPositive;
                 }
                 info.AddThemeColorOverride("font_color", isPositive ? green : red);
                 info.AddThemeFontSizeOverride("font_size", 9);
-                vBox.AddChild(info);
+                dataShower.AddChild(info);
             }
         }
 

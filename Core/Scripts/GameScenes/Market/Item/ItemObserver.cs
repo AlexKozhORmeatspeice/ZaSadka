@@ -8,7 +8,6 @@ namespace Market
     public interface IItemObserver
     {
         void Enable();
-        void EnableInjectables();
         void Disable();
     }
 
@@ -41,16 +40,12 @@ namespace Market
             view.SetChoosed(isChoosed);
 
             view.WorldPosition = itemsSpawner.GetPositionByID(ID);
+            view.SetInfo(itemsSpawner.GetItemInfoByID(ID));
 
             marketManager.onChoosedItem += SetChoosedItem;
             marketManager.onBuyItem += OnBuy;
 
             pointer.onMove += ChangeScale;
-        }
-
-        public void EnableInjectables()
-        {
-            view.SetInfo(itemsSpawner.GetItemInfoByID(ID));
         }
 
         public void Disable()

@@ -14,7 +14,7 @@ namespace DI
         void InjectDependencies();
         void InjectDependencie(object obj);
         void EnableStarts();
-
+        void EnableLateStarts();
         Object GetRealization(Type type);
     }
 
@@ -124,6 +124,18 @@ namespace DI
             }
             GD.PrintErr($"Service of type {type} is not registered.");
             return default;
+        }
+
+        public void EnableLateStarts()
+        {
+            foreach (Object obj in realizations)
+            {
+                ILateStartable startable = obj as ILateStartable;
+                if (startable != null)
+                {
+                    startable.LateStart();
+                }
+            }
         }
     }
 }
