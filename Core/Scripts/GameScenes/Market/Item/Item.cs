@@ -8,7 +8,8 @@ namespace Market
     public enum ItemType
     {
         Building = 0,
-        Unit
+        Unit,
+        District
     }
 
     public interface IItem
@@ -24,6 +25,7 @@ namespace Market
 
         int Price {  get; }
         void SetInfo(ItemInfo info);
+        ItemInfo GetInfo();
     }
 
     public partial class Item : Node2D, IItem
@@ -42,6 +44,7 @@ namespace Market
 
         [Export] private Vector2 maxScale;
         [Export] private Vector2 minScale;
+        private ItemInfo ItemInfo;
 
         public Vector2 SpriteScale
         { 
@@ -130,7 +133,11 @@ namespace Market
             AddBonus(info.supply, "Предложение");
             AddBonus(info.influence, "Влияние");
             AddBonus(info.suspicion, "Подозрение", true);
+
+            ItemInfo = info;
         }
+
+        public ItemInfo GetInfo() => ItemInfo;
     }
 
 }

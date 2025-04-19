@@ -8,37 +8,42 @@ namespace ZaSadka
 {
     public interface IInventoryManager
     {
-        event Action<IItem> onAddItem;
-        event Action<IItem> onRemoveItem;
+        event Action<ItemInfo> onAddItem;
+        event Action<ItemInfo> onRemoveItem;
 
-        void AddItem(IItem item);
-        void RemoveItem(IItem item);
+        void AddItem(ItemInfo item);
+        void RemoveItem(ItemInfo item);
+
+        List<ItemInfo> GetItems();
     }
 
-    public partial class InventoryManager : IInventoryManager, IStartable
+    public partial class InventoryManager : IInventoryManager
     {
-        private List<IItem> items;
+        static private List<ItemInfo> items = [];
 
-        public event Action<IItem> onAddItem;
-        public event Action<IItem> onRemoveItem;
+        public event Action<ItemInfo> onAddItem;
+        public event Action<ItemInfo> onRemoveItem;
 
-        public void AddItem(IItem item)
+        public void AddItem(ItemInfo item)
         {
             items.Add(item);
+            GD.Print(items.Count);
             onAddItem?.Invoke(item);
         }
 
-        public void RemoveItem(IItem item)
+        public void RemoveItem(ItemInfo item)
         {
             items.Remove(item);
 
             onRemoveItem?.Invoke(item);
         }
 
-        public void Start()
+        List<ItemInfo> IInventoryManager.GetItems()
         {
-            items = new List<IItem>();
+            GD.Print(items.Count);
+            return items;
         }
+
 
     }
 }

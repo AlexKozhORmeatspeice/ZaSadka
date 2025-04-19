@@ -18,6 +18,7 @@ namespace ZaSadka
 	public struct ItemInfo
 	{
 		public ItemInfo() {}
+		public int id = 0;
 		public string name = "";
 		public int supply = 0;
 		public int demand = 0;
@@ -33,6 +34,12 @@ namespace ZaSadka
 		public int DebuffDistrictId = -1;
 		public StatsType DebuffStat = StatsType.Demand;
 		public int DebuffAmount = 0;
+	}
+	public struct DistrictInfo
+	{
+		public DistrictInfo() {}
+		public int slotCount = 0;
+		public ItemInfo info = new();
 	}
 	public interface IJsonCardManager
 	{
@@ -68,6 +75,10 @@ namespace ZaSadka
 			ItemInfo info = new();
 			string itemType = type == ItemType.Building ? "buildings" : "units";
 			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
+			if (neededCard.ContainsKey("id"))
+			{
+				info.id = neededCard["id"].AsInt16();
+			}
 			if (neededCard.ContainsKey("name"))
 			{
 				info.name = neededCard["name"].AsString();
@@ -88,7 +99,7 @@ namespace ZaSadka
 			{
 				info.suspicion = neededCard["suspicion"].AsInt16();
 			}
-			
+
 			return info;
 		}
 		public UnitAdditionalInfo GetUnitAdditionalInfo(int id)
