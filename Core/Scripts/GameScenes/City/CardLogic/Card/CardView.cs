@@ -4,6 +4,7 @@ using ZaSadka;
 
 namespace Cards
 {
+
     public interface ICardView
     {
         Vector2 WorldPosition { get; set; }
@@ -43,29 +44,29 @@ namespace Cards
             }
         }
 
-        public float MouseDistToDetect
-        {
-            get
-            {
-                return mouseDistToDetect;
-            }
-        }
+		public float MouseDistToDetect
+		{
+			get
+			{
+				return mouseDistToDetect;
+			}
+		}
 
-        public void SetCardSprite(Texture2D texture)
-        {
-            sprite.Texture = texture;
-        }
+		public void SetCardSprite(Texture2D texture)
+		{
+			sprite.Texture = texture;
+		}
 
-        public void ChangeScale(float t01)
-        {
-            t01 = Mathf.Clamp(t01, 0.0f, 1.0f);
+		public void ChangeScale(float t01)
+		{
+			t01 = Mathf.Clamp(t01, 0.0f, 1.0f);
 
-            Vector2 newScale = sprite.GlobalScale;
-            newScale.X = Mathf.Lerp(minScale.X, maxScale.X, t01);
-            newScale.Y = Mathf.Lerp(minScale.Y, maxScale.Y, t01);
+			Vector2 newScale = sprite.GlobalScale;
+			newScale.X = Mathf.Lerp(minScale.X, maxScale.X, t01);
+			newScale.Y = Mathf.Lerp(minScale.Y, maxScale.Y, t01);
 
-            sprite.Scale = newScale;
-        }
+			sprite.Scale = newScale;
+		}
 
         public void SetInfo(ItemInfo info)
         {
@@ -115,4 +116,5 @@ namespace Cards
             return info;
         }
     }
+
 }
