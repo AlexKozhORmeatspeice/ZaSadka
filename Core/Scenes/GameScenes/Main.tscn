@@ -15,7 +15,6 @@
 [node name="CardSpawner" type="Node2D" parent="."]
 position = Vector2(1, 0)
 script = ExtResource("1_emt2l")
-cardCount = 5
 cardDistance = 150.0
 startY = 200.0
 cardViewScene = ExtResource("2_mycjp")

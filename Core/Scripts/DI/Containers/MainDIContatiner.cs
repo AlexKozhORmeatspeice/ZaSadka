@@ -7,6 +7,7 @@ using Cards;
 using System.Linq;
 using System.Reflection;
 using Microsoft.Win32;
+using ZaSadka;
 
 namespace DI
 {
@@ -20,6 +21,7 @@ namespace DI
         
         override protected void RegisterObjects()
         {
+            builder.Register<IInventoryManager>(new InventoryManager());
             builder.Register<ICardSpawner>(cardSpawner);
             builder.Register<IPointerManager>(mouseManager);
             builder.Register<ICardMouseManager>(cardMouseManager);

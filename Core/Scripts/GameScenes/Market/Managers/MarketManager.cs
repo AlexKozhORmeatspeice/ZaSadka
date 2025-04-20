@@ -54,7 +54,8 @@ namespace Market
             {
                 GD.Print("1");
                 onBuyItem?.Invoke(choosedItem);
-                inventoryManager.AddItem(choosedItem);
+                ItemInfo itemInfo = choosedItem.GetInfo();
+                inventoryManager.AddItem(itemInfo);
             }
 
             choosedItem = null;

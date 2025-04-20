@@ -47,6 +47,7 @@ namespace Cards
             posBeforeMove = cardView.WorldPosition;
 
             cardView.WorldPosition = cardSpawner.GetPositionByID(ID);
+            cardView.SetInfo(cardSpawner.GetItemInfoByID(ID));
 
             pointer.onMove += MoveCard;
             pointer.onMove += ChangeScale;

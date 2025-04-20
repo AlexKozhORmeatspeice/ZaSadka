@@ -33,6 +33,7 @@ namespace DI
     /// TODO: сделать опцию автоматического добавления объекта из иерархии сцены
     /// TODO: удаление зависимостей после выхода со сцены
     /// TODO: попробовать все же подключить мап-ы для хранения, чтобы log(n) сделать и меньше памяти тратить
+    /// TODO: сделать подключение классов
     /// </summary>
 
     public partial class DIContainer : Node, IDIContatiner
@@ -48,6 +49,7 @@ namespace DI
             RegisterObjects();
             builder.InjectDependencies();
             builder.EnableStarts();
+            builder.EnableLateStarts();
         }
 
         void IDIContatiner.InjectDependencie(object obj)
@@ -63,6 +65,11 @@ namespace DI
     public interface IStartable
     {
         void Start();
+    }
+
+    public interface ILateStartable
+    {
+        void LateStart();
     }
 
     public interface IDIContatiner

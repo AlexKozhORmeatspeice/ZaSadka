@@ -6,8 +6,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kvell"]
 size = Vector2(99, 130)
 
-[node name="MarketItem" type="Node2D" node_paths=PackedStringArray("_collisionShape", "sprite")]
+[node name="MarketItem" type="Node2D" node_paths=PackedStringArray("label", "dataShower", "_collisionShape", "sprite")]
 script = ExtResource("1_gci03")
+label = NodePath("Sprite2D/Label")
+dataShower = NodePath("Sprite2D/DataShower")
 _collisionShape = NodePath("Area2D/CollisionShape2D")
 sprite = NodePath("Sprite2D")
 baseColor = Color(1, 1, 1, 1)
@@ -21,6 +23,22 @@ minScale = Vector2(2, 2)
 texture = ExtResource("1_kvell")
 region_enabled = true
 region_rect = Rect2(15, 0, 100, 134)
+
+[node name="Label" type="Label" parent="Sprite2D"]
+offset_left = -39.0
+offset_top = -11.0
+offset_right = 39.0
+offset_bottom = 12.0
+theme_override_font_sizes/font_size = 8
+text = "Название: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DataShower" type="VBoxContainer" parent="Sprite2D"]
+offset_left = -44.0
+offset_top = 5.0
+offset_right = 44.0
+offset_bottom = 58.0
 
 [node name="Area2D" type="Area2D" parent="."]
 

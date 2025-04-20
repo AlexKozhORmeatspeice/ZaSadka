@@ -5,12 +5,19 @@ namespace Cards
 {
     public interface ICardSlot
     {
-        Vector2 WorldPosition { get; }
+        Vector2 WorldPosition { get; set;}
     }
 
     public partial class CardSlot : Node2D, ICardSlot
     {
-        public Vector2 WorldPosition => Position;
+        public Vector2 WorldPosition 
+        {
+            get => Position;
+            set
+            {
+                Position = value;
+            }
+        }
     }
 }
 

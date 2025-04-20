@@ -1,25 +1,15 @@
 using DI;
 using Godot;
 using System;
+using ZaSadka;
 
 namespace Market
 {
     public enum ItemType
     {
-        None,
-        old_docks,
-        historical_center,
-        suburbs,
-        laboratory,
-        point_of_sale,
-        puppet_enterprise,
-        illegal_warehouse,
-        office_facade,
-        dealer,
-        guard,
-        marketer,
-        intern,
-        agent
+        Building = 0,
+        Unit,
+        District
     }
 
     public interface IItem
@@ -34,10 +24,15 @@ namespace Market
         float MouseDistToDetect { get; }
 
         int Price {  get; }
+        void SetInfo(ItemInfo info);
+        ItemInfo GetInfo();
     }
 
     public partial class Item : Node2D, IItem
     {
+        [Export] private Label label;
+        [Export] private VBoxContainer dataShower;
+            
         [Export] private CollisionShape2D _collisionShape;
 
         [Export] private Sprite2D sprite;
@@ -45,12 +40,11 @@ namespace Market
         [Export] private Color choosedColor;
         
         [Export] private int price;
-        [Export] private ItemType type;
-        
         [Export] private float mouseDistToDetect = 80.0f;
 
         [Export] private Vector2 maxScale;
         [Export] private Vector2 minScale;
+        private ItemInfo ItemInfo;
 
         public Vector2 SpriteScale
         { 
@@ -108,6 +102,42 @@ namespace Market
         {
             sprite.Visible = isVisible;
         }
+
+        private void AddBonus(int bonus, string bonusName, bool inverse = false)
+        {
+            Color green = new(0, 1, 0);
+            Color red = new(1, 0, 0);
+
+            if (bonus != 0)
+            {
+                bool isPositive = bonus > 0;
+                Label info = new()
+                {
+                    Text = bonusName + ": " + (isPositive ? "+" : "") + bonus.ToString()
+                };
+                if (inverse)
+                {
+                    isPositive = !isPositive;
+                }
+                info.AddThemeColorOverride("font_color", isPositive ? green : red);
+                info.AddThemeFontSizeOverride("font_size", 9);
+                dataShower.AddChild(info);
+            }
+        }
+
+        public void SetInfo(ItemInfo info)
+        {
+            label.Text = info.name;
+
+            AddBonus(info.demand, "Спрос");
+            AddBonus(info.supply, "Предложение");
+            AddBonus(info.influence, "Влияние");
+            AddBonus(info.suspicion, "Подозрение", true);
+
+            ItemInfo = info;
+        }
+
+        public ItemInfo GetInfo() => ItemInfo;
     }
 
 }

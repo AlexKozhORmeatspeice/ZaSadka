@@ -4,15 +4,17 @@ using Godot;
 using System;
 using System.Collections.Generic;
 using static Godot.WebSocketPeer;
+using ZaSadka;
 
 namespace Market
 {
     public interface IItemsSpawner
     {
         Vector2 GetPositionByID(int id);
+        ItemInfo GetItemInfoByID(int id);
     }
 
-    public partial class ItemsSpawner : Node2D, IItemsSpawner
+    public partial class ItemsSpawner : Node2D, IItemsSpawner, ILateStartable
     {
         [Export] private int itemsCount;
         [Export] private PackedScene[] packedScenes;
@@ -22,23 +24,21 @@ namespace Market
 
         private List<IItemObserver> itemObservers;
         private List<Vector2> itemPositions;
+        private List<ItemInfo> itemData;
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
-
-        [Inject]
-        private void Construct(IObjectResolver resolver)
-        {
-            CreateCards(resolver);
-        }
+        [Inject] private IJsonCardManager jsonCardManager;
+        [Inject] private IObjectResolver resolver;
 
         public override void _Ready()
         {
             CreateStartPositions();
         }
 
+
         private void CreateCards(IObjectResolver resolver)
         {
-            itemObservers = new List<IItemObserver>();
+            itemObservers = [];
 
             for (int i = 0; i < itemsCount; i++)
             {
@@ -48,17 +48,16 @@ namespace Market
                 AddChild(newInstance);
                 IItem newCardView = (IItem)newInstance;
 
-                ItemObserver itemObserver = new ItemObserver(newCardView);
+                ItemObserver itemObserver = new(newCardView);
                 resolver.Inject(itemObserver);
                 itemObserver.Enable();
-
                 itemObservers.Add(itemObserver);
             }
         }
 
         private void CreateStartPositions()
         {
-            itemPositions = new List<Vector2>();
+            itemPositions = [];
 
             float startX = -itemsCount / 2 * itemDistance;
 
@@ -67,6 +66,17 @@ namespace Market
                 itemPositions.Add(new Vector2(startX, startY));
 
                 startX += itemDistance;
+            }
+        }
+        void CreateItemData()
+        {
+            itemData = new List<ItemInfo>();
+            
+            for (int i = 0; i < itemsCount; i++)
+            {
+                ItemType itemType = (ItemType)GD.RandRange(0, 1);
+                int itemID = GD.RandRange(0, jsonCardManager.GetCardsAmount(itemType) - 1);
+                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
             }
         }
 
@@ -78,7 +88,6 @@ namespace Market
             }
         }
 
-
         Vector2 IItemsSpawner.GetPositionByID(int id)
         {
             if (id > itemPositions.Count - 1)
@@ -86,7 +95,22 @@ namespace Market
 
             return itemPositions[id];
         }
-    }
 
+        ItemInfo IItemsSpawner.GetItemInfoByID(int id)
+        {
+            if (id >= itemData.Count)
+            {
+                return new ItemInfo();
+            }
+            
+            return itemData[id];
+        }
+        public void LateStart()
+        {
+            CreateItemData();
+
+            CreateCards(resolver);
+        }
+    }
 }
 

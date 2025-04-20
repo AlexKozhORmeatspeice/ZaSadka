@@ -3,8 +3,9 @@ using System;
 
 namespace GameEvents
 {
-    enum ParamType
+    public enum ParamType
     {
+        None,
         Influence,
         Suspicion
     }

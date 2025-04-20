@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://bmtxev6blk1m7"]
+
+[ext_resource type="Script" uid="uid://d2oglq5j7orb0" path="res://Core/Scripts/GameScenes/District/District.cs" id="1_x7h1i"]
+[ext_resource type="Script" uid="uid://ckv3ljtdbk581" path="res://Core/Scripts/GameScenes/District/SlotCardSpawner.cs" id="2_q4ku7"]
+
+[node name="District" type="Node2D"]
+script = ExtResource("1_x7h1i")
+
+[node name="SlotCardSpawner" type="Node2D" parent="."]
+script = ExtResource("2_q4ku7")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 40.0
+offset_bottom = 40.0
+color = Color(0.041408, 0.196621, 0.460465, 0.196078)
