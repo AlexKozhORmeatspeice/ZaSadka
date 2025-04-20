@@ -25,15 +25,16 @@ namespace DI
         override protected void RegisterObjects()
         {
             builder.Register<IJsonCardManager>(new JsonCardManager());
+            builder.Register<IInventoryManager>(new InventoryManager());
+            builder.Register<IMoneyManager>(new MoneyManager());
+
             builder.Register<IItemMouseManager>(itemMouseManager);
             builder.Register<IItemsSpawner>(itemsSpawner);
             builder.Register<IPointerManager>(pointer);
             builder.Register<IMarketManager>(marketManager);
-            builder.Register<IInventoryManager>(new InventoryManager());
             
             builder.Register<IMarketUI>(marketUI);
             
-            builder.Register<IMoneyManager>(new MoneyManager());
             builder.Register<IMoneyText>(moneyText);
 
             builder.Register<IBuyItemButton>(buyItemButton);

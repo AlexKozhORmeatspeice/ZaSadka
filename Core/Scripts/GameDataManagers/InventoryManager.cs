@@ -1,3 +1,4 @@
+using Cards;
 using DI;
 using Godot;
 using Market;
@@ -8,8 +9,8 @@ namespace ZaSadka
 {
     public interface IInventoryManager
     {
-        event Action<ItemInfo> onAddItem;
-        event Action<ItemInfo> onRemoveItem;
+        event Action<List<ItemInfo>> onAddItem;
+        event Action<List<ItemInfo>> onRemoveItem;
 
         void AddItem(ItemInfo item);
         void RemoveItem(ItemInfo item);
@@ -17,34 +18,65 @@ namespace ZaSadka
         List<ItemInfo> GetItems();
     }
 
-    public partial class InventoryManager : IInventoryManager
+    public partial class InventoryManager : IInventoryManager, IStartable, IDispose
     {
+        [Inject] private IDistrictsManager districtsManager;
+
         static private List<ItemInfo> items = [];
 
-        public event Action<ItemInfo> onAddItem;
-        public event Action<ItemInfo> onRemoveItem;
+        public event Action<List<ItemInfo>> onAddItem;
+        public event Action<List<ItemInfo>> onRemoveItem;
+
+        public void Start()
+        {
+            if(districtsManager != null)
+            {
+                districtsManager.onAddCard += RemoveCardWhenInSlot;
+                districtsManager.onRemoveCard += AddCardFromSlot;
+            }
+        }
+
+        public void Dispose()
+        {
+            if(districtsManager != null)
+            {
+                districtsManager.onAddCard -= RemoveCardWhenInSlot;
+                districtsManager.onRemoveCard -= AddCardFromSlot;
+            }
+        }
 
         public void AddItem(ItemInfo item)
         {
             items.Add(item);
-            GD.Print(items.Count);
-            onAddItem?.Invoke(item);
+
+            onAddItem?.Invoke(items);
         }
 
         public void RemoveItem(ItemInfo item)
         {
             items.Remove(item);
 
-            onRemoveItem?.Invoke(item);
+            onRemoveItem?.Invoke(items);
         }
+
 
         List<ItemInfo> IInventoryManager.GetItems()
         {
-            GD.Print(items.Count);
             return items;
         }
 
+        private void RemoveCardWhenInSlot(ICardSlot slot, ICardView card)
+        {
+            if (slot == null)
+                return;
 
+            RemoveItem(card.GetItemInfo());
+        }
+
+        private void AddCardFromSlot(ICardSlot slot, ICardView card)
+        {
+            AddItem(card.GetItemInfo());
+        }
     }
 }
 

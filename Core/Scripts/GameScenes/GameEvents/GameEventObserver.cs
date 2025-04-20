@@ -88,8 +88,6 @@ namespace GameEvents
         private bool CheckCanDrag()
         {
             canDrag = ID == g_NowChoosedID;
-
-            GD.Print(canDrag);     
             
             return canDrag;
         }

@@ -4,34 +4,45 @@ using ZaSadka;
 
 namespace Cards
 {
-	public interface ICardView
-	{
-		Vector2 WorldPosition { get; set; }
-		float MouseDistToDetect { get; }
-		void SetCardSprite(Texture2D texture);
-		void ChangeScale(float t01);
-		void SetInfo(ItemInfo info);
-	}
 
-	public partial class CardView : Node2D, ICardView
-	{
-		[Export] private float mouseDistToDetect = 80.0f;
-		[Export] public Sprite2D sprite { get; set; }
-		[Export] private Vector2 minScale;
-		[Export] private Label name;
-		[Export] private Vector2 maxScale;
-		
-		public Vector2 WorldPosition 
-		{
-			get
-			{
-				return Position;
-			}
-			set
-			{
-				Position = value;
-			}
-		}
+    public interface ICardView
+    {
+        Vector2 WorldPosition { get; set; }
+        float MouseDistToDetect { get; }
+        void SetCardSprite(Texture2D texture);
+        void ChangeScale(float t01);
+
+        ItemInfo GetItemInfo();
+
+        void SetInfo(ItemInfo info);
+    }
+
+    public partial class CardView : Node2D, ICardView
+    {
+        [Export] private float mouseDistToDetect = 80.0f;
+        [Export] public Sprite2D sprite { get; set; }
+        [Export] private Vector2 minScale;
+        [Export] private Vector2 maxScale;
+        
+        [Export] private Label name;
+        [Export] private Label supplyText;
+        [Export] private Label demandText;
+        [Export] private Label influenceText;
+        [Export] private Label susText;
+
+        private ItemInfo info;
+
+        public Vector2 WorldPosition 
+        {
+            get
+            {
+                return Position;
+            }
+            set
+            {
+                Position = value;
+            }
+        }
 
 		public float MouseDistToDetect
 		{
@@ -57,35 +68,53 @@ namespace Cards
 			sprite.Scale = newScale;
 		}
 
-		public void SetInfo(ItemInfo info)
-		{
-			name.Text = info.name;
+        public void SetInfo(ItemInfo info)
+        {
+            this.info = info;
+            name.Text = info.name;
 
-			// VBoxContainer dataShower = GetNode<VBoxContainer>("DataShower");
-			// if (info.supply != 0)
-			// {
-			//     Label supplyInfo = new Label();
-			//     supplyInfo.Text = info.supply.ToString();
-			//     dataShower.AddChild(supplyInfo);
-			// }
-			// if (info.demand != 0)
-			// {
-			//     Label demandInfo = new Label();
-			//     demandInfo.Text = info.demand.ToString();
-			//     dataShower.AddChild(demandInfo);
-			// }
-			// if (info.influence != 0)
-			// {
-			//     Label influenceInfo = new Label();
-			//     influenceInfo.Text = info.influence.ToString();
-			//     dataShower.AddChild(influenceInfo);
-			// }
-			// if (info.suspicion != 0)
-			// {
-			//     Label suspicionInfo = new Label();
-			//     suspicionInfo.Text = info.suspicion.ToString();
-			//     dataShower.AddChild(suspicionInfo);
-			// }
-		}
-	}
+
+            if (info.supply != 0)
+            {
+                supplyText.Text = "Спрос: " + info.supply.ToString();
+            }
+            else
+            {
+                supplyText.Text = "";
+            }
+
+            if (info.demand != 0)
+            {
+                demandText.Text = "Предложение: " + info.demand.ToString();
+            }
+            else
+            {
+                demandText.Text = "";
+            }
+
+            if (info.influence != 0)
+            {
+                influenceText.Text = "Влияние: " + info.influence.ToString();
+            }
+            else
+            {
+                influenceText.Text = "";
+            }
+
+            if (info.suspicion != 0)
+            {
+                susText.Text = "Подозрение: " + info.suspicion.ToString();
+            }
+            else
+            {
+                susText.Text = "";
+            }
+        }
+
+        public ItemInfo GetItemInfo()
+        {
+            return info;
+        }
+    }
+
 }

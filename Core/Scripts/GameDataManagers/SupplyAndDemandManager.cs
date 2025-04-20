@@ -1,3 +1,4 @@
+using Cards;
 using DI;
 using Godot;
 using Market;
@@ -8,82 +9,93 @@ namespace ZaSadka
 {
 	public interface ISupplyDemandManager
     {
-        void OnDemandChange(int bonus, ItemType reason);
+        void ChangeDemand(int value);
 		event Action<int> OnChangeDemand;
-		void OnSupplyChange(int bonus, ItemType reason);
+		void ChangeSupply(int value);
 		event Action<int> OnChangeSupply;
 		int GetCurrentDemand();
 		int GetCurrentSupply();
 		int GetPfofit();
-		void FinalizeStats();
-		void ClearLog();
-		List<LogInfo> GetDailyLog();
     }
 	
-	public struct LogInfo
+	public partial class SupplyAndDemandManager : ISupplyDemandManager, IStartable, IDisposable
 	{
-		public LogInfo(StatsType stat, ItemType reason, int bonus) {
-			Stat = stat;
-			Reason = reason;
-			Bonus = bonus;
+		[Inject] private IDistrictsManager districtsManager;
+
+		private static int supply = 0;
+		private static int demand = 0;
+
+		private const int minSupply = -5;
+        private const int maxSupply = 30;
+        private const int minDemand = -5;
+        private const int maxDemand = 30;
+
+        public event Action<int> OnChangeDemand;
+		public event Action<int> OnChangeSupply;
+
+        public void Start()
+        {
+			districtsManager.onAddCard += OnAddCard;
+			districtsManager.onRemoveCard += OnRemoveCard;
+        }
+
+        public void Dispose()
+        {
+            districtsManager.onAddCard -= OnAddCard;
+            districtsManager.onRemoveCard -= OnRemoveCard;
+        }
+
+		private void OnAddCard(ICardSlot slot, ICardView card)
+		{
+            if (slot == null || card == null) return;
+
+            int demandChange = slot.DistrictInfo.demand + card.GetItemInfo().demand;
+            int supplyChange = slot.DistrictInfo.supply + card.GetItemInfo().supply;
+
+            ChangeDemand(demandChange);
+            ChangeSupply(supplyChange);
+        }
+
+        private void OnRemoveCard(ICardSlot slot, ICardView view)
+        {
+			if(slot == null || view == null) return;
+
+			int demandChange = slot.DistrictInfo.demand + view.GetItemInfo().demand;
+			int supplyChange = slot.DistrictInfo.supply + view.GetItemInfo().supply;
+
+            ChangeDemand(-demandChange);
+            ChangeSupply(-supplyChange);
+        }
+
+        public void ChangeDemand(int value)
+		{
+			if (value == 0)
+			{
+				return;
+			}
+
+			demand = Mathf.Clamp(demand + value, minDemand, maxDemand);
+
+			GD.Print("Текущий demand " + demand);
+
+            OnChangeDemand?.Invoke(demand);
+		}
+		public void ChangeSupply(int value)
+		{
+			if (value == 0)
+			{
+				return;
+			}
+
+            supply = Mathf.Clamp(supply + value, minSupply, maxSupply);
+
+            GD.Print("Текущий supply " + supply);
+
+            OnChangeSupply?.Invoke(supply);
 		}
 
-		public StatsType Stat = StatsType.Demand;
-		public ItemType Reason = ItemType.Building;
-		public int Bonus = 0;
-	}
-	public partial class SupplyAndDemandManager : ISupplyDemandManager
-	{
-			private static int supply = 0;
-			private static int demand = 0;
-
-			public event Action<int> OnChangeDemand;
-			public event Action<int> OnChangeSupply;
-			private List<LogInfo> log = [];
-
-			public void OnDemandChange(int bonus, ItemType reason)
-			{
-				if (bonus == 0)
-				{
-					return;
-				}
-				log.Add(new(StatsType.Demand, reason, bonus));
-				OnChangeDemand?.Invoke(demand);
-			}
-			public void OnSupplyChange(int bonus, ItemType reason)
-			{
-				if (bonus == 0)
-				{
-					return;
-				}
-				log.Add(new(StatsType.Supply, reason, bonus));
-				OnChangeSupply?.Invoke(supply);
-			}
-			//мне кажется лучше это всё в конце дня суммировать и лог вывести
-			public void FinalizeStats()
-			{
-				foreach (var info in log)
-				{
-					if (info.Stat == StatsType.Demand)
-					{
-						demand += info.Bonus;
-					}
-					else if (info.Stat == StatsType.Supply)
-					{
-						supply += info.Bonus;
-					}
-				}
-			}
-
-			public int GetCurrentDemand() => demand;
-			public int GetCurrentSupply() => supply;
-			public int GetPfofit() => demand > supply ? supply : demand;
-			public void ClearLog()
-			{
-				log.Clear();
-			}
-
-			public List<LogInfo> GetDailyLog() => log;
-	}
-
+		public int GetCurrentDemand() => demand;
+		public int GetCurrentSupply() => supply;
+		public int GetPfofit() => demand > supply ? supply : demand;
+    }
 }
