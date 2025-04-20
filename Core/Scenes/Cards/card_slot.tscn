@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a20ru"]
 size = Vector2(99, 129)
 
-[node name="CardSlot" type="Node2D" node_paths=PackedStringArray("name", "supplyText", "demandText", "influenceText", "suspicienceText")]
+[node name="<txt> Name_<Label#2233097862689>" type="Node2D" node_paths=PackedStringArray("name", "supplyText", "demandText", "influenceText", "suspicienceText")]
 script = ExtResource("1_srj3u")
 name = NodePath("<txt> Name")
 supplyText = NodePath("<txt> Supply")
