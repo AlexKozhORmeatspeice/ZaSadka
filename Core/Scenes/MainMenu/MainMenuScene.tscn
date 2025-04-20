@@ -55,7 +55,6 @@ script = ExtResource("3_c3s85")
 [node name="conv2" type="Sprite2D" parent="Animation root node/Conveyor"]
 position = Vector2(1140.95, 815)
 texture = ExtResource("2_fosqo")
-script = ExtResource("3_c3s85")
 
 [node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor"]
 z_index = 2
@@ -80,7 +79,6 @@ script = ExtResource("3_c3s85")
 [node name="conv2" type="Sprite2D" parent="Animation root node/Conveyor2"]
 position = Vector2(1140.95, 815)
 texture = ExtResource("2_fosqo")
-script = ExtResource("3_c3s85")
 
 [node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor2"]
 z_index = 2
