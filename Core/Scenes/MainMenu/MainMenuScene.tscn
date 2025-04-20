@@ -58,7 +58,7 @@ texture = ExtResource("2_fosqo")
 
 [node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor"]
 z_index = 2
-position = Vector2(1140, 584)
+position = Vector2(1140, 389.645)
 scale = Vector2(0.689, 0.75)
 texture = ExtResource("4_n2tws")
 
@@ -82,7 +82,7 @@ texture = ExtResource("2_fosqo")
 
 [node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor2"]
 z_index = 2
-position = Vector2(1140.95, 584)
+position = Vector2(1140.95, 639.56)
 scale = Vector2(0.689, 0.75)
 texture = ExtResource("4_n2tws")
 

@@ -1,4 +1,5 @@
 extends Sprite2D
+
 #consts 
 const conv_speed = 200.
 const bag_chance = 0.3
