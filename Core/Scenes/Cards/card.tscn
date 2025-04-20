@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cpu5xx3wc3f70"]
 
 [ext_resource type="Script" uid="uid://du14xpyir4tuy" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardView.cs" id="1_v1gsj"]
-[ext_resource type="Texture2D" uid="uid://b2eb476tax0ej" path="res://Core/Art/pixelCardAssest.png" id="2_datqy"]
+[ext_resource type="Texture2D" uid="uid://bv75xxb40d3vq" path="res://Core/Art/spritesheet_all.png" id="2_v1gsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkl3"]
 size = Vector2(99, 129)
@@ -25,9 +25,9 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_gfkl3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_datqy")
+texture = ExtResource("2_v1gsj")
 region_enabled = true
-region_rect = Rect2(13.493, 3.68798, 101.548, 129.312)
+region_rect = Rect2(0, 0, 100, 150)
 
 [node name="<txt> Name" type="Label" parent="Sprite2D"]
 offset_left = -39.0

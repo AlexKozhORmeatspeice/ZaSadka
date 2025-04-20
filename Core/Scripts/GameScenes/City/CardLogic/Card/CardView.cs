@@ -1,4 +1,5 @@
 using Godot;
+using Market;
 using System;
 using ZaSadka;
 
@@ -73,7 +74,6 @@ namespace Cards
             this.info = info;
             name.Text = info.name;
 
-
             if (info.supply != 0)
             {
                 supplyText.Text = "Спрос: " + info.supply.ToString();
@@ -109,6 +109,13 @@ namespace Cards
             {
                 susText.Text = "";
             }
+
+            float width = 100.0f;
+            float height = 150.0f;
+
+            int rectY = info.type == ItemType.Building ? 0 : 1;
+            int rectX = info.spriteId;
+            sprite.RegionRect = new Rect2(width*rectX, height*rectY, width, height);
         }
 
         public ItemInfo GetItemInfo()

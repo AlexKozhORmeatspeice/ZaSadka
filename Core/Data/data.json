@@ -4,16 +4,7 @@
 		"buildings":
 		[
 			{
-				"id": "0",
-				"price": "6",
-				"name": "Лаборатория",
-				"supply": "3",
-				"demand": "0",
-				"influence": "1",
-				"suspicion": "2"
-			},
-			{
-				"id": "1",
+				"sprite_id": "0",
 				"price": "6",
 				"name": "Точка сбыта",
 				"supply": "0",
@@ -22,7 +13,16 @@
 				"suspicion": "2"
 			},
 			{
-				"id": "2",
+				"sprite_id": "1",
+				"price": "6",
+				"name": "Лаборатория",
+				"supply": "3",
+				"demand": "0",
+				"influence": "1",
+				"suspicion": "2"
+			},
+			{
+				"sprite_id": "2",
 				"price": "8",
 				"name": "Марионеточное предприятие",
 				"supply": "0",
@@ -31,28 +31,19 @@
 				"suspicion": "-3"
 			},
 			{
-				"id": "3",
+				"sprite_id": "3",
 				"price": "10",
 				"name": "Нелегальный склад",
 				"supply": "2",
 				"demand": "1",
 				"influence": "1",
 				"suspicion": "3"
-			},
-			{
-				"id": "4",
-				"price": "9",
-				"name": "Офисный фасад",
-				"supply": "1",
-				"demand": "1",
-				"influence": "2",
-				"suspicion": "0"
 			}
 		],
 		"units":
 		[
 			{
-				"id": "0",
+				"sprite_id": "0",
 				"price": "5",
 				"name": "Дилер",
 				"supply": "3",
@@ -66,7 +57,7 @@
 				"debuff_amount": ""
 			},
 			{
-				"id": "1",
+				"sprite_id": "1",
 				"price": "6",
 				"name": "Охранник",
 				"supply": "0",
@@ -80,41 +71,13 @@
 				"debuff_amount": ""
 			},
 			{
-				"id": "2",
+				"sprite_id": "2",
 				"price": "5",
 				"name": "Маркетолог",
 				"supply": "0",
 				"demand": "0",
 				"influence": "1",
 				"suspicion": "-3",
-				"event_chance": "",
-				"debuff_name": "",
-				"debuff_district_id": "",
-				"debuff_item": "",
-				"debuff_amount": ""
-			},
-			{
-				"id": "3",
-				"price": "7",
-				"name": "Стажёр",
-				"supply": "2",
-				"demand": "1",
-				"influence": "1",
-				"suspicion": "3",
-				"event_chance": "",
-				"debuff_name": "",
-				"debuff_district_id": "",
-				"debuff_item": "",
-				"debuff_amount": ""
-			},
-			{
-				"id": "4",
-				"price": "6",
-				"name": "Агент",
-				"supply": "1",
-				"demand": "1",
-				"influence": "2",
-				"suspicion": "0",
 				"event_chance": "",
 				"debuff_name": "",
 				"debuff_district_id": "",

@@ -29,6 +29,7 @@ namespace ZaSadka
 		public int demand = 0;
 		public int influence = 0;
 		public int suspicion = 0;
+		public int spriteId = 0;
 	}
 
 	public struct UnitAdditionalInfo
@@ -74,7 +75,7 @@ namespace ZaSadka
 		{
 			ItemInfo info = new();
 			info.type = type;
-
+			info.uniqueID = ID;
 			string itemType = type == ItemType.Building ? "buildings" : "units";
 			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
 
@@ -87,9 +88,9 @@ namespace ZaSadka
                 info.name = neededCard["name"].AsString();
 			}
 
-            if (neededCard.ContainsKey("id"))
+            if (neededCard.ContainsKey("sprite_id"))
 			{
-				info.uniqueID = ID;
+				info.spriteId = neededCard["sprite_id"].AsInt16();
             }
 			
 			if (neededCard.ContainsKey("supply"))
