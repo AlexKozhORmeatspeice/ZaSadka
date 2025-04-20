@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://ba5g7hvvve7mm"]
+
+[ext_resource type="Script" uid="uid://b5vfte4r7os68" path="res://Core/Scenes/MainMenu/main_menu_scene.gd" id="1_nup7v"]
+[ext_resource type="Texture2D" uid="uid://vvdpsdwkrw" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/conv.png" id="2_fosqo"]
+[ext_resource type="Script" uid="uid://27or56u2ncj0" path="res://Core/Scenes/MainMenu/conveyor.gd" id="2_ifi6q"]
+[ext_resource type="Script" uid="uid://ce2lise58fnuq" path="res://Core/Scenes/MainMenu/sprite_2d.gd" id="3_c3s85"]
+[ext_resource type="Texture2D" uid="uid://d25jt1w3et8mn" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/machine_disabled.png" id="4_n2tws"]
+[ext_resource type="Texture2D" uid="uid://xfbdwghng0m1" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/potato_bag.png" id="5_vlg1y"]
+
+[sub_resource type="Theme" id="Theme_c3s85"]
+
+[node name="MainMenuScene" type="Node2D"]
+script = ExtResource("1_nup7v")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -31.0
+offset_top = -29.0
+offset_right = 1961.0
+offset_bottom = 1096.0
+color = Color(0.105845, 0.164657, 0.246991, 1)
+
+[node name="MenuRoot" type="Node2D" parent="."]
+position = Vector2(8.22, 31.435)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MenuRoot"]
+offset_left = 75.0
+offset_top = 420.0
+offset_right = 737.0
+offset_bottom = 679.0
+theme_override_constants/separation = 10
+
+[node name="PlayButton" type="Button" parent="MenuRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_c3s85")
+theme_override_font_sizes/font_size = 31
+text = "Play ZaSadka!"
+
+[node name="ExitButton" type="Button" parent="MenuRoot/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 31
+text = "Exit"
+
+[node name="Animation root node" type="Node2D" parent="."]
+
+[node name="Conveyor" type="Node2D" parent="Animation root node"]
+script = ExtResource("2_ifi6q")
+
+[node name="conv1" type="Sprite2D" parent="Animation root node/Conveyor"]
+position = Vector2(1140, -815)
+texture = ExtResource("2_fosqo")
+script = ExtResource("3_c3s85")
+
+[node name="conv2" type="Sprite2D" parent="Animation root node/Conveyor"]
+position = Vector2(1140.95, 815)
+texture = ExtResource("2_fosqo")
+script = ExtResource("3_c3s85")
+
+[node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor"]
+z_index = 2
+position = Vector2(1140, 584)
+scale = Vector2(0.689, 0.75)
+texture = ExtResource("4_n2tws")
+
+[node name="Bag" type="Sprite2D" parent="Animation root node/Conveyor"]
+position = Vector2(1135, -125)
+scale = Vector2(0.643251, 0.689922)
+texture = ExtResource("5_vlg1y")
+
+[node name="Conveyor2" type="Node2D" parent="Animation root node"]
+position = Vector2(415.425, 0)
+script = ExtResource("2_ifi6q")
+
+[node name="conv1" type="Sprite2D" parent="Animation root node/Conveyor2"]
+position = Vector2(1140, -815)
+texture = ExtResource("2_fosqo")
+script = ExtResource("3_c3s85")
+
+[node name="conv2" type="Sprite2D" parent="Animation root node/Conveyor2"]
+position = Vector2(1140.95, 815)
+texture = ExtResource("2_fosqo")
+script = ExtResource("3_c3s85")
+
+[node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor2"]
+z_index = 2
+position = Vector2(1140.95, 584)
+scale = Vector2(0.689, 0.75)
+texture = ExtResource("4_n2tws")
+
+[node name="Bag" type="Sprite2D" parent="Animation root node/Conveyor2"]
+position = Vector2(1150.57, -128)
+scale = Vector2(0.643251, 0.689922)
+texture = ExtResource("5_vlg1y")
+
+[connection signal="pressed" from="MenuRoot/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="MenuRoot/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
