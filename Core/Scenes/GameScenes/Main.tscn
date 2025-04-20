@@ -22,7 +22,7 @@ cardViewScene = ExtResource("2_mycjp")
 
 [node name="Slots" type="Node2D" parent="CardSpawner" node_paths=PackedStringArray("slots")]
 script = ExtResource("3_ydenv")
-slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8")]
+slots = []
 
 [node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-458, -204)
@@ -32,26 +32,21 @@ position = Vector2(-235, -204)
 
 [node name="CardSlot3" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-9, -204)
-districtName = 1
 
 [node name="CardSlot4" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-10, 20)
-districtName = 1
 
 [node name="CardSlot5" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-236, 21)
-districtName = 1
 
 [node name="CardSlot6" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-454, 21)
 
 [node name="CardSlot7" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(208, 18)
-districtName = 2
 
 [node name="CardSlot8" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(203, -206)
-districtName = 2
 
 [node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
 visible = false
@@ -65,13 +60,12 @@ script = null
 
 [node name="SlotMouseManager" parent="Managers" instance=ExtResource("6_28gni")]
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager", "slotsManager")]
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager")]
 script = ExtResource("3_02ccp")
 slotMouseManager = NodePath("../Managers/SlotMouseManager")
 cardSpawner = NodePath("../CardSpawner")
 mouseManager = NodePath("../Managers/MouseManager")
 cardMouseManager = NodePath("../Managers/CardMouseManager")
-slotsManager = NodePath("../CardSpawner/Slots")
 
 [node name="UI" type="Node2D" parent="."]
 
