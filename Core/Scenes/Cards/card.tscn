@@ -6,13 +6,17 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkl3"]
 size = Vector2(99, 129)
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("sprite", "name")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("sprite", "name", "supplyText", "demandText", "influenceText", "susText")]
 script = ExtResource("1_v1gsj")
 mouseDistToDetect = 120.0
 sprite = NodePath("Sprite2D")
 minScale = Vector2(1, 1)
-name = NodePath("Sprite2D/Label")
 maxScale = Vector2(1.3, 1.3)
+name = NodePath("Sprite2D/<txt> Name")
+supplyText = NodePath("Sprite2D/<txt> Supply")
+demandText = NodePath("Sprite2D/<txt> Demand")
+influenceText = NodePath("Sprite2D/<txt> Influence")
+susText = NodePath("Sprite2D/<txt> Sus")
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -25,12 +29,43 @@ texture = ExtResource("2_datqy")
 region_enabled = true
 region_rect = Rect2(13.493, 3.68798, 101.548, 129.312)
 
-[node name="Label" type="Label" parent="Sprite2D"]
+[node name="<txt> Name" type="Label" parent="Sprite2D"]
 offset_left = -39.0
-offset_top = -13.0
+offset_top = -55.0
 offset_right = 40.0
-offset_bottom = 10.0
+offset_bottom = -32.0
 theme_override_font_sizes/font_size = 8
 text = "Название"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="<txt> Supply" type="Label" parent="Sprite2D"]
+offset_left = -40.0
+offset_top = -33.0
+offset_right = 40.0
+offset_bottom = -10.0
+text = "Спрос: +1"
+
+[node name="<txt> Demand" type="Label" parent="Sprite2D"]
+offset_left = -40.0
+offset_top = -8.0
+offset_right = 45.0
+offset_bottom = 15.0
+theme_override_font_sizes/font_size = 9
+text = "Предложение: -1"
+
+[node name="<txt> Influence" type="Label" parent="Sprite2D"]
+offset_left = -39.0
+offset_top = 9.0
+offset_right = 38.0
+offset_bottom = 32.0
+theme_override_font_sizes/font_size = 12
+text = "Влияние: 2"
+
+[node name="<txt> Sus" type="Label" parent="Sprite2D"]
+offset_left = -40.0
+offset_top = 27.0
+offset_right = 37.0
+offset_bottom = 50.0
+theme_override_font_sizes/font_size = 10
+text = "Подозрение: 2"

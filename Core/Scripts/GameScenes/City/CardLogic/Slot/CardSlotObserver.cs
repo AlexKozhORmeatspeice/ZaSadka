@@ -1,9 +1,11 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Sockets;
 using System.Text;
 using System.Threading.Tasks;
-using District;
+using Godot;
+using ZaSadka;
 
 //TODO: сделать, чтобы в слотах сохранялись билдинги и их нельзя было оттуда вытащить
 
@@ -17,24 +19,36 @@ namespace Cards
 
     internal class CardSlotObserver : ICardSlotObserver
     {
-        [Inject] private ISlotCardSpawner slotSpawner;
+        [Inject] private IJsonDistrictManager districtJsonManager;
+
+        private DistrictInfo info;
+
         private ICardSlot view;
         private int ID;
         private static int g_MAXID = 0;
         public CardSlotObserver(ICardSlot cardSlot)
         {
             this.view = cardSlot;
+
             ID = g_MAXID;
             g_MAXID++;
         }
+
         public void Enable()
         {
-            view.WorldPosition = slotSpawner.GetPositionByID(ID);
+            info = LoadInfo();
+
+            view.DistrictInfo = info;
         }
 
         public void Disable()
         {
 
+        }
+
+        private DistrictInfo LoadInfo()
+        {
+            return districtJsonManager.GetDistrictInfo((int)view._DistrictName);
         }
     }
 }

@@ -1,5 +1,6 @@
 using DI;
 using Godot;
+using Market;
 using System;
 using System.Collections.Generic;
 using ZaSadka;
@@ -10,69 +11,80 @@ namespace Cards
 {
     public interface ICardSpawner
     {
-        Vector2 GetPositionByID(int id);
+        event Action<ICardView, Vector2> onUpdatePosition;
+        event Action<ICardView, ItemInfo> onUpdateInfo;
+        
         Vector2 CardsScreenZone { get; }
-        ItemInfo GetItemInfoByID(int id);
     }
 
     public partial class CardSpawner : Node2D, ILateStartable, ICardSpawner
     {
+        [Inject] private IInventoryManager inventoryManager;
+        [Inject] private IObjectResolver resolver;
+
         [ExportCategory("Settings")]
         [Export] private float cardDistance = 100;
         [Export] private float startY;
 
         [ExportCategory("Scenes")]
         [Export] private PackedScene cardViewScene;
-        [Inject] private IInventoryManager inventoryManager;
-        [Inject] private IObjectResolver resolver;
-        
-        
+
         private List<ICardObserver> cardObservers;
-        private List<Vector2> cardPositions;
-        private List<ItemInfo> cards;
+        private Dictionary<int, ICardView> cardByID;
+        
+        public event Action<ICardView, Vector2> onUpdatePosition;
+        public event Action<ICardView, ItemInfo> onUpdateInfo;
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
 
-        public override void _Ready()
+        void ILateStartable.LateStart()
         {
+            CreateCards(inventoryManager.GetItems());
+            CreatePositions(inventoryManager.GetItems());
+
+            inventoryManager.onAddItem += CreatePositions;
+            inventoryManager.onRemoveItem += CreatePositions;
         }
 
-        private void CreateCards(IObjectResolver resolver)
+        private void CreateCards(List<ItemInfo> items)
         {
             //get slots for cards
             cardObservers = [];
+            cardByID = new Dictionary<int, ICardView>();
 
-            for(int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
+                ItemInfo nowItem = items[i];
+
                 var newInstance = cardViewScene.Instantiate();
                 AddChild(newInstance);
                 ICardView newCardView = (ICardView)newInstance;
-                
+
                 CardObserver cardObserver = new(newCardView);
                 resolver.Inject(cardObserver);
                 cardObserver.Enable();
-                
+
+                onUpdateInfo?.Invoke(newCardView, nowItem);
+
+                cardByID[nowItem.uniqueID] = newCardView;
                 cardObservers.Add(cardObserver);
             }
         }
 
-        private void CreateStartPositions()
+        private void CreatePositions(List<ItemInfo> items)
         {
-            GD.Print("1");
-            cardPositions = new List<Vector2>();
-            GD.Print("2");
+            float startX = -inventoryManager.GetItems().Count / 2 * cardDistance;
 
-            float startX = -cards.Count / 2 * cardDistance;
-            GD.Print(cards.Count);
-
-            for (int i = 0; i < cards.Count; i++)
+            for (int i = 0; i < items.Count; i++)
             {
-                GD.Print("4");
-                cardPositions.Add(new Vector2(startX, startY));
-                GD.Print("5");
+                ItemInfo item = items[i];
+
+                if(cardByID.ContainsKey(item.uniqueID))
+                {
+                    onUpdatePosition?.Invoke(cardByID[item.uniqueID], new Vector2(startX, startY));
+                }
 
                 startX += cardDistance;
-                GD.Print("6");
             }
         }
 
@@ -82,31 +94,9 @@ namespace Cards
             {
                 cardObserver.Disable();
             }
-        }
 
-
-        Vector2 ICardSpawner.GetPositionByID(int id)
-        {
-            if (id > cardPositions.Count - 1)
-                return Vector2.Inf;
-
-            return cardPositions[id];
-        }
-
-        void ILateStartable.LateStart()
-        {
-            cards = inventoryManager.GetItems();
-            CreateStartPositions();
-            CreateCards(resolver);
-        }
-
-        ItemInfo ICardSpawner.GetItemInfoByID(int id)
-        {
-            if (id >= cards.Count)
-            {
-                return new ItemInfo();
-            }
-            return cards[id];
+            inventoryManager.onAddItem -= CreatePositions;
+            inventoryManager.onRemoveItem -= CreatePositions;
         }
     }
 }

@@ -5,6 +5,8 @@ using Market;
 using System.Linq;
 using DI;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
+using Godot.Collections;
 
 namespace ZaSadka
 {
@@ -15,10 +17,13 @@ namespace ZaSadka
 		Influence,
 		Suspicion
 	}
+
 	public struct ItemInfo
 	{
 		public ItemInfo() {}
-		public int id = 0;
+		public int price;
+		public ItemType type;
+		public int uniqueID = 0;
 		public string name = "";
 		public int supply = 0;
 		public int demand = 0;
@@ -35,12 +40,7 @@ namespace ZaSadka
 		public StatsType DebuffStat = StatsType.Demand;
 		public int DebuffAmount = 0;
 	}
-	public struct DistrictInfo
-	{
-		public DistrictInfo() {}
-		public int slotCount = 0;
-		public ItemInfo info = new();
-	}
+
 	public interface IJsonCardManager
 	{
 		ItemInfo GetItemInfo(ItemType type, int id);
@@ -51,7 +51,7 @@ namespace ZaSadka
 	public partial class JsonCardManager : IJsonCardManager, IStartable
 	{
 		private Godot.Collections.Dictionary cards;
-
+		private static int ID = 0;
         void IStartable.Start()
         {
             using var file = FileAccess.Open("./Core/Data/data.json", FileAccess.ModeFlags.Read);
@@ -73,16 +73,25 @@ namespace ZaSadka
 		public ItemInfo GetItemInfo(ItemType type, int id)
 		{
 			ItemInfo info = new();
+			info.type = type;
+
 			string itemType = type == ItemType.Building ? "buildings" : "units";
 			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
-			if (neededCard.ContainsKey("id"))
+
+			if(neededCard.ContainsKey("price"))
 			{
-				info.id = neededCard["id"].AsInt16();
+				info.price = neededCard["price"].AsInt16();
 			}
-			if (neededCard.ContainsKey("name"))
+            if (neededCard.ContainsKey("name"))
+            {
+                info.name = neededCard["name"].AsString();
+			}
+
+            if (neededCard.ContainsKey("id"))
 			{
-				info.name = neededCard["name"].AsString();
-			}
+				info.uniqueID = ID;
+            }
+			
 			if (neededCard.ContainsKey("supply"))
 			{
 				info.supply = neededCard["supply"].AsInt16();
@@ -99,6 +108,8 @@ namespace ZaSadka
 			{
 				info.suspicion = neededCard["suspicion"].AsInt16();
 			}
+
+			ID++;
 
 			return info;
 		}

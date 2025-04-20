@@ -15,6 +15,8 @@ namespace DI
         void InjectDependencie(object obj);
         void EnableStarts();
         void EnableLateStarts();
+
+        void EnableDisposables();
         Object GetRealization(Type type);
     }
 
@@ -112,7 +114,7 @@ namespace DI
                 return realizations[index];
             }
 
-            GD.PrintErr($"Service of type {type} is not registered.");
+            GD.Print($"WARNING: SERVICE OF TYPE {type} IS NOT REGISTERED.");
             return default;
         }
         public Object GetRealization(Type type)
@@ -122,7 +124,7 @@ namespace DI
             {
                 return realizations[index];
             }
-            GD.PrintErr($"Service of type {type} is not registered.");
+            GD.Print($"WARNING: SERVICE OF TYPE {type} IS NOT REGISTERED.");
             return default;
         }
 
@@ -134,6 +136,18 @@ namespace DI
                 if (startable != null)
                 {
                     startable.LateStart();
+                }
+            }
+        }
+
+        public void EnableDisposables()
+        {
+            foreach (Object obj in realizations)
+            {
+                IDispose startable = obj as IDispose;
+                if (startable != null)
+                {
+                    startable.Dispose();
                 }
             }
         }

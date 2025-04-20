@@ -18,17 +18,23 @@ namespace DI
         [Export] public CardSpawner cardSpawner;
         [Export] public MouseManager mouseManager;
         [Export] public CardMouseManager cardMouseManager;
+        [Export] public SlotsManager slotsManager;
         
         override protected void RegisterObjects()
         {
             builder.Register<IInventoryManager>(new InventoryManager());
+            builder.Register<ISupplyDemandManager>(new SupplyAndDemandManager());
+            builder.Register<IJsonDistrictManager>(new JsonDistrictManager());
+            builder.Register<IDistrictsManager>(new DistrictsManager());
+
             builder.Register<ICardSpawner>(cardSpawner);
             builder.Register<IPointerManager>(mouseManager);
             builder.Register<ICardMouseManager>(cardMouseManager);
             builder.Register<ISlotMouseManager>(slotMouseManager);
-            
+            builder.Register<ISlotsManager>(slotsManager);
+
             //не уверен как править эту хуйню, но регаю, чтобы потом можно было обратиться к реализации этой хуйни при raycast.
-            //В ГОДОТЕ НЕТ ПОИСКА ПО ИНТЕРФЕЙСАМ ПРИКРЕПЛЕННЫМ К ОБЪЕКТАМ (хотя логично с учетом того, что они их GDScript даже не реализуют)
+            //В ГОДОТЕ НЕТ ПОИСКА ПО ИНТЕРФЕЙСАМ ПРИКРЕПЛЕННЫМ К ОБЪЕКТАМ (хотя логично с учетом того, что их GDScript даже не реализует)
             builder.Register<ICardSlot>(new CardSlot());
             builder.Register<ICardView>(new CardView());
         }

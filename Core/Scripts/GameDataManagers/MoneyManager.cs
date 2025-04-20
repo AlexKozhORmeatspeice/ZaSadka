@@ -15,8 +15,9 @@ namespace ZaSadka
 
     public partial class MoneyManager : IMoneyManager, IStartable
     {
-        private const int startMoney = 100;
-        private int nowMoney;
+        private const int startMoney = 30;
+        private static int nowMoney = startMoney;
+        private static bool isInit = false;
 
         public int StartMoney => startMoney;
 
@@ -36,7 +37,8 @@ namespace ZaSadka
 
         public void Start()
         {
-            nowMoney = startMoney;
+            if(!isInit)
+                nowMoney = startMoney;
         }
     }
 }

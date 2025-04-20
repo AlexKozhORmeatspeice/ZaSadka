@@ -52,6 +52,11 @@ namespace DI
             builder.EnableLateStarts();
         }
 
+        public override void _ExitTree()
+        {
+            builder.EnableDisposables();
+        }
+
         void IDIContatiner.InjectDependencie(object obj)
         {
             builder.InjectDependencie(obj);
@@ -70,6 +75,11 @@ namespace DI
     public interface ILateStartable
     {
         void LateStart();
+    }
+
+    public interface IDispose
+    {
+        void Dispose();
     }
 
     public interface IDIContatiner

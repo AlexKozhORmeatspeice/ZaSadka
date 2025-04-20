@@ -1,10 +1,12 @@
 using System;
 using System.Collections.Generic;
+using System.IO.IsolatedStorage;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DI;
 using Godot;
+using ZaSadka;
 
 namespace Cards
 {
@@ -20,15 +22,19 @@ namespace Cards
         [Inject] private ICardSpawner cardSpawner;
         [Inject] private ICardMouseManager cardMouseManager;
 
+        [Inject] private IInventoryManager inventoryManager;
+        [Inject] private IDistrictsManager districtsManager;
+
         private Vector2 posBeforeMove;
 
         private bool isDragging = false;
-        private bool isInSlot = false;
 
         private int ID;
         private static int g_MAXID = 0;
 
         private ICardView cardView;
+        private ICardSlot nowSlot;
+        private ItemInfo itemInfo;
 
         public CardObserver(ICardView cardView)
         {
@@ -40,29 +46,36 @@ namespace Cards
 
         public void Enable()
         {
-            isInSlot = false;
+            nowSlot = null;
 
             isDragging = false;
 
-            posBeforeMove = cardView.WorldPosition;
-
-            cardView.WorldPosition = cardSpawner.GetPositionByID(ID);
-            cardView.SetInfo(cardSpawner.GetItemInfoByID(ID));
-
+            cardSpawner.onUpdatePosition += SetPosition;
+            cardSpawner.onUpdateInfo += SetInfo;
+            
             pointer.onMove += MoveCard;
             pointer.onMove += ChangeScale;
             
             cardMouseManager.onPointerDown += CheckCardOnDown;
+            cardMouseManager.onPointerUp += CheckCardOnUp;
+
+            districtsManager.onAddCard += SetInSlot;
+            inventoryManager.onAddItem += SetInInventory;
         }
 
         public void Disable()
         {
+            cardSpawner.onUpdatePosition -= SetPosition;
+            cardSpawner.onUpdateInfo -= SetInfo;
+
             pointer.onMove -= MoveCard;
             pointer.onMove -= ChangeScale;
             
             cardMouseManager.onPointerDown -= CheckCardOnDown;
+            cardMouseManager.onPointerUp -= CheckCardOnUp;
 
-            slotMouseManager.onPointerUp -= SetInSlot;
+            districtsManager.onAddCard -= SetInSlot;
+            inventoryManager.onAddItem -= SetInInventory;
         }
 
         private void CheckCardOnDown(ICardView card)
@@ -74,37 +87,55 @@ namespace Cards
             }
 
             isDragging = true;
-            slotMouseManager.onPointerUp += SetInSlot;
         }
 
-        private void SetInSlot(ICardSlot slot)
+        private void CheckCardOnUp(ICardView card)
         {
             isDragging = false;
+        }
 
-            if (slot == null)
+        private void SetInSlot(ICardSlot slot, ICardView card)
+        {
+            if (card != cardView)
             {
-                isInSlot = false;
-                SetPosBeforeMove();
+                if(nowSlot == null)
+                {
+                    SetStartPos();
+                }
+
                 return;
             }
 
-            isInSlot = true;
+            nowSlot = slot;
             cardView.WorldPosition = slot.WorldPosition;
+        }
 
-            slotMouseManager.onPointerUp -= SetInSlot;
+        private void SetInInventory(List<ItemInfo> items)
+        {
+            foreach (ItemInfo item in items)
+            {
+                if(item.uniqueID == cardView.GetItemInfo().uniqueID)
+                {
+                    SetStartPos();
+                    nowSlot = null;
+                    return;
+                }
+            }
         }
 
         private void MoveCard()
         {
             if (!isDragging)
             {
-                posBeforeMove = cardView.WorldPosition;
+                if(nowSlot == null)
+                {
+                    SetStartPos();
+                }
                 return;
             }
 
             //TODO: поправить чтобы ограничения не зависили от положения камеры.
             //Сейчас идет привязка к 0 координате
-
             Vector2 screenRect = cardSpawner.CardsScreenZone;
 
             Vector2 pointerPos = pointer.NowWorldPosition;
@@ -116,6 +147,12 @@ namespace Cards
 
         private void ChangeScale()
         {
+            if (nowSlot != null)
+            {
+                cardView.ChangeScale(0.0f);
+                return;
+            }
+
             Vector2 pointerScreenPos = pointer.NowWorldPosition;
             Vector2 cardScreenPos = cardView.WorldPosition; 
             
@@ -127,7 +164,25 @@ namespace Cards
             cardView.ChangeScale(scaleAlpha);
         }
 
-        private void SetPosBeforeMove()
+        private void SetInfo(ICardView card, ItemInfo info)
+        {
+            if (card != cardView)
+                return;
+
+            itemInfo = info;
+            cardView.SetInfo(info);
+        }
+
+        private void SetPosition(ICardView card,  Vector2 pos)
+        {
+            if (card != cardView)
+                return;
+
+            posBeforeMove = pos;            
+            cardView.WorldPosition = pos;
+        }
+
+        private void SetStartPos()
         {
             cardView.WorldPosition = posBeforeMove;
         }

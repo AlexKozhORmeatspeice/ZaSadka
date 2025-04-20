@@ -31,6 +31,7 @@ namespace Market
     public partial class Item : Node2D, IItem
     {
         [Export] private Label label;
+        [Export] private Label priceLabel;
         [Export] private VBoxContainer dataShower;
             
         [Export] private CollisionShape2D _collisionShape;
@@ -39,12 +40,11 @@ namespace Market
         [Export] private Color baseColor;
         [Export] private Color choosedColor;
         
-        [Export] private int price;
         [Export] private float mouseDistToDetect = 80.0f;
 
         [Export] private Vector2 maxScale;
         [Export] private Vector2 minScale;
-        private ItemInfo ItemInfo;
+        private ItemInfo itemInfo;
 
         public Vector2 SpriteScale
         { 
@@ -60,7 +60,7 @@ namespace Market
             }
         }
 
-        public int Price => price;
+        public int Price => itemInfo.price;
 
         public Vector2 WorldPosition 
         {
@@ -128,16 +128,17 @@ namespace Market
         public void SetInfo(ItemInfo info)
         {
             label.Text = info.name;
+            priceLabel.Text = info.price.ToString();
 
             AddBonus(info.demand, "Спрос");
             AddBonus(info.supply, "Предложение");
             AddBonus(info.influence, "Влияние");
             AddBonus(info.suspicion, "Подозрение", true);
 
-            ItemInfo = info;
+            itemInfo = info;
         }
 
-        public ItemInfo GetInfo() => ItemInfo;
+        public ItemInfo GetInfo() => itemInfo;
     }
 
 }
