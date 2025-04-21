@@ -39,7 +39,6 @@ namespace ZaSadka
         void AddCard(ICardView card, ICardSlot slot);
         void DeleteCard(ICardView card);
         void PermanentDelete(ICardView card);
-
         DistrictData GetData(DistrictName name);
     }
 

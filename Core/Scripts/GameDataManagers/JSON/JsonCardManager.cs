@@ -31,11 +31,6 @@ namespace ZaSadka
 		public int influence = 0;
 		public int suspicion = 0;
 		public int spriteId = 0;
-	}
-
-	public struct UnitAdditionalInfo
-	{
-		public UnitAdditionalInfo() {}
 		public float EventChance = 0;
 		public string DebuffName = "";
 		public int DebuffDistrictId = -1;
@@ -46,7 +41,6 @@ namespace ZaSadka
 	public interface IJsonCardManager
 	{
 		ItemInfo GetItemInfo(ItemType type, int id);
-		UnitAdditionalInfo GetUnitAdditionalInfo(int id);
 		int GetCardsAmount(ItemType type);
 	}
 
@@ -93,7 +87,6 @@ namespace ZaSadka
       if (neededCard.ContainsKey("sprite_id"))
 			{
 				info.spriteId = neededCard["sprite_id"].AsInt16();
-				info.ID = neededCard["sprite_id"].AsInt16();
       }
 			
 			if (neededCard.ContainsKey("supply"))
@@ -114,13 +107,8 @@ namespace ZaSadka
 			}
 
 			ID++;
+			info.ID = ID;
 
-			return info;
-		}
-		public UnitAdditionalInfo GetUnitAdditionalInfo(int id)
-		{
-			var info = new UnitAdditionalInfo();
-			var neededCard = cards["units"].AsGodotArray()[id].AsGodotDictionary();
 			if (neededCard.ContainsKey("event_chance"))
 			{
 				info.EventChance = (float)neededCard["event_chance"].AsDouble();

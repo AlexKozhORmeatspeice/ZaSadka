@@ -12,11 +12,8 @@ namespace Cards
         float MouseDistToDetect { get; }
         void SetCardSprite(Texture2D texture);
         void ChangeScale(float t01);
-
         ItemInfo GetItemInfo();
-
         void SetInfo(ItemInfo info);
-
         void Delete();
     }
 
@@ -55,7 +52,7 @@ namespace Cards
 			}
 		}
 
-		public void SetCardSprite(Texture2D texture)
+        public void SetCardSprite(Texture2D texture)
 		{
 			sprite.Texture = texture;
 		}
@@ -112,6 +109,7 @@ namespace Cards
                 susText.Text = "";
             }
 
+            //getting region for card's sprite
             float width = 100.0f;
             float height = 150.0f;
 
