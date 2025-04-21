@@ -77,7 +77,7 @@ namespace ZaSadka
 			ItemInfo info = new();
 			info.type = type;
 			info.uniqueID = ID;
-			string itemType = type == ItemType.Building ? "buildings" : "units";
+			string itemType = type == ItemType.building ? "buildings" : "units";
 
       var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
 

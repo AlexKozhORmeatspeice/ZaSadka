@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="ZaSadka"
-run/main_scene="uid://82fnuqgf23br"
+run/main_scene="uid://ba5g7hvvve7mm"
 config/features=PackedStringArray("4.4", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 

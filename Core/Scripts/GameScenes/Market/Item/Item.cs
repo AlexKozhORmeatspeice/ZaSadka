@@ -140,7 +140,7 @@ namespace Market
             float width = 100.0f;
             float height = 150.0f;
 
-            int rectY = info.type == ItemType.Building ? 0 : 1;
+            int rectY = info.type == ItemType.building? 0 : 1;
             int rectX = info.spriteId;
             sprite.RegionRect = new Rect2(width*rectX, height*rectY, width, height);
         }
