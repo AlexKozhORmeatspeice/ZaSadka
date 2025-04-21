@@ -52,6 +52,7 @@ namespace Game_events
 
         private void EndEvents()
         {
+            GD.Print("no events");
             onEndEvents?.Invoke();
         }
 

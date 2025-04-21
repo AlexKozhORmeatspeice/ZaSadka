@@ -31,7 +31,6 @@ namespace ZaSadka
 		public int influence = 0;
 		public int suspicion = 0;
 		public int spriteId = 0;
-		public float EventChance = 0;
 		public string DebuffName = "";
 		public int DebuffDistrictId = -1;
 		public StatsType DebuffStat = StatsType.Demand;
@@ -109,10 +108,6 @@ namespace ZaSadka
 			ID++;
 			info.ID = ID;
 
-			if (neededCard.ContainsKey("event_chance"))
-			{
-				info.EventChance = (float)neededCard["event_chance"].AsDouble();
-			}
 			if (neededCard.ContainsKey("debuff_name"))
 			{
 				info.DebuffName = neededCard["debuff_name"].AsString();

@@ -143,8 +143,6 @@ namespace Game_events
             {
                 return CheckCondition(conditionsString, district);
             }
-
-            return false;   
         }
 
 
@@ -168,16 +166,12 @@ namespace Game_events
                 case ">":
                     List<int> values = GetValuesByName(vals[0], district);
                     return values.Any(x => x > int.Parse(vals[1]));
-                    break;
                 case "<":
                     return GetValuesByName(vals[0], district).Any(x => x < int.Parse(vals[1]));
-                    break;
                 case "=":
                     return GetValuesByName(vals[0], district).Any(x => x == int.Parse(vals[1]));
-                    break;
                 default:
                     return false;
-                    break;
             }
         }
 
