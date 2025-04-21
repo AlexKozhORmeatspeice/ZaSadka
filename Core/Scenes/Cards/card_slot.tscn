@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://2dd8qlhfmb8x" path="res://Core/Scripts/GameScenes/City/CardLogic/Slot/CardSlot.cs" id="1_srj3u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a20ru"]
-size = Vector2(99, 129)
+size = Vector2(99, 153)
 
 [node name="<txt> Name_<Label#2233097862689>" type="Node2D" node_paths=PackedStringArray("name", "supplyText", "demandText", "influenceText", "suspicienceText")]
 script = ExtResource("1_srj3u")
@@ -16,7 +16,7 @@ suspicienceText = NodePath("<txt> Sus")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(-1.24, 0)
-scale = Vector2(1.355, 2.115)
+scale = Vector2(1.3, 2.4)
 texture = ExtResource("1_od7ih")
 region_enabled = true
 region_rect = Rect2(20, 135, 89, 74)
@@ -24,7 +24,7 @@ region_rect = Rect2(20, 135, 89, 74)
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, -0.5)
+position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_a20ru")
 
 [node name="<txt> Supply" type="Label" parent="."]

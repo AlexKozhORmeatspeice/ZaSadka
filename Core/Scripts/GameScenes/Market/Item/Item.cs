@@ -136,6 +136,13 @@ namespace Market
             AddBonus(info.suspicion, "Подозрение", true);
 
             itemInfo = info;
+
+            float width = 100.0f;
+            float height = 150.0f;
+
+            int rectY = info.type == ItemType.Building ? 0 : 1;
+            int rectX = info.spriteId;
+            sprite.RegionRect = new Rect2(width*rectX, height*rectY, width, height);
         }
 
         public ItemInfo GetInfo() => itemInfo;
