@@ -17,7 +17,7 @@ namespace Market
     public partial class MarketManager : Node2D, IMarketManager, IStartable
     {
         [Inject] private IItemMouseManager itemMouseManager;
-        [Inject] private IMoneyManager moneyManager;
+        [Inject] private IMoneyManager moneyManager; //TODO: перенести логику внутрь MoneyManager. (меня бесит, что оно здесь, но уже 7 утра и я бля хочу поспать чутка)
         [Inject] private IInventoryManager inventoryManager;
 
         private IItem choosedItem;
@@ -52,7 +52,6 @@ namespace Market
 
             if(moneyManager.ChangeMoney(-choosedItem.Price))
             {
-                GD.Print("1");
                 onBuyItem?.Invoke(choosedItem);
                 ItemInfo itemInfo = choosedItem.GetInfo();
                 inventoryManager.AddItem(itemInfo);

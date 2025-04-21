@@ -22,6 +22,7 @@ namespace Cards
         public void LateStart()
         {
             observers = new List<ICardSlotObserver>();
+            
 
             foreach (var slot in slots)
             {

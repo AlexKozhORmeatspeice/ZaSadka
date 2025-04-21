@@ -15,6 +15,8 @@ namespace Cards
         ItemInfo GetItemInfo();
 
         void SetInfo(ItemInfo info);
+
+        void Delete();
     }
 
     public partial class CardView : Node2D, ICardView
@@ -114,6 +116,11 @@ namespace Cards
         public ItemInfo GetItemInfo()
         {
             return info;
+        }
+
+        public void Delete()
+        {
+            throw new NotImplementedException();
         }
     }
 

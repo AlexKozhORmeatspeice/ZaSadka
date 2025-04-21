@@ -2,18 +2,26 @@ using Godot;
 using System;
 
 
-namespace GameEvents
+namespace Game_events
 {
     public interface IChoice
     {
-        void DoGoodChoise();
-        void DoBadChoice();
+        void Activate();
+        void SetData(ChoiceData data);
     }
 
-    public abstract class Choice : IChoice
+    public class Choice : IChoice
     {
-        public abstract void DoBadChoice();
+        private ChoiceData data;
 
-        public abstract void DoGoodChoise();
+        public void Activate()
+        {
+
+        }
+
+        public void SetData(ChoiceData data)
+        {
+            this.data = data;
+        }
     }
 }

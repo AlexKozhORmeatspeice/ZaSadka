@@ -11,9 +11,9 @@ namespace Market
 
     public partial class GoToTownButtonObserver : Node, IGoToTownButtonObserver
     {
-        private IGoToTownButton view;
+        private INextSceneButton view;
 
-        public GoToTownButtonObserver(IGoToTownButton view)
+        public GoToTownButtonObserver(INextSceneButton view)
         {
             this.view = view;
         }
@@ -30,7 +30,7 @@ namespace Market
 
         private void LoadScene()
         {
-            view.GetTree().ChangeSceneToPacked(view.GetNextScene());
+            view.GetTree().ChangeSceneToFile(view.GetNextScene());
         }
     }
 }

@@ -16,7 +16,6 @@ public interface IPointerManager
     T Raycast<T>() where T : class;
     object RaycastByObjType(object obj);
     object RaycastByType(Type type);
-
 }
 
 public partial class MouseManager : Node2D, IPointerManager

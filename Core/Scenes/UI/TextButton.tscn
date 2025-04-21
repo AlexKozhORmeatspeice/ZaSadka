@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://yb1otjqebmry"]
+
+[ext_resource type="Script" uid="uid://breb361l5sp3p" path="res://Core/Scripts/GameScenes/AllGameUI/TextButton.cs" id="1_soq8e"]
+
+[node name="TextButton" type="Node2D" node_paths=PackedStringArray("button")]
+script = ExtResource("1_soq8e")
+button = NodePath("Button")
+
+[node name="Button" type="Button" parent="."]
+offset_right = 248.0
+offset_bottom = 48.0
+theme_override_font_sizes/font_size = 29
+text = "Действие"

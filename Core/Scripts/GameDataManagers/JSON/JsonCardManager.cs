@@ -23,6 +23,7 @@ namespace ZaSadka
 		public ItemInfo() {}
 		public int price;
 		public ItemType type;
+		public int ID = 0;
 		public int uniqueID = 0;
 		public string name = "";
 		public int supply = 0;
@@ -89,6 +90,7 @@ namespace ZaSadka
 
             if (neededCard.ContainsKey("id"))
 			{
+				info.ID = neededCard["id"].AsInt16();
 				info.uniqueID = ID;
             }
 			

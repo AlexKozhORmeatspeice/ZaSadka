@@ -8,7 +8,7 @@ namespace Cards
     public interface ICardSlot
     {
         Vector2 WorldPosition { get; set;}
-        DistrictInfo DistrictInfo { get; set;}
+        DistrictInfo _DistrictInfo { get; set;}
 
         DistrictName _DistrictName { get; }
 
@@ -31,7 +31,7 @@ namespace Cards
         [Export] private Label influenceText;
         [Export] private Label suspicienceText;
 
-        private static DistrictInfo districtInfo;
+        private DistrictInfo districtInfo;
 
         private ICardView cardOnSlot;
 
@@ -50,7 +50,7 @@ namespace Cards
         public string InfluenceText { set => influenceText.Text = "Вл: " + value; }
         public string SusText { set => suspicienceText.Text = "Пд: " + value; }
 
-        public DistrictInfo DistrictInfo 
+        public DistrictInfo _DistrictInfo 
         { 
             get => districtInfo;
             set

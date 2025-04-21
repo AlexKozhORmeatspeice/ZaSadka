@@ -14,7 +14,18 @@ namespace ZaSadka
     {
         OldDocks,
         HistoricalCenter,
-        Outskirts
+        Outskirts,
+        DistrictNameNum
+    }
+
+    public struct DistrictData
+    {
+        public DistrictData()
+        {
+            cardBySlot = new Dictionary<ICardSlot, ICardView>();
+        }
+
+        public Dictionary<ICardSlot, ICardView> cardBySlot;
     }
 
     public interface IDistrictsManager
@@ -23,6 +34,9 @@ namespace ZaSadka
         event Action<ICardSlot, ICardView> onRemoveCard;
         void AddCard(ICardView card, ICardSlot slot);
         void DeleteCard(ICardView card);
+        void PermanentDelete(ICardView card);
+
+        DistrictData GetData(DistrictName name);
     }
 
     //TODO: добавить проверку условий на то можно ли добавлять карту на слот и можно ли вообще ее двигать
@@ -32,16 +46,6 @@ namespace ZaSadka
         [Inject] private ICardMouseManager cardMouseManager;
 
         private ICardView choosedCard;
-
-        struct DistrictData
-        {
-            public DistrictData()
-            {
-                cardBySlot = new Dictionary<ICardSlot, ICardView>();
-            }
-
-            public Dictionary<ICardSlot, ICardView> cardBySlot;
-        }
 
         public event Action<ICardSlot, ICardView> onAddCard;
         public event Action<ICardSlot, ICardView> onRemoveCard;
@@ -97,7 +101,8 @@ namespace ZaSadka
             }
             
             data.cardBySlot[newSlot] = newCard;
-            onAddCard?.Invoke(slot, card);
+
+            onAddCard?.Invoke(newSlot, card);
         }
 
         public void DeleteCard(ICardView card)
@@ -132,14 +137,20 @@ namespace ZaSadka
         /// </summary>
         public void Start()
         {
-            cardMouseManager.onPointerDown += SetCard;
-            slotMouseManager.onPointerUp += CheckInSlot;
+            if(cardMouseManager != null)
+                cardMouseManager.onPointerDown += SetCard;
+
+            if (slotMouseManager != null)
+                slotMouseManager.onPointerUp += CheckInSlot;
         }
 
         public void Dispose()
         {
-            cardMouseManager.onPointerDown -= SetCard;
-            slotMouseManager.onPointerUp -= CheckInSlot;
+            if (cardMouseManager != null)
+                cardMouseManager.onPointerDown -= SetCard;
+
+            if (slotMouseManager != null)
+                slotMouseManager.onPointerUp -= CheckInSlot;
         }
 
         private void CheckInSlot(ICardSlot slot)
@@ -153,6 +164,7 @@ namespace ZaSadka
 
         private void SetCard(ICardView card)
         {
+            DeleteCard(card);
             choosedCard = card;
         }
 
@@ -180,6 +192,34 @@ namespace ZaSadka
             return cardSlot;
         }
 
+        public void PermanentDelete(ICardView card)
+        {
+            bool isGot = false;
+            foreach (var data in dataByDistrict.Values)
+            {
+                foreach (var slot in data.cardBySlot.Keys)
+                {
+                    if (data.cardBySlot[slot] == card)
+                    {
+                        AddCard(null, slot);
 
+                        data.cardBySlot.Remove(slot);
+
+                        card.Delete();
+
+                        isGot = true;
+                        break;
+                    }
+                }
+
+                if (isGot)
+                    break;
+            }
+        }
+
+        DistrictData IDistrictsManager.GetData(DistrictName name)
+        {
+            return dataByDistrict[name];
+        }
     }
 }

@@ -3,27 +3,31 @@ using DI;
 using Godot;
 using System;
 using System.Collections.Generic;
+using ZaSadka;
+using Game_events;
 
-namespace GameEvents
+
+namespace Game_events
 {
     public interface IEventsSpawner
     {
-
+        event Action<IGameEvent, EventInfo> onUpdateInfo;
+        event Action noEvents;
     }
 
-    public partial class EventsSpawner : Node2D, IStartable, IEventsSpawner
+    public partial class EventsSpawner : Node2D, ILateStartable, IEventsSpawner
     {
         [Inject] private IObjectResolver resolver;
+        [Inject] private IEventsFabric jsonEventsFabric;
 
-        [ExportCategory("Settings")]
-        [Export] private int eventCount = 3;
-
-        [ExportCategory("Scenes")]
-        [Export] private PackedScene[] eventsPackedSecnes;
+        [Export] private PackedScene gameEventScene;
 
         private List<IGameEventObserver> gameEventObservers;
 
-        public void Start()
+        public event Action<IGameEvent, EventInfo> onUpdateInfo;
+        public event Action noEvents;
+
+        public void LateStart()
         {
             CreateEvents();
         }
@@ -32,32 +36,29 @@ namespace GameEvents
         {
             //get slots for cards
             gameEventObservers = new List<IGameEventObserver>();
+            List<EventInfo> eventsInfo = new List<EventInfo>();
 
-            //check available events
-            List<PackedScene> availablePackedScemes = new List<PackedScene>();
-            foreach(PackedScene gameEventPackedScene in eventsPackedSecnes)
+            for(int i = 0; i < (int)DistrictName.DistrictNameNum; i++)
             {
-                //полная хуйня, но как еще это сделать не ебу
-                Node newGameEventNode = gameEventPackedScene.Instantiate();
-                IGameEvent newGameEvent = newGameEventNode as GameEvent;
+                DistrictName districtName = (DistrictName)i;
 
-                if (newGameEvent != null && newGameEvent.IsCanInvoke())
+                EventInfo info = jsonEventsFabric.GetActiveEvent(districtName);
+
+                if (info.canActivate)
                 {
-                    availablePackedScemes.Add(gameEventPackedScene);
+                    eventsInfo.Add(info);
                 }
-
-                (newGameEvent as Node).QueueFree();
             }
 
-            if (availablePackedScemes.Count == 0)
-                return;
-
-            //get random events
-            for (int i = 0; i < eventCount; i++)
+            if (eventsInfo.Count == 0)
             {
-                int randomItemInd = GD.RandRange(0, availablePackedScemes.Count - 1);
+                noEvents?.Invoke();
+                return;
+            }
 
-                var newInstance = availablePackedScemes[randomItemInd].Instantiate();
+            foreach (EventInfo eventInfo in eventsInfo)
+            {
+                var newInstance = gameEventScene.Instantiate();
                 AddChild(newInstance);
                 IGameEvent newCardView = (IGameEvent)newInstance;
 
@@ -65,15 +66,17 @@ namespace GameEvents
                 resolver.Inject(cardObserver);
                 cardObserver.Enable();
 
+                onUpdateInfo?.Invoke(newCardView, eventInfo);
+
                 gameEventObservers.Add(cardObserver);
             }
         }
 
         public override void _ExitTree()
         {
-            foreach (var cardObserver in gameEventObservers)
+            foreach (var gameEventObserver in gameEventObservers)
             {
-                cardObserver.Disable();
+                gameEventObserver.Disable();
             }
         }
     }

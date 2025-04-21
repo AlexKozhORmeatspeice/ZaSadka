@@ -1,34 +1,27 @@
 using Godot;
 using System;
 
-namespace GameEvents
+namespace Game_events
 {
-    public enum ParamType
-    {
-        None,
-        Influence,
-        Suspicion
-    }
-
-    enum ChoiceType
-    {
-
-    }
+    
 
     public interface IGameEvent
     {
         Vector2 WorldPosition { get; }
         float DistToDetectPointer { get; }
 
-        bool IsCanInvoke();
+        string Name { set; }
+
         void RotateByNormValue(float t01); //0 - left, 1 - right
         void SetStartPos();
+        void SetZOrder(int zOrder);
+        void Delete();
     }
 
     public partial class GameEvent : Node2D, IGameEvent
     {
-        [Export] private string name;
-        [Export] private ParamType paramType;
+        [Export] private CanvasItem canvasItem;
+        [Export] private Label label;
         [Export] private float parameterThreshold;
 
         [Export] private float maxAngle;
@@ -38,13 +31,17 @@ namespace GameEvents
         private IChoice yesChoice;
         private IChoice noChoice;
 
+        private ChoiceData data;
+
         public Vector2 WorldPosition => Position;
 
         public float DistToDetectPointer => distToDetectPointer;
 
-        public bool IsCanInvoke() //TODO: данные должны подгружаться из json файлов
+        string IGameEvent.Name { set => label.Text = value; }
+
+        public void SetZOrder(int zOrder)
         {
-            return true;
+            canvasItem.ZIndex = zOrder;
         }
 
         public void RotateByNormValue(float t01)
@@ -58,6 +55,11 @@ namespace GameEvents
         public void SetStartPos()
         {
             RotateByNormValue(0.5f);
+        }
+
+        public void Delete()
+        {
+            QueueFree();
         }
     }
 }

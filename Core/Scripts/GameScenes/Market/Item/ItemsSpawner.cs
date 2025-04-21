@@ -17,7 +17,7 @@ namespace Market
     public partial class ItemsSpawner : Node2D, IItemsSpawner, ILateStartable
     {
         [Export] private int itemsCount;
-        [Export] private PackedScene[] packedScenes;
+        [Export] private string cardViewPath;
         
         [Export] private float startY;
         [Export] private float itemDistance;
@@ -30,11 +30,13 @@ namespace Market
         [Inject] private IJsonCardManager jsonCardManager;
         [Inject] private IObjectResolver resolver;
 
-        public override void _Ready()
+        public void LateStart()
         {
+            CreateItemData();
             CreateStartPositions();
+            
+            CreateCards(resolver);
         }
-
 
         private void CreateCards(IObjectResolver resolver)
         {
@@ -42,13 +44,17 @@ namespace Market
 
             for (int i = 0; i < itemsCount; i++)
             {
-                int randomItemInd = GD.RandRange(0, packedScenes.Length - 1);
-                
-                var newInstance = packedScenes[randomItemInd].Instantiate();
+                var newInstance = GD.Load<PackedScene>(cardViewPath).Instantiate();
                 AddChild(newInstance);
                 IItem newCardView = (IItem)newInstance;
 
+                newCardView.SetVisibility(true);
+
+                
                 ItemObserver itemObserver = new(newCardView);
+                
+                GD.Print(newInstance);
+                
                 resolver.Inject(itemObserver);
                 itemObserver.Enable();
                 itemObservers.Add(itemObserver);
@@ -63,6 +69,7 @@ namespace Market
 
             for (int i = 0; i < itemsCount; i++)
             {
+                GD.Print(new Vector2(startX, startY));
                 itemPositions.Add(new Vector2(startX, startY));
 
                 startX += itemDistance;
@@ -76,7 +83,10 @@ namespace Market
             {
                 ItemType itemType = (ItemType)GD.RandRange(0, 1);
                 int itemID = GD.RandRange(0, jsonCardManager.GetCardsAmount(itemType) - 1);
-                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
+
+                ItemInfo itemInfo = jsonCardManager.GetItemInfo(itemType, itemID);
+                GD.Print(itemInfo.name);
+                itemData.Add(itemInfo);
             }
         }
 
@@ -104,12 +114,6 @@ namespace Market
             }
             
             return itemData[id];
-        }
-        public void LateStart()
-        {
-            CreateItemData();
-
-            CreateCards(resolver);
         }
     }
 }

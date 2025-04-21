@@ -6,9 +6,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xtpqa"]
 size = Vector2(95, 126)
 
-[node name="GameEvent" type="Node2D"]
+[node name="GameEvent" type="Node2D" node_paths=PackedStringArray("canvasItem", "label")]
 scale = Vector2(4, 4)
 script = ExtResource("1_rc5if")
+canvasItem = NodePath(".")
+label = NodePath("Sprite2D/Label")
 maxAngle = 40.0
 distToDetectPointer = 200.0
 
@@ -25,11 +27,11 @@ anchor_top = 0.5
 anchor_right = 0.99
 anchor_bottom = 0.957
 offset_left = -45.0
-offset_top = -64.5
+offset_top = -124.5
 offset_right = -48.04
-offset_bottom = -64.453
+offset_bottom = -63.453
 theme_override_font_sizes/font_size = 8
-text = "В тебя хуесосит хуй и теперь тебе нужно не хуй чтобы хуй поэтому хуй или хуй"
+text = "В тебя хуесосит хуй и теперь тебе нужно не хуй чтобы хуй поэтому хуй или хуй. Че делать то епта я ебать в ахуе ну типо я вообще не знаю что делать ааа пиздец пиздец"
 autowrap_mode = 3
 clip_text = true
 

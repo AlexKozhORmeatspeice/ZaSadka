@@ -13,8 +13,8 @@ namespace Market
 
     public partial class MarketUI : Node2D, IMarketUI, IStartable
     {
-        [Inject] private IGoToTownButton goToTownButton;
-        [Inject] private IBuyItemButton buyItemButton;
+        [Inject] private INextSceneButton goToTownButton;
+        [Inject] private ITextButton buyItemButton;
         [Inject] private IMoneyText moneyText;
 
         private IGoToTownButtonObserver goToTownButtonObserver;

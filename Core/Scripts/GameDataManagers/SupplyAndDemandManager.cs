@@ -14,8 +14,12 @@ namespace ZaSadka
 		void ChangeSupply(int value);
 		event Action<int> OnChangeSupply;
 		int GetCurrentDemand();
-		int GetCurrentSupply();
-		int GetPfofit();
+        float GetNormDemand();
+
+        int MaxSupply { get;  }
+        int MaxDemand { get; }
+
+        int GetProfit();
     }
 	
 	public partial class SupplyAndDemandManager : ISupplyDemandManager, IStartable, IDisposable
@@ -25,10 +29,14 @@ namespace ZaSadka
 		private static int supply = 0;
 		private static int demand = 0;
 
-		private const int minSupply = -5;
+		private const int minSupply = 0;
         private const int maxSupply = 30;
-        private const int minDemand = -5;
+        private const int minDemand = 0;
         private const int maxDemand = 30;
+
+        public int MaxSupply => maxSupply;
+
+        public int MaxDemand => maxDemand;
 
         public event Action<int> OnChangeDemand;
 		public event Action<int> OnChangeSupply;
@@ -49,8 +57,8 @@ namespace ZaSadka
 		{
             if (slot == null || card == null) return;
 
-            int demandChange = slot.DistrictInfo.demand + card.GetItemInfo().demand;
-            int supplyChange = slot.DistrictInfo.supply + card.GetItemInfo().supply;
+            int demandChange = slot._DistrictInfo.demand + card.GetItemInfo().demand;
+            int supplyChange = slot._DistrictInfo.supply + card.GetItemInfo().supply;
 
             ChangeDemand(demandChange);
             ChangeSupply(supplyChange);
@@ -60,8 +68,8 @@ namespace ZaSadka
         {
 			if(slot == null || view == null) return;
 
-			int demandChange = slot.DistrictInfo.demand + view.GetItemInfo().demand;
-			int supplyChange = slot.DistrictInfo.supply + view.GetItemInfo().supply;
+			int demandChange = slot._DistrictInfo.demand + view.GetItemInfo().demand;
+			int supplyChange = slot._DistrictInfo.supply + view.GetItemInfo().supply;
 
             ChangeDemand(-demandChange);
             ChangeSupply(-supplyChange);
@@ -69,33 +77,26 @@ namespace ZaSadka
 
         public void ChangeDemand(int value)
 		{
-			if (value == 0)
-			{
-				return;
-			}
-
 			demand = Mathf.Clamp(demand + value, minDemand, maxDemand);
-
-			GD.Print("Текущий demand " + demand);
 
             OnChangeDemand?.Invoke(demand);
 		}
 		public void ChangeSupply(int value)
 		{
-			if (value == 0)
-			{
-				return;
-			}
-
             supply = Mathf.Clamp(supply + value, minSupply, maxSupply);
-
-            GD.Print("Текущий supply " + supply);
 
             OnChangeSupply?.Invoke(supply);
 		}
 
 		public int GetCurrentDemand() => demand;
-		public int GetCurrentSupply() => supply;
-		public int GetPfofit() => demand > supply ? supply : demand;
+
+        public int GetCurrentSupply() => supply;
+
+        public int GetProfit() => demand > supply ? supply : demand;
+
+        public float GetNormDemand()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

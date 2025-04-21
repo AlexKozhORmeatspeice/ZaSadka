@@ -38,6 +38,7 @@ namespace Market
         {
             isChoosed = false;
             view.SetChoosed(isChoosed);
+            view.SetVisibility(true);
 
             view.WorldPosition = itemsSpawner.GetPositionByID(ID);
             view.SetInfo(itemsSpawner.GetItemInfoByID(ID));

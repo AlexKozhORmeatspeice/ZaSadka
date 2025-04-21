@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://cnmroh2dx3o48"]
+
+[ext_resource type="Script" uid="uid://cb2mcuwtecyme" path="res://Core/Scenes/GameScenes/GameScenesManager.cs" id="1_78st6"]
+[ext_resource type="PackedScene" uid="uid://c11wyfu81t43c" path="res://Core/Scenes/GameScenes/Main.tscn" id="1_k46vj"]
+[ext_resource type="PackedScene" uid="uid://b5e1otu7yggk" path="res://Core/Scenes/GameScenes/EventsWindow.tscn" id="2_swj3n"]
+[ext_resource type="PackedScene" uid="uid://82fnuqgf23br" path="res://Core/Scenes/GameScenes/Market.tscn" id="3_18n1u"]
+
+[node name="Game" type="Node2D" node_paths=PackedStringArray("market", "main", "events")]
+script = ExtResource("1_78st6")
+market = NodePath("CardMarket")
+main = NodePath("Main")
+events = NodePath("EventWindow")
+
+[node name="Main" parent="." instance=ExtResource("1_k46vj")]
+visible = false
+
+[node name="EventWindow" parent="." instance=ExtResource("2_swj3n")]
+visible = false
+
+[node name="CardMarket" parent="." instance=ExtResource("3_18n1u")]
