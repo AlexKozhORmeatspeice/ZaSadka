@@ -3,24 +3,40 @@
   "WorkspaceRootPath": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\managers\\eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\managers\\eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\managers\\eventsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\managers\\eventsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scenes\\GameScenes\\GameScenesManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scenes\\GameScenes\\GameScenesManager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\market\\ui\\gototownbuttonobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\market\\ui\\gototownbuttonobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\managers\\endobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\managers\\endobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\allgameui\\nextscenebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\allgameui\\nextscenebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\city\\ui\\enddaybuttonobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\city\\ui\\enddaybuttonobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\market\\item\\itemsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\market\\item\\itemsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\market\\item\\itemobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\managers\\eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\managers\\eventsmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\managers\\eventsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\managers\\eventsspawner.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\gameeventobserver.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -47,10 +63,6 @@
       "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\city\\ui\\cityui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\allgameui\\nextscenebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\allgameui\\nextscenebutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\di\\containers\\marketdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\di\\containers\\marketdicontainer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -61,10 +73,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\events\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\events\\gameevent.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\UI\\EventsUI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Core\\Scripts\\GameScenes\\GameEvents\\UI\\EventsUI.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\allgameui\\textbutton.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -101,6 +109,10 @@
     {
       "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\city\\cardlogic\\card\\cardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\city\\cardlogic\\card\\cardview.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|c:\\users\\lenovo\\desktop\\programing\\gamedev\\godot\\zasadka\\zasadka\\core\\scripts\\gamescenes\\gameevents\\ui\\eventsui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{56E7187A-35EE-49D7-B82E-921EFBAB395C}|ZaSadka.csproj|solutionrelative:core\\scripts\\gamescenes\\gameevents\\ui\\eventsui.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -110,37 +122,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 12,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
+              "Title": "GameScenesManager.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scenes\\GameScenes\\GameScenesManager.cs",
+              "RelativeDocumentMoniker": "Core\\Scenes\\GameScenes\\GameScenesManager.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scenes\\GameScenes\\GameScenesManager.cs",
+              "RelativeToolTip": "Core\\Scenes\\GameScenes\\GameScenesManager.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAAwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T09:11:14.013Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GoToTownButtonObserver.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\UI\\GoToTownButtonObserver.cs",
+              "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\Market\\UI\\GoToTownButtonObserver.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\UI\\GoToTownButtonObserver.cs",
+              "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\UI\\GoToTownButtonObserver.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T08:41:14.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "EndDayButtonObserver.cs",
+              "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\UI\\EndDayButtonObserver.cs",
+              "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\City\\UI\\EndDayButtonObserver.cs",
+              "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\UI\\EndDayButtonObserver.cs",
+              "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\UI\\EndDayButtonObserver.cs",
+              "ViewState": "AgIAABIAAAAAAAAAAAAjwCkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-04-21T08:41:02.924Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "ItemObserver.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
-              "ViewState": "AgIAABwAAAAAAAAAAAAawCYAAAAeAAAAAAAAAA==",
+              "ViewState": "AgIAACgAAAAAAAAAAAAtwDwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T04:43:53.145Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 6,
               "Title": "ItemsSpawner.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemsSpawner.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemsSpawner.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Item\\ItemsSpawner.cs",
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemsSpawner.cs",
-              "ViewState": "AgIAAGYAAAAAAAAAAAAcwA8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAAAQwDcAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T04:39:42.49Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 10,
               "Title": "MouseManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\Managers\\MouseManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\City\\Managers\\MouseManager.cs",
@@ -148,12 +199,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\Managers\\MouseManager.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAmwDEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:37:33.351Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T04:37:33.351Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 13,
               "Title": "MainDIContatiner.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\DI\\Containers\\MainDIContatiner.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\DI\\Containers\\MainDIContatiner.cs",
@@ -161,12 +211,11 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\Containers\\MainDIContatiner.cs",
               "ViewState": "AgIAABEAAAAAAAAAAAAQwBkAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:28:48.946Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T04:28:48.946Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 11,
               "Title": "MarketManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\Market\\Managers\\MarketManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\Market\\Managers\\MarketManager.cs",
@@ -174,12 +223,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Managers\\MarketManager.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAEwDEAAAAkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:27:06.638Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T04:27:06.638Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 14,
               "Title": "CityUI.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\UI\\CityUI.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\City\\UI\\CityUI.cs",
@@ -187,12 +235,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\UI\\CityUI.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAcwBsAAABLAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T04:24:17.452Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T04:24:17.452Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 15,
               "Title": "MarketDIContainer.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\DI\\Containers\\MarketDIContainer.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\DI\\Containers\\MarketDIContainer.cs",
@@ -200,25 +247,24 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\Containers\\MarketDIContainer.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAmwBYAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T02:25:32.672Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T02:25:32.672Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "EndObserver.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs",
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EndObserver.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAQwBwAAAAJAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T04:16:44.683Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 18,
               "Title": "TextButton.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\AllGameUI\\TextButton.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\AllGameUI\\TextButton.cs",
@@ -226,25 +272,24 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\AllGameUI\\TextButton.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T03:34:49.203Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T03:34:49.203Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 4,
               "Title": "NextSceneButton.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\AllGameUI\\NextSceneButton.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\AllGameUI\\NextSceneButton.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\AllGameUI\\NextSceneButton.cs",
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\AllGameUI\\NextSceneButton.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA5wCcAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T03:34:45.681Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 19,
               "Title": "GameText.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\AllGameUI\\GameText.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\AllGameUI\\GameText.cs",
@@ -252,12 +297,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\AllGameUI\\GameText.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAA/AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T03:34:13.671Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T03:34:13.671Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 9,
               "Title": "GameEventObserver.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\GameEventObserver.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\GameEventObserver.cs",
@@ -265,25 +309,24 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\GameEventObserver.cs",
               "ViewState": "AgIAAAQAAAAAAAAAAAAAAFoAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T03:29:07.569Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T03:29:07.569Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 7,
               "Title": "EventsManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsManager.cs",
               "ToolTip": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsManager.cs",
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsManager.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-04-21T03:15:37.095Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 27,
               "Title": "EventsUI.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\UI\\EventsUI.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\UI\\EventsUI.cs",
@@ -291,12 +334,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\UI\\EventsUI.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T03:14:41.112Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T03:14:41.112Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 8,
               "Title": "EventsSpawner.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsSpawner.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsSpawner.cs",
@@ -304,12 +346,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\Managers\\EventsSpawner.cs",
               "ViewState": "AgIAACIAAAAAAAAAAAAgwDUAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T02:12:44.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T02:12:44.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 20,
               "Title": "InfluenceManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameDataManagers\\InfluenceManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameDataManagers\\InfluenceManager.cs",
@@ -317,12 +358,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\InfluenceManager.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAADwvyIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T00:45:01.155Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T00:45:01.155Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 21,
               "Title": "SuspienceManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameDataManagers\\SuspienceManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameDataManagers\\SuspienceManager.cs",
@@ -330,12 +370,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\SuspienceManager.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAUwCMAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T23:29:24.87Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T23:29:24.87Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 22,
               "Title": "JsonEventsFabric.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameDataManagers\\JSON\\JsonEventsFabric.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameDataManagers\\JSON\\JsonEventsFabric.cs",
@@ -343,12 +382,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\JSON\\JsonEventsFabric.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAZAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T23:02:52.938Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T23:02:52.938Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 12,
               "Title": "JsonChoiceFabric.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameDataManagers\\JSON\\JsonChoiceFabric.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameDataManagers\\JSON\\JsonChoiceFabric.cs",
@@ -356,12 +394,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\JSON\\JsonChoiceFabric.cs",
               "ViewState": "AgIAADkAAAAAAAAAAAAvwEkAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T23:02:57.548Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T23:02:57.548Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 17,
               "Title": "GameEvent.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Events\\GameEvent.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\Events\\GameEvent.cs",
@@ -369,12 +406,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\Events\\GameEvent.cs",
               "ViewState": "AgIAACkAAAAAAAAAAAA7wDwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:58:52.113Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T22:58:52.113Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 24,
               "Title": "Choice.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\GameEvents\\Choices\\Choice.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\GameEvents\\Choices\\Choice.cs",
@@ -382,12 +418,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\GameEvents\\Choices\\Choice.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAqwBIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T22:58:41.283Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T22:58:41.283Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 26,
               "Title": "CardView.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\CardLogic\\Card\\CardView.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\City\\CardLogic\\Card\\CardView.cs",
@@ -395,12 +430,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\CardLogic\\Card\\CardView.cs",
               "ViewState": "AgIAAAYAAAAAAAAAAAAAwBIAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T21:42:48.774Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T21:42:48.774Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 23,
               "Title": "DistrictsManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameScenes\\City\\Managers\\DistrictsManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameScenes\\City\\Managers\\DistrictsManager.cs",
@@ -408,12 +442,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\Managers\\DistrictsManager.cs",
               "ViewState": "AgIAAHgAAAAAAAAAAAAgwJMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T21:42:00.04Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T21:42:00.04Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 25,
               "Title": "JsonCardManager.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\GameDataManagers\\JSON\\JsonCardManager.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\GameDataManagers\\JSON\\JsonCardManager.cs",
@@ -421,12 +454,11 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\JSON\\JsonCardManager.cs",
               "ViewState": "AgIAAEMAAAAAAAAAAAAuwFwAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T23:01:35.687Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T23:01:35.687Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 16,
               "Title": "EventsDIContainer.cs",
               "DocumentMoniker": "C:\\Users\\Lenovo\\Desktop\\Programing\\GameDev\\Godot\\zasadka\\ZaSadka\\Core\\Scripts\\DI\\Containers\\EventsDIContainer.cs",
               "RelativeDocumentMoniker": "Core\\Scripts\\DI\\Containers\\EventsDIContainer.cs",
@@ -434,8 +466,7 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\Containers\\EventsDIContainer.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T21:37:44.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T21:37:44.08Z"
             }
           ]
         }
