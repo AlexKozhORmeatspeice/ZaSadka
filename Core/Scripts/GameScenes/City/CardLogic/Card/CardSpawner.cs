@@ -13,13 +13,15 @@ namespace Cards
     {
         event Action<ICardView, Vector2> onUpdatePosition;
         event Action<ICardView, ItemInfo> onUpdateInfo;
-        
+        event Action<ICardView, int> onUpdateCardInSlotID;
         Vector2 CardsScreenZone { get; }
     }
 
     public partial class CardSpawner : Node2D, ILateStartable, ICardSpawner
     {
         [Inject] private IInventoryManager inventoryManager;
+        [Inject] private IDistrictsManager districtsManager;
+
         [Inject] private IObjectResolver resolver;
 
         [ExportCategory("Settings")]
@@ -34,6 +36,7 @@ namespace Cards
         
         public event Action<ICardView, Vector2> onUpdatePosition;
         public event Action<ICardView, ItemInfo> onUpdateInfo;
+        public event Action<ICardView, int> onUpdateCardInSlotID;
 
         public Vector2 CardsScreenZone => GetViewportRect().Size;
 
@@ -41,6 +44,7 @@ namespace Cards
         {
             CreateCards(inventoryManager.GetItems());
             CreatePositions(inventoryManager.GetItems());
+            CreateInSlotCard();
 
             inventoryManager.onAddItem += CreatePositions;
             inventoryManager.onRemoveItem += CreatePositions;
@@ -85,6 +89,37 @@ namespace Cards
                 }
 
                 startX += cardDistance;
+            }
+        }
+
+        public void CreateInSlotCard()
+        {
+            for(int i = 0; i < (int)DistrictName.DistrictNameNum; i++)
+            {
+                DistrictName name = (DistrictName)i;
+
+                Dictionary<int, ItemInfo> dict = districtsManager.GetData(name).itemInfoByID;
+                foreach(int id in dict.Keys)
+                {
+                    ItemInfo nowItem = dict[id];
+                    
+                    if (nowItem.uniqueID < 0)
+                        continue;
+
+                    var newInstance = cardViewScene.Instantiate();
+                    AddChild(newInstance);
+                    ICardView newCardView = (ICardView)newInstance;
+
+                    CardObserver cardObserver = new(newCardView);
+                    resolver.Inject(cardObserver);
+                    cardObserver.Enable();
+                    
+                    onUpdateInfo?.Invoke(newCardView, nowItem);
+                    onUpdateCardInSlotID?.Invoke(newCardView, id);
+
+                    cardByID[nowItem.uniqueID] = newCardView;
+                    cardObservers.Add(cardObserver);
+                }
             }
         }
 

@@ -19,19 +19,14 @@ namespace Market
 
         private IItem view;
 
-        private int ID;
-        private static int g_MaxID = 0;
         private int itemID = 0;
-        private ItemType itemType = ItemType.Building;
+        private ItemType itemType = ItemType.building;
 
         private bool isChoosed;
         
         public ItemObserver(IItem view)
         {
             this.view = view;
-
-            ID = g_MaxID;
-            g_MaxID++;
         }
 
         public void Enable()
@@ -40,8 +35,9 @@ namespace Market
             view.SetChoosed(isChoosed);
             view.SetVisibility(true);
 
-            view.WorldPosition = itemsSpawner.GetPositionByID(ID);
-            view.SetInfo(itemsSpawner.GetItemInfoByID(ID));
+
+            itemsSpawner.onUpdatePos += SetPosition;
+            itemsSpawner.onUpdateInfo += SetInfo;
 
             marketManager.onChoosedItem += SetChoosedItem;
             marketManager.onBuyItem += OnBuy;
@@ -96,6 +92,22 @@ namespace Market
             isChoosed = false;
 
             view.SetVisibility(false);
+        }
+
+        private void SetPosition(ItemInfo info, Vector2 pos)
+        {
+            if (view.GetInfo().uniqueID != info.uniqueID)
+                return;
+
+            view.WorldPosition = pos;
+        }
+
+        private void SetInfo(IItemObserver observer, ItemInfo info)
+        {
+            if (observer != this)
+                return;
+
+            view.SetInfo(info);
         }
     }
 

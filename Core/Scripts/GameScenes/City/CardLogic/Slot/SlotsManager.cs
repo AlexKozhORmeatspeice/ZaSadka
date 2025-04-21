@@ -8,7 +8,7 @@ namespace Cards
 {
     public interface ISlotsManager
     {
-
+        ICardSlot GetSlotByID(int slotID);
     }
 
     public partial class SlotsManager : Node2D, ISlotsManager, ILateStartable
@@ -19,10 +19,17 @@ namespace Cards
 
         private List<ICardSlotObserver> observers;
 
+        public ICardSlot GetSlotByID(int slotID)
+        {
+            if(slotID > slots.Length - 1)
+                return null;
+
+            return slots[slotID];
+        }
+
         public void LateStart()
         {
             observers = new List<ICardSlotObserver>();
-            
 
             foreach (var slot in slots)
             {

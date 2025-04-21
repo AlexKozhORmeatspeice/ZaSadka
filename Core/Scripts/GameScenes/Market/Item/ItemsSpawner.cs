@@ -10,8 +10,8 @@ namespace Market
 {
     public interface IItemsSpawner
     {
-        Vector2 GetPositionByID(int id);
-        ItemInfo GetItemInfoByID(int id);
+        event Action<ItemInfo, Vector2> onUpdatePos; 
+        event Action<IItemObserver, ItemInfo> onUpdateInfo;
     }
 
     public partial class ItemsSpawner : Node2D, IItemsSpawner, ILateStartable
@@ -30,12 +30,15 @@ namespace Market
         [Inject] private IJsonCardManager jsonCardManager;
         [Inject] private IObjectResolver resolver;
 
+        public event Action<ItemInfo, Vector2> onUpdatePos;
+        public event Action<IItemObserver, ItemInfo> onUpdateInfo;
+
         public void LateStart()
         {
+            CreateCards(resolver);
+
             CreateItemData();
             CreateStartPositions();
-            
-            CreateCards(resolver);
         }
 
         private void CreateCards(IObjectResolver resolver)
@@ -50,10 +53,7 @@ namespace Market
 
                 newCardView.SetVisibility(true);
 
-                
                 ItemObserver itemObserver = new(newCardView);
-                
-                GD.Print(newInstance);
                 
                 resolver.Inject(itemObserver);
                 itemObserver.Enable();
@@ -67,11 +67,10 @@ namespace Market
 
             float startX = -itemsCount / 2 * itemDistance;
 
-            for (int i = 0; i < itemsCount; i++)
+            for (int i = 0; i < itemData.Count; i++)
             {
-                GD.Print(new Vector2(startX, startY));
-                itemPositions.Add(new Vector2(startX, startY));
-
+                onUpdatePos?.Invoke(itemData[i], new Vector2(startX, startY));
+                
                 startX += itemDistance;
             }
         }
@@ -85,8 +84,9 @@ namespace Market
                 int itemID = GD.RandRange(0, jsonCardManager.GetCardsAmount(itemType) - 1);
 
                 ItemInfo itemInfo = jsonCardManager.GetItemInfo(itemType, itemID);
-                GD.Print(itemInfo.name);
                 itemData.Add(itemInfo);
+
+                onUpdateInfo?.Invoke(itemObservers[i], itemInfo);
             }
         }
 
@@ -96,24 +96,6 @@ namespace Market
             {
                 itemObserver.Disable();
             }
-        }
-
-        Vector2 IItemsSpawner.GetPositionByID(int id)
-        {
-            if (id > itemPositions.Count - 1)
-                return Vector2.Inf;
-
-            return itemPositions[id];
-        }
-
-        ItemInfo IItemsSpawner.GetItemInfoByID(int id)
-        {
-            if (id >= itemData.Count)
-            {
-                return new ItemInfo();
-            }
-            
-            return itemData[id];
         }
     }
 }

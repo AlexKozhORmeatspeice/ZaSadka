@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cards;
 using DI;
+using Game_events;
 using Godot;
 
 namespace ZaSadka
@@ -17,6 +18,7 @@ namespace ZaSadka
 
     internal class SuspicionManager : ISuspicionManager, IStartable, IDispose
     {
+        [Inject] private IEventsManager eventsManager;
         [Inject] private IDistrictsManager districtsManager;
         public event Action<DistrictName, int> onSuspicionChange;
 
@@ -37,12 +39,18 @@ namespace ZaSadka
 
             districtsManager.onAddCard += OnAddCard;
             districtsManager.onRemoveCard += OnRemoveCard;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate += OnChoice;
         }
 
         public void Dispose()
         {
             districtsManager.onAddCard -= OnAddCard;
             districtsManager.onRemoveCard -= OnRemoveCard;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate -= OnChoice;
         }
 
         private void OnAddCard(ICardSlot slot, ICardView card)
@@ -78,6 +86,37 @@ namespace ZaSadka
         public int GetValue(DistrictName district)
         {
             return suspicionByDistrict[district];
+        }
+
+        private void OnChoice(ChoiceData data)
+        {
+            List<ActionData> actions = data.actionsData;
+
+            foreach (var action in actions)
+            {
+                if (action.type != StatType.suspicion)
+                    continue;
+
+                GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+
+                switch (action.changeStatType)
+                {
+                    case ChangeStatType.subtract:
+                        Change(data.districtName, -action.value);
+                        break;
+
+                    case ChangeStatType.equal:
+                        Change(data.districtName, action.value - suspicionByDistrict[data.districtName]);
+                        break;
+
+                    case ChangeStatType.add:
+                        Change(data.districtName, action.value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
     }
 }

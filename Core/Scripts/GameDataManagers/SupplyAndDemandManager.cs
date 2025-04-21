@@ -1,5 +1,6 @@
 using Cards;
 using DI;
+using Game_events;
 using Godot;
 using Market;
 using System;
@@ -14,16 +15,18 @@ namespace ZaSadka
 		void ChangeSupply(int value);
 		event Action<int> OnChangeSupply;
 		int GetCurrentDemand();
-        float GetNormDemand();
 
         int MaxSupply { get;  }
+        int NowSupply { get; }
         int MaxDemand { get; }
+        int NowDemand { get; }
 
         int GetProfit();
     }
 	
 	public partial class SupplyAndDemandManager : ISupplyDemandManager, IStartable, IDisposable
 	{
+        [Inject] private IEventsManager eventsManager;
 		[Inject] private IDistrictsManager districtsManager;
 
 		private static int supply = 0;
@@ -38,6 +41,10 @@ namespace ZaSadka
 
         public int MaxDemand => maxDemand;
 
+        public int NowSupply => supply;
+
+        public int NowDemand => demand;
+
         public event Action<int> OnChangeDemand;
 		public event Action<int> OnChangeSupply;
 
@@ -45,12 +52,18 @@ namespace ZaSadka
         {
 			districtsManager.onAddCard += OnAddCard;
 			districtsManager.onRemoveCard += OnRemoveCard;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate += OnChoice;
         }
 
         public void Dispose()
         {
             districtsManager.onAddCard -= OnAddCard;
             districtsManager.onRemoveCard -= OnRemoveCard;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate -= OnChoice;
         }
 
 		private void OnAddCard(ICardSlot slot, ICardView card)
@@ -94,9 +107,61 @@ namespace ZaSadka
 
         public int GetProfit() => demand > supply ? supply : demand;
 
-        public float GetNormDemand()
+        private void OnChoice(ChoiceData data)
         {
-            throw new NotImplementedException();
+            List<ActionData> actions = data.actionsData;
+
+            //change supply
+            foreach (var action in actions)
+            {
+                if (action.type != StatType.supply)
+                    continue;
+
+                GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+
+                switch (action.changeStatType)
+                {
+                    case ChangeStatType.subtract:
+                        ChangeSupply(-action.value);
+                        break;
+
+                    case ChangeStatType.equal:
+                        ChangeSupply(action.value - supply);
+                        break;
+
+                    case ChangeStatType.add:
+                        ChangeSupply(action.value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            //change demand
+            foreach (var action in actions)
+            {
+                if (action.type != StatType.demand)
+                    continue;
+
+                GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+
+                switch (action.changeStatType)
+                {
+                    case ChangeStatType.subtract:
+                        ChangeDemand(-action.value);
+                        break;
+
+                    case ChangeStatType.equal:
+                        ChangeDemand(action.value - demand);
+                        break;
+
+                    case ChangeStatType.add:
+                        ChangeDemand(action.value);
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
     }
 }

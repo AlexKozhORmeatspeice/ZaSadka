@@ -28,6 +28,7 @@ namespace City_UI
 
         public void Enable()
         {
+            ChangeValue(supplyDemandManager.NowDemand);
             supplyDemandManager.OnChangeDemand += ChangeValue;
         }
 
@@ -38,8 +39,6 @@ namespace City_UI
 
         private void ChangeValue(int value)
         {
-            GD.Print("Demand :" + value);
-
             view.SetValue((float)value / (float)supplyDemandManager.MaxDemand);
         }
     }

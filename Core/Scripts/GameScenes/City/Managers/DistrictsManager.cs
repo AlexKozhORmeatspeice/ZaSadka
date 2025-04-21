@@ -6,7 +6,9 @@ using System.Text;
 using System.Threading.Tasks;
 using Cards;
 using DI;
+using Game_events;
 using Godot;
+using Market;
 
 namespace ZaSadka
 {
@@ -23,9 +25,11 @@ namespace ZaSadka
         public DistrictData()
         {
             cardBySlot = new Dictionary<ICardSlot, ICardView>();
+            itemInfoByID = new Dictionary<int, ItemInfo>();
         }
 
         public Dictionary<ICardSlot, ICardView> cardBySlot;
+        public Dictionary<int, ItemInfo> itemInfoByID;
     }
 
     public interface IDistrictsManager
@@ -42,7 +46,11 @@ namespace ZaSadka
     //TODO: добавить проверку условий на то можно ли добавлять карту на слот и можно ли вообще ее двигать
     internal class DistrictsManager : IDistrictsManager, IStartable, IDispose
     {
+        [Inject] private IEventsManager eventsManager;
+
         [Inject] private ISlotMouseManager slotMouseManager;
+        [Inject] private ISlotsManager slotsManager;
+        [Inject] private ICardSpawner cardSpawner;
         [Inject] private ICardMouseManager cardMouseManager;
 
         private ICardView choosedCard;
@@ -65,6 +73,7 @@ namespace ZaSadka
             if (slot == null)
             {
                 DeleteCard(card);
+                UpdateItemInfoBySlot();
                 return;
             }
 
@@ -103,6 +112,15 @@ namespace ZaSadka
             data.cardBySlot[newSlot] = newCard;
 
             onAddCard?.Invoke(newSlot, card);
+            UpdateItemInfoBySlot();
+        }
+
+        private void AddCardBySlotID(ICardView card, int id)
+        {
+            ICardSlot slot = slotsManager.GetSlotByID(id);
+
+            onRemoveCard?.Invoke(slot, card);
+            AddCard(card, slot);
         }
 
         public void DeleteCard(ICardView card)
@@ -130,6 +148,8 @@ namespace ZaSadka
                 if (isGot)
                     break;
             }
+
+            UpdateItemInfoBySlot();
         }
 
         /// <summary>
@@ -137,20 +157,36 @@ namespace ZaSadka
         /// </summary>
         public void Start()
         {
-            if(cardMouseManager != null)
+            dataByDistrict[DistrictName.Outskirts].cardBySlot.Clear();
+            dataByDistrict[DistrictName.OldDocks].cardBySlot.Clear();
+            dataByDistrict[DistrictName.HistoricalCenter].cardBySlot.Clear();
+
+            if (cardSpawner != null)
+                cardSpawner.onUpdateCardInSlotID += AddCardBySlotID;
+
+            if (cardMouseManager != null)
                 cardMouseManager.onPointerDown += SetCard;
 
             if (slotMouseManager != null)
                 slotMouseManager.onPointerUp += CheckInSlot;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate += OnChoice;
         }
 
         public void Dispose()
         {
+            if (cardSpawner != null)
+                cardSpawner.onUpdateCardInSlotID -= AddCardBySlotID;
+         
             if (cardMouseManager != null)
                 cardMouseManager.onPointerDown -= SetCard;
 
             if (slotMouseManager != null)
                 slotMouseManager.onPointerUp -= CheckInSlot;
+
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate -= OnChoice;
         }
 
         private void CheckInSlot(ICardSlot slot)
@@ -217,9 +253,70 @@ namespace ZaSadka
             }
         }
 
+        private void UpdateItemInfoBySlot()
+        {
+            foreach(var data in dataByDistrict.Values)
+            {
+                foreach(var  slot in data.cardBySlot.Keys)
+                {
+                    ICardView card = data.cardBySlot[slot];
+                    if(card != null)
+                    {
+                        data.itemInfoByID[slot.GetID()] = card.GetItemInfo();
+                    }
+                    else
+                    {
+                        ItemInfo info = new ItemInfo();
+                        info.uniqueID = -100;
+
+                        data.itemInfoByID[slot.GetID()] = info;
+                    }
+
+                }
+            }
+        }
+
         DistrictData IDistrictsManager.GetData(DistrictName name)
         {
             return dataByDistrict[name];
+        }
+
+        private void OnChoice(ChoiceData data)
+        {
+            List<ActionData> actions = data.actionsData;
+            DistrictData districtData = dataByDistrict[data.districtName];
+            Dictionary<int, ItemInfo> items = districtData.itemInfoByID;
+
+
+            foreach (var action in actions)
+            {
+                int count = 0;
+                foreach (int id in items.Keys)
+                {
+                    if (count >= action.value)
+                        break;
+
+                    ItemInfo item = items[id];
+                    
+                    if (action.type != StatType.card && action.type.ToString().ToLower() != item.type.ToString().ToLower())
+                        continue;
+
+                    GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+
+                    switch (action.changeStatType)
+                    {
+                        case ChangeStatType.randDestroy:
+                            dataByDistrict[data.districtName].itemInfoByID.Remove(id);
+                            count++;
+                            break;
+                        default:
+                            break;
+                    }
+
+                }
+                
+            }
+
         }
     }
 }

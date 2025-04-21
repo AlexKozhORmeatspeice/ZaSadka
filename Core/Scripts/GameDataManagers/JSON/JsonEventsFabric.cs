@@ -182,7 +182,7 @@ namespace Game_events
                     foreach (var cardSlot in data.cardBySlot.Values)
                     {
                         ItemInfo info = cardSlot.GetItemInfo();
-                        if (info.type == ItemType.Unit)
+                        if (info.type == ItemType.unit)
                         {
                             values.Add(info.ID);
                         }
@@ -195,7 +195,7 @@ namespace Game_events
                     foreach (var cardSlot in data.cardBySlot.Values)
                     {
                         ItemInfo info = cardSlot.GetItemInfo();
-                        if (info.type == ItemType.Building)
+                        if (info.type == ItemType.building)
                         {
                             values.Add(info.ID);
                         }

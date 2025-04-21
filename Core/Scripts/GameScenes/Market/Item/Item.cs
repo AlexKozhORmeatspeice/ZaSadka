@@ -7,9 +7,9 @@ namespace Market
 {
     public enum ItemType
     {
-        Building = 0,
-        Unit,
-        District
+        building = 0,
+        unit,
+        district
     }
 
     public interface IItem

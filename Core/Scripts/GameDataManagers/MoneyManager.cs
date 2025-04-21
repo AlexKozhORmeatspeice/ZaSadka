@@ -1,6 +1,8 @@
 using DI;
+using Game_events;
 using Godot;
 using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
 
 
@@ -10,16 +12,18 @@ namespace ZaSadka
     {
         event Action<int> onMoneyChange;
         bool ChangeMoney(int value);
-        int StartMoney { get; }
+        int NowMoney { get; }
+       
     }
 
-    public partial class MoneyManager : IMoneyManager, IStartable
+    public partial class MoneyManager : IMoneyManager, IStartable, IDispose
     {
-        private const int startMoney = 30;
-        private static int nowMoney;
-        private static bool isInit = false;
+        [Inject] private IEventsManager eventsManager;
 
-        public int StartMoney => startMoney;
+        private const int startMoney = 30;
+        private static int nowMoney = startMoney;
+        
+        public int NowMoney => nowMoney;
 
         public event Action<int> onMoneyChange;
 
@@ -37,8 +41,45 @@ namespace ZaSadka
 
         public void Start()
         {
-            if(!isInit)
-                nowMoney = startMoney;
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate += OnChoice;
+        }
+
+        public void Dispose()
+        {
+            if (eventsManager != null)
+                eventsManager.onChoiceActivate += OnChoice;
+        }
+
+        private void OnChoice(ChoiceData data)
+        {
+            List<ActionData> actions = data.actionsData;
+
+            foreach (var action in actions)
+            {
+                if (action.type != StatType.money)
+                    continue;
+
+                GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+
+                switch (action.changeStatType)
+                {
+                    case ChangeStatType.subtract:
+                        ChangeMoney(-action.value);
+                        break;
+
+                    case ChangeStatType.equal:
+                        ChangeMoney(action.value - nowMoney);
+                        break;
+
+                    case ChangeStatType.add:
+                        ChangeMoney(action.value);
+                        break;
+                    default:
+                        break;
+                }
+            }
+
         }
     }
 }

@@ -18,6 +18,7 @@ namespace Cards
         string InfluenceText { set; }
         string SusText { set; }
 
+        int GetID();
     }
 
     public partial class CardSlot : Node2D, ICardSlot
@@ -34,6 +35,9 @@ namespace Cards
         private DistrictInfo districtInfo;
 
         private ICardView cardOnSlot;
+
+        private int ID;
+        private static int g_MAXID = 0;
 
         public Vector2 WorldPosition 
         {
@@ -70,9 +74,20 @@ namespace Cards
 
         public override void _Ready()
         {
-            //
+            ID = g_MAXID;
+            
+            g_MAXID++;
         }
 
+        public override void _ExitTree()
+        {
+            g_MAXID = 0;
+        }
+
+        public int GetID()
+        {
+            return ID;
+        }
     }
 }
 
