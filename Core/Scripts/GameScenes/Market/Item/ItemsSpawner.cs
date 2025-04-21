@@ -10,14 +10,14 @@ namespace Market
 {
     public interface IItemsSpawner
     {
-        Vector2 GetPositionByID(int id);
-        ItemInfo GetItemInfoByID(int id);
+        event Action<ItemInfo, Vector2> onUpdatePos; 
+        event Action<IItemObserver, ItemInfo> onUpdateInfo;
     }
 
     public partial class ItemsSpawner : Node2D, IItemsSpawner, ILateStartable
     {
         [Export] private int itemsCount;
-        [Export] private PackedScene[] packedScenes;
+        [Export] private string cardViewPath;
         
         [Export] private float startY;
         [Export] private float itemDistance;
@@ -30,11 +30,16 @@ namespace Market
         [Inject] private IJsonCardManager jsonCardManager;
         [Inject] private IObjectResolver resolver;
 
-        public override void _Ready()
+        public event Action<ItemInfo, Vector2> onUpdatePos;
+        public event Action<IItemObserver, ItemInfo> onUpdateInfo;
+
+        public void LateStart()
         {
+            CreateCards(resolver);
+
+            CreateItemData();
             CreateStartPositions();
         }
-
 
         private void CreateCards(IObjectResolver resolver)
         {
@@ -42,13 +47,14 @@ namespace Market
 
             for (int i = 0; i < itemsCount; i++)
             {
-                int randomItemInd = GD.RandRange(0, packedScenes.Length - 1);
-                
-                var newInstance = packedScenes[randomItemInd].Instantiate();
+                var newInstance = GD.Load<PackedScene>(cardViewPath).Instantiate();
                 AddChild(newInstance);
                 IItem newCardView = (IItem)newInstance;
 
+                newCardView.SetVisibility(true);
+
                 ItemObserver itemObserver = new(newCardView);
+                
                 resolver.Inject(itemObserver);
                 itemObserver.Enable();
                 itemObservers.Add(itemObserver);
@@ -61,10 +67,10 @@ namespace Market
 
             float startX = -itemsCount / 2 * itemDistance;
 
-            for (int i = 0; i < itemsCount; i++)
+            for (int i = 0; i < itemData.Count; i++)
             {
-                itemPositions.Add(new Vector2(startX, startY));
-
+                onUpdatePos?.Invoke(itemData[i], new Vector2(startX, startY));
+                
                 startX += itemDistance;
             }
         }
@@ -76,7 +82,11 @@ namespace Market
             {
                 ItemType itemType = (ItemType)GD.RandRange(0, 1);
                 int itemID = GD.RandRange(0, jsonCardManager.GetCardsAmount(itemType) - 1);
-                itemData.Add(jsonCardManager.GetItemInfo(itemType, itemID));
+
+                ItemInfo itemInfo = jsonCardManager.GetItemInfo(itemType, itemID);
+                itemData.Add(itemInfo);
+
+                onUpdateInfo?.Invoke(itemObservers[i], itemInfo);
             }
         }
 
@@ -86,30 +96,6 @@ namespace Market
             {
                 itemObserver.Disable();
             }
-        }
-
-        Vector2 IItemsSpawner.GetPositionByID(int id)
-        {
-            if (id > itemPositions.Count - 1)
-                return Vector2.Inf;
-
-            return itemPositions[id];
-        }
-
-        ItemInfo IItemsSpawner.GetItemInfoByID(int id)
-        {
-            if (id >= itemData.Count)
-            {
-                return new ItemInfo();
-            }
-            
-            return itemData[id];
-        }
-        public void LateStart()
-        {
-            CreateItemData();
-
-            CreateCards(resolver);
         }
     }
 }

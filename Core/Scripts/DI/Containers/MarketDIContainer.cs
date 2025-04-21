@@ -19,8 +19,8 @@ namespace DI
         [Export] private ItemMouseManager itemMouseManager;
         [Export] private MarketManager marketManager;
         [Export] private MarketUI marketUI;
-        [Export] private BuyItemButton buyItemButton;
-        [Export] private GoToTownButton goToTownButton;
+        [Export] private TextButton buyItemButton;
+        [Export] private NextSceneButton goToTownButton;
         [Export] private MoneyText moneyText;
         override protected void RegisterObjects()
         {
@@ -37,8 +37,8 @@ namespace DI
             
             builder.Register<IMoneyText>(moneyText);
 
-            builder.Register<IBuyItemButton>(buyItemButton);
-            builder.Register<IGoToTownButton>(goToTownButton);
+            builder.Register<ITextButton>(buyItemButton);
+            builder.Register<INextSceneButton>(goToTownButton);
 
             builder.Register<IItem>(new Item());
         }

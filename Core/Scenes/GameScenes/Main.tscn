@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=12 format=3 uid="uid://c11wyfu81t43c"]
 
 [ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
@@ -8,6 +8,9 @@
 [ext_resource type="PackedScene" uid="uid://c50v1ucr061bo" path="res://Core/Scenes/Cards/Managers/card_mouse_manager.tscn" id="4_h5vl4"]
 [ext_resource type="PackedScene" uid="uid://cnkrvk0unotil" path="res://Core/Scenes/Cards/Managers/slot_mouse_manager.tscn" id="6_28gni"]
 [ext_resource type="PackedScene" uid="uid://cip7rjiwfv6il" path="res://Core/Scenes/Cards/card_slot.tscn" id="6_tk1h4"]
+[ext_resource type="Script" uid="uid://nc70a3ac1ueo" path="res://Core/Scripts/GameScenes/City/UI/BarView.cs" id="9_e7b4r"]
+[ext_resource type="Script" uid="uid://cwkvtvpi85d5g" path="res://Core/Scripts/GameScenes/City/UI/CityUI.cs" id="9_h5xws"]
+[ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="10_kqv73"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -22,7 +25,7 @@ cardViewScene = ExtResource("2_mycjp")
 
 [node name="Slots" type="Node2D" parent="CardSpawner" node_paths=PackedStringArray("slots")]
 script = ExtResource("3_ydenv")
-slots = []
+slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8")]
 
 [node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-458, -204)
@@ -32,21 +35,26 @@ position = Vector2(-235, -204)
 
 [node name="CardSlot3" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-9, -204)
+districtName = 1
 
 [node name="CardSlot4" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-10, 20)
+districtName = 1
 
 [node name="CardSlot5" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-236, 21)
+districtName = 1
 
 [node name="CardSlot6" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-454, 21)
 
 [node name="CardSlot7" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(208, 18)
+districtName = 2
 
 [node name="CardSlot8" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(203, -206)
+districtName = 2
 
 [node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
 visible = false
@@ -60,27 +68,19 @@ script = null
 
 [node name="SlotMouseManager" parent="Managers" instance=ExtResource("6_28gni")]
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager")]
-script = ExtResource("3_02ccp")
-slotMouseManager = NodePath("../Managers/SlotMouseManager")
-cardSpawner = NodePath("../CardSpawner")
-mouseManager = NodePath("../Managers/MouseManager")
-cardMouseManager = NodePath("../Managers/CardMouseManager")
-
-[node name="UI" type="Node2D" parent="."]
-
-[node name="<btn> EndDay" type="Button" parent="UI"]
-offset_left = 432.0
-offset_top = 288.0
-offset_right = 571.0
-offset_bottom = 319.0
-text = "Закончить день"
+[node name="UI" type="Node2D" parent="." node_paths=PackedStringArray("supplyBar", "demandBar", "nextSceneButton")]
+script = ExtResource("9_h5xws")
+supplyBar = NodePath("<bar> Supply")
+demandBar = NodePath("<bar> Demand")
+nextSceneButton = NodePath("<btn> EndDay")
 
 [node name="<bar> Supply" type="ProgressBar" parent="UI"]
 offset_left = 350.0
 offset_top = -137.0
 offset_right = 557.0
 offset_bottom = -110.0
+max_value = 1.0
+script = ExtResource("9_e7b4r")
 
 [node name="<txt> Title" type="Label" parent="UI/<bar> Supply"]
 layout_mode = 0
@@ -94,6 +94,8 @@ offset_left = 350.0
 offset_top = -82.0
 offset_right = 558.0
 offset_bottom = -55.0
+max_value = 1.0
+script = ExtResource("9_e7b4r")
 
 [node name="<txt> Title" type="Label" parent="UI/<bar> Demand"]
 layout_mode = 0
@@ -101,3 +103,16 @@ offset_top = -26.0
 offset_right = 40.0
 offset_bottom = -3.0
 text = "Предложение"
+
+[node name="<btn> EndDay" parent="UI" instance=ExtResource("10_kqv73")]
+position = Vector2(-108, -479)
+text = "Закончить день"
+
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager", "slotsManager", "cityUI")]
+script = ExtResource("3_02ccp")
+slotMouseManager = NodePath("../Managers/SlotMouseManager")
+cardSpawner = NodePath("../CardSpawner")
+mouseManager = NodePath("../Managers/MouseManager")
+cardMouseManager = NodePath("../Managers/CardMouseManager")
+slotsManager = NodePath("../CardSpawner/Slots")
+cityUI = NodePath("../UI")

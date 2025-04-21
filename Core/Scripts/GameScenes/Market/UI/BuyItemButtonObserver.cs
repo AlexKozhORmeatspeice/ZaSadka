@@ -13,8 +13,8 @@ namespace Market
     public partial class BuyItemButtonObserver : Node, IBuyItemButtonObserver
     {
         [Inject] private IMarketManager marketManager;
-        private IBuyItemButton view;
-        public BuyItemButtonObserver(IBuyItemButton view)
+        private ITextButton view;
+        public BuyItemButtonObserver(ITextButton view)
         {
             this.view = view;
         }

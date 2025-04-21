@@ -23,6 +23,7 @@ namespace ZaSadka
 		public ItemInfo() {}
 		public int price;
 		public ItemType type;
+		public int ID = 0;
 		public int uniqueID = 0;
 		public string name = "";
 		public int supply = 0;
@@ -77,7 +78,8 @@ namespace ZaSadka
 			info.type = type;
 			info.uniqueID = ID;
 			string itemType = type == ItemType.Building ? "buildings" : "units";
-			var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
+
+      var neededCard = cards[itemType].AsGodotArray()[id].AsGodotDictionary();
 
 			if(neededCard.ContainsKey("price"))
 			{
@@ -88,10 +90,11 @@ namespace ZaSadka
                 info.name = neededCard["name"].AsString();
 			}
 
-            if (neededCard.ContainsKey("sprite_id"))
+      if (neededCard.ContainsKey("sprite_id"))
 			{
 				info.spriteId = neededCard["sprite_id"].AsInt16();
-            }
+				info.ID = neededCard["sprite_id"].AsInt16();
+      }
 			
 			if (neededCard.ContainsKey("supply"))
 			{
@@ -150,7 +153,7 @@ namespace ZaSadka
 		}
         int IJsonCardManager.GetCardsAmount(ItemType type)
         {
-			string cardType = type == ItemType.Building ? "buildings" : "units";
+			string cardType = type == ItemType.building ? "buildings" : "units";
 			return cards[cardType].AsGodotArray().ToArray().Length;
         }
 	}

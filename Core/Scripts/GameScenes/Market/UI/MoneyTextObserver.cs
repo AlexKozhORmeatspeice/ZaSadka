@@ -24,7 +24,7 @@ namespace Market
 
         public void Enable()
         {
-            view.MoneyText = GetLableText(moneyManager.StartMoney);
+            view.MoneyText = GetLableText(moneyManager.NowMoney);
 
             moneyManager.onMoneyChange += OnChangeMoney;
         }

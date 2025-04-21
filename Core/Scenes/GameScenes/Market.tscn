@@ -1,15 +1,13 @@
-[gd_scene load_steps=12 format=3 uid="uid://82fnuqgf23br"]
+[gd_scene load_steps=10 format=3 uid="uid://82fnuqgf23br"]
 
 [ext_resource type="Script" uid="uid://4r41hoj2bpaj" path="res://Core/Scripts/GameScenes/Market/MarketUI.cs" id="1_4j3vf"]
 [ext_resource type="Script" uid="uid://do3eugcvbho0h" path="res://Core/Scripts/GameScenes/Market/Item/ItemsSpawner.cs" id="1_jw0pw"]
-[ext_resource type="PackedScene" uid="uid://cj4s1ceq8kdpy" path="res://Core/Scenes/Market/market_item.tscn" id="2_fm7oo"]
-[ext_resource type="Script" uid="uid://cpl5xaqqthog5" path="res://Core/Scripts/GameScenes/Market/UI/GoToTownButton.cs" id="3_ct4m4"]
+[ext_resource type="PackedScene" uid="uid://yb1otjqebmry" path="res://Core/Scenes/UI/TextButton.tscn" id="2_ct4m4"]
 [ext_resource type="Script" uid="uid://igi4vr1iu33g" path="res://Core/Scripts/DI/Containers/MarketDIContainer.cs" id="4_0v2d1"]
 [ext_resource type="Script" uid="uid://bg6xhuv2ifx21" path="res://Core/Scripts/GameScenes/Market/UI/MoneyText.cs" id="4_226ee"]
-[ext_resource type="PackedScene" uid="uid://c11wyfu81t43c" path="res://Core/Scenes/GameScenes/Main.tscn" id="4_a4wfx"]
+[ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="5_2yurv"]
 [ext_resource type="PackedScene" uid="uid://bmvtjotkurujb" path="res://Core/Scenes/Market/Managers/item_mouse_manager.tscn" id="5_p083n"]
 [ext_resource type="PackedScene" uid="uid://cqcyjivlj00y1" path="res://Core/Scenes/Market/Managers/market_manager.tscn" id="6_0v2d1"]
-[ext_resource type="Script" uid="uid://breb361l5sp3p" path="res://Core/Scripts/GameScenes/Market/UI/BuyItemButton.cs" id="9_2yurv"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="10_ct4m4"]
 
 [node name="CardMarket" type="Node2D"]
@@ -18,27 +16,6 @@
 
 [node name="MarketUI" type="Node2D" parent="."]
 script = ExtResource("1_4j3vf")
-
-[node name="<btn> Buy" type="Button" parent="MarketUI" node_paths=PackedStringArray("button")]
-offset_left = -361.0
-offset_top = 146.0
-offset_right = 109.0
-offset_bottom = 238.0
-scale = Vector2(0.683825, 0.806739)
-text = "Купить"
-script = ExtResource("9_2yurv")
-button = NodePath(".")
-
-[node name="<btn> GoToTown" type="Button" parent="MarketUI" node_paths=PackedStringArray("button")]
-offset_left = 35.0
-offset_top = 146.0
-offset_right = 505.0
-offset_bottom = 238.0
-scale = Vector2(0.683825, 0.806739)
-text = "В город"
-script = ExtResource("3_ct4m4")
-nextScene = ExtResource("4_a4wfx")
-button = NodePath(".")
 
 [node name="<txt> MoneyText" type="Label" parent="MarketUI" node_paths=PackedStringArray("label")]
 offset_left = 318.0
@@ -56,9 +33,18 @@ label = NodePath(".")
 [node name="ItemsSpawner" type="Node2D" parent="MarketUI"]
 script = ExtResource("1_jw0pw")
 itemsCount = 3
-packedScenes = Array[PackedScene]([ExtResource("2_fm7oo")])
+cardViewPath = "res://Core/Scenes/Market/market_item.tscn"
 startY = -50.0
 itemDistance = 250.0
+
+[node name="TextButton" parent="MarketUI" instance=ExtResource("2_ct4m4")]
+position = Vector2(-296, 113)
+text = "Купить"
+
+[node name="NextSceneButton" parent="MarketUI" instance=ExtResource("5_2yurv")]
+position = Vector2(50, 111)
+nextScene = "res://Core/Scenes/GameScenes/Main.tscn"
+text = "В город"
 
 [node name="Managers" type="Node2D" parent="."]
 
@@ -75,6 +61,6 @@ pointer = NodePath("../Managers/MouseManager")
 itemMouseManager = NodePath("../Managers/ItemMouseManager")
 marketManager = NodePath("../Managers/MarketManager")
 marketUI = NodePath("../MarketUI")
-buyItemButton = NodePath("../MarketUI/<btn> Buy")
-goToTownButton = NodePath("../MarketUI/<btn> GoToTown")
+buyItemButton = NodePath("../MarketUI/TextButton")
+goToTownButton = NodePath("../MarketUI/NextSceneButton")
 moneyText = NodePath("../MarketUI/<txt> MoneyText")
