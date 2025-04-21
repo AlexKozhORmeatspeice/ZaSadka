@@ -19,7 +19,7 @@ namespace Game_events
         [Export] private MouseManager mouseManager;
         [Export] private EventsUI eventsUI;
         [Export] private EndObserver endObserver;
-
+        override protected string name {get => "Events DI";}
         override protected void RegisterObjects()
         {
             builder.Register<IDistrictsManager>(new DistrictsManager());

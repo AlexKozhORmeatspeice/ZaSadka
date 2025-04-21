@@ -22,6 +22,7 @@ namespace DI
         [Export] private TextButton buyItemButton;
         [Export] private NextSceneButton goToTownButton;
         [Export] private MoneyText moneyText;
+        override protected string name {get => "Market DI";}
         override protected void RegisterObjects()
         {
             builder.Register<IJsonCardManager>(new JsonCardManager());
