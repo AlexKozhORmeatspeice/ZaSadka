@@ -21,6 +21,8 @@ namespace Cards
     {
         [Inject] private IJsonDistrictManager districtJsonManager;
         [Inject] private IDistrictsManager districtsManager;
+        [Inject] private ISuspicionManager suspicionManager;
+        [Inject] private IInfluenceManager influenceManager;
 
         private DistrictInfo info;
 
@@ -44,12 +46,18 @@ namespace Cards
             districtsManager.onAddCard += OnAddCard;
             districtsManager.onRemoveCard += OnRemoveCard;
 
+            suspicionManager.onSuspicionChange += onSuspicionChange;
+            influenceManager.onInfluenceChange += onInfluenceChange;
+
             view._DistrictInfo = info;
         }
 
         public void Disable()
         {
-
+            districtsManager.onAddCard -= OnAddCard;
+            districtsManager.onRemoveCard -= OnRemoveCard;
+            suspicionManager.onSuspicionChange -= onSuspicionChange;
+            influenceManager.onInfluenceChange -= onInfluenceChange;
         }
 
         private DistrictInfo LoadInfo()
@@ -66,10 +74,10 @@ namespace Cards
 
             cardOnSlot = card;
 
-            view.SupplyText = (info.supply + card.GetItemInfo().supply).ToString();
-            view.DemandText = (info.demand + card.GetItemInfo().demand).ToString();
-            view.InfluenceText = (info.influence + card.GetItemInfo().influence).ToString();
-            view.SusText = (info.suspicion + card.GetItemInfo().suspicion).ToString();
+            // view.SupplyText = (info.supply + card.GetItemInfo().supply).ToString();
+            // view.DemandText = (info.demand + card.GetItemInfo().demand).ToString();
+            // view.InfluenceText = (info.influence + card.GetItemInfo().influence).ToString();
+            // view.SusText = (info.suspicion + card.GetItemInfo().suspicion).ToString();
         }
 
         private void OnRemoveCard(ICardSlot slot, ICardView card)
@@ -77,7 +85,26 @@ namespace Cards
             if (slot != view)
                 return;
 
-            SetBaseInfo();
+            // SetBaseInfo();
+        }
+
+        private void onSuspicionChange(DistrictName districtName, int newSuspicion)
+        {
+            if (view._DistrictName != districtName)
+            {
+                return;
+            }
+            newSuspicion = Math.Clamp(newSuspicion, 0, 10);
+            view.SusText = newSuspicion.ToString();
+        }
+        private void onInfluenceChange(DistrictName districtName, int newInfluence)
+        {
+            if (view._DistrictName != districtName)
+            {
+                return;
+            }
+            newInfluence = Math.Clamp(newInfluence, 0, 10);
+            view.InfluenceText = newInfluence.ToString();
         }
 
         private void SetBaseInfo()
