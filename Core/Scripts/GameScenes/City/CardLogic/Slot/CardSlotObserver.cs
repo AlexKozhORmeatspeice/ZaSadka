@@ -43,13 +43,27 @@ namespace Cards
         {
             info = LoadInfo();
 
+            view._DistrictInfo = info;
+
+            int currentSuspicion = suspicionManager.GetValue(view._DistrictName);
+            if (currentSuspicion == int.MinValue)
+            {
+                currentSuspicion = 0;
+            }
+            view.SusText = currentSuspicion.ToString();
+
+            int currentInfluence = influenceManager.GetValue(view._DistrictName);
+            if (currentInfluence == int.MinValue)
+            {
+                currentInfluence = 0;
+            }
+            view.InfluenceText = currentInfluence.ToString();
+
             districtsManager.onAddCard += OnAddCard;
             districtsManager.onRemoveCard += OnRemoveCard;
 
             suspicionManager.onSuspicionChange += onSuspicionChange;
             influenceManager.onInfluenceChange += onInfluenceChange;
-
-            view._DistrictInfo = info;
         }
 
         public void Disable()
