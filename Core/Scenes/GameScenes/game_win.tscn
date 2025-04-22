@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwoc7pi0f8ky5"]
+
+[ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="1_p8ibb"]
+[ext_resource type="Script" uid="uid://cel55goly56ec" path="res://Core/Scripts/GameScenes/GameWin/GameWinDi.cs" id="3_8bybl"]
+[ext_resource type="Script" uid="uid://da3vgtuxjxubd" path="res://Core/Scripts/GameScenes/GameWin/GameWinUi.cs" id="3_odpal"]
+
+[node name="GameWin" type="Node2D"]
+
+[node name="WinText" type="Label" parent="."]
+offset_left = -154.0
+offset_top = -12.0
+offset_right = 154.0
+offset_bottom = 11.0
+text = "ПОЗДРАВЛЯЕМ ЕБАТЬ ТЫ ЭТО СДЕЛАЛ"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="NextSceneButton" parent="." instance=ExtResource("1_p8ibb")]
+position = Vector2(-198, 61)
+nextScene = "res://Core/Scenes/MainMenu/MainMenuScene.tscn"
+text = "Вернуться в главное меню"
+
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("gameWinUI")]
+script = ExtResource("3_8bybl")
+gameWinUI = NodePath("../GameWinUI")
+
+[node name="GameWinUI" type="Node2D" parent="." node_paths=PackedStringArray("nextSceneButton")]
+script = ExtResource("3_odpal")
+nextSceneButton = NodePath("../NextSceneButton")

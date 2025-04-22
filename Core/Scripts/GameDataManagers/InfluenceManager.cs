@@ -15,6 +15,7 @@ namespace ZaSadka
         event Action<DistrictName, int> onInfluenceChange;
 
         int GetValue(DistrictName districtName);
+        bool CheckWinningCondition();
     }
 
     internal class InfluenceManager : IInfluenceManager, IStartable, IDispose
@@ -117,6 +118,17 @@ namespace ZaSadka
                 }
             }
 
+        }
+        public bool CheckWinningCondition()
+        {
+            foreach (var districtInfl in influenceByDistrict.Values)
+            {
+                if (districtInfl < 3)
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }

@@ -43,21 +43,20 @@ namespace Cards
         {
             info = LoadInfo();
 
-            view._DistrictInfo = info;
 
             int currentSuspicion = suspicionManager.GetValue(view._DistrictName);
-            if (currentSuspicion == int.MinValue)
+            if (currentSuspicion != int.MinValue)
             {
-                currentSuspicion = 0;
+                info.suspicion = currentSuspicion;
             }
-            view.SusText = currentSuspicion.ToString();
 
             int currentInfluence = influenceManager.GetValue(view._DistrictName);
-            if (currentInfluence == int.MinValue)
+            if (currentInfluence != int.MinValue)
             {
-                currentInfluence = 0;
+                info.influence = currentInfluence;
             }
-            view.InfluenceText = currentInfluence.ToString();
+
+            view._DistrictInfo = info;
 
             districtsManager.onAddCard += OnAddCard;
 
