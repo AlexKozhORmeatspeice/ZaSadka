@@ -9,6 +9,7 @@ namespace Market
         event Action onClick;
 
         string GetNextScene();
+        string GetFinalScene();
 
         SceneTree GetTree();
     }
@@ -16,6 +17,7 @@ namespace Market
     public partial class NextSceneButton : Node2D, INextSceneButton
     {
         [Export] private string nextScene = "res://Core/Scenes/GameScenes/EventsWindow.tscn"; 
+        [Export] private string finalScene;
         [Export] private Button button;
         [Export] private string text;
 
@@ -34,6 +36,10 @@ namespace Market
         public string GetNextScene()
         {
             return nextScene;
+        }
+        public string GetFinalScene()
+        {
+            return finalScene;
         }
 
         public override void _Ready()

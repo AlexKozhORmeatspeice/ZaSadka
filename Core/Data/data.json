@@ -125,7 +125,7 @@
 			{
 				"id": "1",
 				"name": "Внутренне расследование",
-				"condition": "sus > 5",
+				"condition": "sus > 5 & units > 0",
 				"choice_yes": "2",
 				"choice_no": "3"
 			},

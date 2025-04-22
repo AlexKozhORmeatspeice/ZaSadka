@@ -63,6 +63,9 @@ namespace Cards
 
                 SlotName = districtInfo.name;
 
+                districtInfo.influence = Math.Clamp(districtInfo.influence, 0, 10);
+                districtInfo.suspicion = Math.Clamp(districtInfo.influence, 0, 10);
+
                 SupplyText = districtInfo.supply.ToString();
                 DemandText = districtInfo.demand.ToString();
                 InfluenceText = districtInfo.influence.ToString();

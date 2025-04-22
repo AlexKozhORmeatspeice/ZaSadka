@@ -106,6 +106,7 @@ text = "Предложение"
 
 [node name="<btn> EndDay" parent="UI" instance=ExtResource("10_kqv73")]
 position = Vector2(-108, -479)
+finalScene = "res://Core/Scenes/GameScenes/game_win.tscn"
 text = "Закончить день"
 
 [node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager", "slotsManager", "cityUI")]

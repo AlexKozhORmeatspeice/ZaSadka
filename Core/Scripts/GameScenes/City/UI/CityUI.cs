@@ -8,7 +8,7 @@ namespace City_UI
 
     public interface ICityUI
     {
-
+        event Action OnDayEnded;
     }
     public partial class CityUI : Node2D, ICityUI, IStartable, IDispose
     {
@@ -19,6 +19,7 @@ namespace City_UI
         private ISupplyObserver supplyObserver;
         private IDemandObserver demandObserver;
         private IEndDayButtonObserver endDayButtonObserver;
+        public event Action OnDayEnded;
 
         [Inject]
         public void Construct(IObjectResolver resolver)
@@ -33,6 +34,12 @@ namespace City_UI
             supplyObserver.Enable();
             demandObserver.Enable();
             endDayButtonObserver.Enable();
+
+            endDayButtonObserver.OnDayEnded += OnEndedDay;
+        }
+        private void OnEndedDay()
+        {
+            OnDayEnded?.Invoke();
         }
 
         public void Dispose()
@@ -40,6 +47,8 @@ namespace City_UI
             supplyObserver.Disable();
             demandObserver.Disable();
             endDayButtonObserver.Disable();
+
+            endDayButtonObserver.OnDayEnded -= OnEndedDay;
         }
     }
 
