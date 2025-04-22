@@ -20,7 +20,7 @@ namespace ZaSadka
     public partial class MoneyManager : IMoneyManager, IStartable, IDispose
     {
         [Inject] private IEventsManager eventsManager;
-        [Inject] private IEndDayButtonObserver endDayButtonObserver;
+        [Inject] private ICityUI cityUI;
         [Inject] private ISupplyDemandManager supplyDemandManager;
 
         private const int startMoney = 30;
@@ -47,9 +47,10 @@ namespace ZaSadka
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
             
-            if (endDayButtonObserver != null)
+            if (cityUI != null)
             {
-                endDayButtonObserver.OnDayEnded += GetDayPaycheck;
+                GD.Print("Listening endDayBtnObserver");
+                cityUI.OnDayEnded += GetDayPaycheck;
             }
         }
 
@@ -57,14 +58,15 @@ namespace ZaSadka
         {
             if (eventsManager != null)
                 eventsManager.onChoiceActivate -= OnChoice;
-            if (endDayButtonObserver != null)
+            if (cityUI != null)
             {
-                endDayButtonObserver.OnDayEnded -= GetDayPaycheck;
+                cityUI.OnDayEnded -= GetDayPaycheck;
             }
         }
 
         private void GetDayPaycheck()
         {
+            GD.Print("Daily paycheck");
             ChangeMoney(supplyDemandManager.GetProfit());
         }
 
