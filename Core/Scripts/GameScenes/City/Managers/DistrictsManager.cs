@@ -62,13 +62,19 @@ namespace ZaSadka
             {DistrictName.HistoricalCenter, new DistrictData()},
             {DistrictName.Outskirts, new DistrictData()}
         };
+        private bool IsSlotDisabled(ICardSlot slot)
+        {
+            var cardBySlot = dataByDistrict[slot._DistrictName].cardBySlot;
+            return cardBySlot.ContainsKey(slot) && !cardBySlot[slot].isEnabled;
+        }
 
         public void AddCard(ICardView card, ICardSlot slot)
         {
             if (card == null)
                 return; 
 
-            if (slot == null)
+
+            if (slot == null || IsSlotDisabled(slot))
             {
                 DeleteCard(card);
                 UpdateItemInfoBySlot();
