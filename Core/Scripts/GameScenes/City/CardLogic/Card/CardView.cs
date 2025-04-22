@@ -13,8 +13,9 @@ namespace Cards
         void SetCardSprite(Texture2D texture);
         void ChangeScale(float t01);
         ItemInfo GetItemInfo();
-        void SetInfo(ItemInfo info);
+        void SetInfo(ItemInfo info, bool enabled = true);
         void Delete();
+        bool isEnabled {get;}
     }
 
     public partial class CardView : Node2D, ICardView
@@ -31,6 +32,7 @@ namespace Cards
         [Export] private Label susText;
 
         private ItemInfo info;
+        private bool isEnabled = true;
 
         public Vector2 WorldPosition 
         {
@@ -52,6 +54,9 @@ namespace Cards
 			}
 		}
 
+        bool ICardView.isEnabled => isEnabled;
+
+
         public void SetCardSprite(Texture2D texture)
 		{
 			sprite.Texture = texture;
@@ -68,7 +73,7 @@ namespace Cards
 			sprite.Scale = newScale;
 		}
 
-        public void SetInfo(ItemInfo info)
+        public void SetInfo(ItemInfo info, bool enabled = true)
         {
             this.info = info;
             name.Text = info.name;
@@ -116,6 +121,10 @@ namespace Cards
             int rectY = info.type == ItemType.building ? 0 : 1;
             int rectX = info.spriteId;
             sprite.RegionRect = new Rect2(width*rectX, height*rectY, width, height);
+            
+            //disabling cards visually
+            sprite.SetInstanceShaderParameter("enabled", enabled);
+            isEnabled = enabled;
         }
 
         public ItemInfo GetItemInfo()
@@ -125,7 +134,7 @@ namespace Cards
 
         public void Delete()
         {
-            throw new NotImplementedException();
+            GetTree().QueueDelete(this);
         }
     }
 

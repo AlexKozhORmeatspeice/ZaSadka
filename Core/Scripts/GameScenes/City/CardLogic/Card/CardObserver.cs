@@ -35,13 +35,17 @@ namespace Cards
         private ICardView cardView;
         private ICardSlot nowSlot;
         private ItemInfo itemInfo;
+        private bool isEnabled = true;
 
-        public CardObserver(ICardView cardView)
+        public CardObserver(ICardView cardView, bool enabled = true)
         {
             this.cardView = cardView;
 
             ID = g_MAXID;
             g_MAXID++;
+
+            isEnabled = enabled;
+
         }
 
         public void Enable()
@@ -61,6 +65,7 @@ namespace Cards
 
             districtsManager.onAddCard += SetInSlot;
             inventoryManager.onAddItem += SetInInventory;
+
         }
 
         public void Disable()
@@ -170,7 +175,7 @@ namespace Cards
                 return;
 
             itemInfo = info;
-            cardView.SetInfo(info);
+            cardView.SetInfo(info, isEnabled);
         }
 
         private void SetPosition(ICardView card,  Vector2 pos)
@@ -186,5 +191,6 @@ namespace Cards
         {
             cardView.WorldPosition = posBeforeMove;
         }
+
     }
 }
