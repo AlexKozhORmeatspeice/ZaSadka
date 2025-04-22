@@ -50,7 +50,6 @@
 				"demand": "0",
 				"influence": "1",
 				"suspicion": "2",
-				"event_chance": "",
 				"debuff_name": "",
 				"debuff_district_id": "",
 				"debuff_item": "",
@@ -64,7 +63,6 @@
 				"demand": "3",
 				"influence": "1",
 				"suspicion": "2",
-				"event_chance": "",
 				"debuff_name": "",
 				"debuff_district_id": "",
 				"debuff_item": "",
@@ -78,7 +76,6 @@
 				"demand": "0",
 				"influence": "1",
 				"suspicion": "-3",
-				"event_chance": "",
 				"debuff_name": "",
 				"debuff_district_id": "",
 				"debuff_item": "",
@@ -123,35 +120,35 @@
 				"name": "Вежливая просьба",
 				"condition": "infl > 5 & units = 1",
 				"choice_yes": "0",
-				"choice_no": "1",
+				"choice_no": "1"
 			},
 			{
 				"id": "1",
 				"name": "Внутренне расследование",
 				"condition": "sus > 5",
 				"choice_yes": "2",
-				"choice_no": "3",
+				"choice_no": "3"
 			},
 			{
 				"id": "2",
 				"name": "Крыса в системе",
 				"condition": "units = 4 | units = 2",
 				"choice_yes": "4",
-				"choice_no": "5",
+				"choice_no": "5"
 			},
 			{
 				"id": "3",
 				"name": "Голодный дилер",
 				"condition": "units = 0 & build = 0",
 				"choice_yes": "6",
-				"choice_no": "7",
+				"choice_no": "7"
 			},
 			{
 				"id": "4",
 				"name": "Местные слухи",
 				"condition": "infl > 3",
 				"choice_yes": "8",
-				"choice_no": "9",
+				"choice_no": "9"
 			}
 		],
 	"choices":
@@ -160,61 +157,61 @@
 				"id": "0",
 				"name": "Согласиться",
 				"chance": "100",
-				"action": "buildings randDestroy 1",
+				"action": "buildings randDestroy 1"
 			},
 			{
 				"id": "1",
 				"name": "Отказаться",
 				"chance": "50",
-				"action": "cards randDestroy 2",
+				"action": "cards randDestroy 2"
 			},
 			{
 				"id": "2",
 				"name": "Уволить юнита",
 				"chance": "100",
-				"action": "units randDestroy 1",
+				"action": "units randDestroy 1"
 			},
 			{
 				"id": "3",
 				"name": "Оставить",
 				"chance": "50",
-				"action": "money - 4 & sus + 2",
+				"action": "money - 4 & sus + 2"
 			},
 			{
 				"id": "4",
 				"name": "Переход на другой район",
 				"chance": "100",
-				"action": "infl - 1 & sus = 0",
+				"action": "infl - 1 & sus = 0"
 			},
 			{
 				"id": "5",
 				"name": "Игнорировать",
 				"chance": "100",
-				"action": "sus + 2",
+				"action": "sus + 2"
 			},
 			{
 				"id": "6",
 				"name": "Уволить",
 				"chance": "100",
-				"action": "supply - 2",
+				"action": "supply - 2"
 			},
 			{
 				"id": "7",
 				"name": "Оставить",
 				"chance": "100",
-				"action": "sus + 2",
+				"action": "sus + 2"
 			},
 			{
 				"id": "8",
 				"name": "Подкупить СМИ",
 				"chance": "100",
-				"action": "sus - 2 & money - 6",
+				"action": "sus - 2 & money - 6"
 			},
 			{
 				"id": "9",
 				"name": "Игнорировать",
 				"chance": "50",
-				"action": "sus + 3",
-			},
-		],
+				"action": "sus + 3"
+			}
+		]
 }

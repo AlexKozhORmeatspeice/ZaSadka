@@ -78,7 +78,7 @@ namespace ZaSadka
 
         private void Change(DistrictName name, int value)
         {
-            suspicionByDistrict[name] = Math.Clamp(suspicionByDistrict[name] + value,  minSuspicion, maxSuspicion);
+            suspicionByDistrict[name] = suspicionByDistrict[name] + value;
 
             onSuspicionChange?.Invoke(name, suspicionByDistrict[name]);
         }

@@ -21,6 +21,7 @@ namespace DI
         [Export] public CardMouseManager cardMouseManager;
         [Export] public SlotsManager slotsManager;
         [Export] public CityUI cityUI;
+        override protected string name {get => "Main DI";}
 
         override protected void RegisterObjects()
         {

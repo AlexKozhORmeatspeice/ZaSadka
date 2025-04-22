@@ -8,7 +8,6 @@ using Cards;
 using DI;
 using Game_events;
 using Godot;
-using Market;
 
 namespace ZaSadka
 {
@@ -39,7 +38,6 @@ namespace ZaSadka
         void AddCard(ICardView card, ICardSlot slot);
         void DeleteCard(ICardView card);
         void PermanentDelete(ICardView card);
-
         DistrictData GetData(DistrictName name);
     }
 
@@ -281,12 +279,28 @@ namespace ZaSadka
             return dataByDistrict[name];
         }
 
+        private void RemoveCardFromSlotByID(DistrictName districtName, int slotID)
+        {
+            var data = dataByDistrict[districtName];
+            //clearing card slot
+            foreach (var slot in data.cardBySlot.Keys)
+            {
+                if (slot.GetID() == slotID)
+                {
+                    var card = data.cardBySlot[slot];
+                    AddCard(null, slot);
+                    data.cardBySlot.Remove(slot);
+                    card.Delete();
+                    break;
+                }
+            }
+        }
+
         private void OnChoice(ChoiceData data)
         {
             List<ActionData> actions = data.actionsData;
             DistrictData districtData = dataByDistrict[data.districtName];
             Dictionary<int, ItemInfo> items = districtData.itemInfoByID;
-
 
             foreach (var action in actions)
             {
@@ -307,6 +321,7 @@ namespace ZaSadka
                     {
                         case ChangeStatType.randDestroy:
                             dataByDistrict[data.districtName].itemInfoByID.Remove(id);
+                            RemoveCardFromSlotByID(data.districtName, id);
                             count++;
                             break;
                         default:

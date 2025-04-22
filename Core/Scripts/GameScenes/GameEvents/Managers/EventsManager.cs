@@ -72,7 +72,7 @@ namespace Game_events
            
             //do choice by data
             float chance = data.chance;
-            float randVal01 = (float)GD.RandRange(0.0, 1.0);
+            float randVal01 = GD.Randf();
 
             if (randVal01 <= chance) //шанс сработал
             {

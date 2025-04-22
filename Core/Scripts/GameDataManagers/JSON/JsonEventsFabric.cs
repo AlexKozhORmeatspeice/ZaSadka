@@ -5,6 +5,7 @@ using Market;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using ZaSadka;
 
 namespace Game_events
@@ -25,7 +26,7 @@ namespace Game_events
 
     public interface IEventsFabric
     {
-        EventInfo GetActiveEvent(DistrictName district);
+        EventInfo GetRandomEvent(DistrictName district);
     }
 
     public partial class JsonEventsFabric : IEventsFabric, IStartable, ILateStartable
@@ -48,10 +49,11 @@ namespace Game_events
 
         }
 
-        //подгружает первый ивент который может сработать
-        public EventInfo GetActiveEvent(DistrictName district)
+        //сохраняет все возможные ивенты, с вероятностью 50/50 выдаёт рандомный из них
+        public EventInfo GetRandomEvent(DistrictName district)
         {
-            EventInfo info = new EventInfo();
+            EventInfo info = new();
+            List<EventInfo> possibleEvents = [];
 
             for (int i = 0; i < events.Count; i++)
             {
@@ -60,10 +62,21 @@ namespace Game_events
                 info = LoadInfo(_event, district);
 
                 if (info.canActivate)
-                    break;
+                {
+                    possibleEvents.Add(info);
+                }
             }
 
-            return info;
+            int EventChance = GD.RandRange(0, 1);
+
+            if (possibleEvents.Count == 0 || EventChance == 0)
+            {
+                return new EventInfo();
+            }
+
+            int randIndex = GD.RandRange(0, possibleEvents.Count - 1);
+
+            return possibleEvents[randIndex];
         }
 
         private EventInfo LoadInfo(Godot.Collections.Dictionary _event, DistrictName district)
@@ -130,8 +143,6 @@ namespace Game_events
             {
                 return CheckCondition(conditionsString, district);
             }
-
-            return false;   
         }
 
 
@@ -155,16 +166,12 @@ namespace Game_events
                 case ">":
                     List<int> values = GetValuesByName(vals[0], district);
                     return values.Any(x => x > int.Parse(vals[1]));
-                    break;
                 case "<":
                     return GetValuesByName(vals[0], district).Any(x => x < int.Parse(vals[1]));
-                    break;
                 case "=":
                     return GetValuesByName(vals[0], district).Any(x => x == int.Parse(vals[1]));
-                    break;
                 default:
                     return false;
-                    break;
             }
         }
 

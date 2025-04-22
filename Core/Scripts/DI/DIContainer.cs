@@ -39,6 +39,8 @@ namespace DI
     public partial class DIContainer : Node, IDIContatiner
     {
         protected IDIBuilder builder;
+        //надо для дебага, чёт поломалось
+        protected virtual string name {get;}
 
         protected virtual void RegisterObjects() {}
         public override void _Ready()

@@ -110,7 +110,8 @@ namespace Cards
                     AddChild(newInstance);
                     ICardView newCardView = (ICardView)newInstance;
 
-                    CardObserver cardObserver = new(newCardView);
+                    // CardObserver cardObserver = new(newCardView);
+                    CardObserver cardObserver = new(newCardView, nowItem.type != ItemType.building);
                     resolver.Inject(cardObserver);
                     cardObserver.Enable();
                     
@@ -118,7 +119,12 @@ namespace Cards
                     onUpdateCardInSlotID?.Invoke(newCardView, id);
 
                     cardByID[nowItem.uniqueID] = newCardView;
+                
                     cardObservers.Add(cardObserver);
+                    if (nowItem.type == ItemType.building)
+                    {
+                        cardObserver.Disable();
+                    }
                 }
             }
         }

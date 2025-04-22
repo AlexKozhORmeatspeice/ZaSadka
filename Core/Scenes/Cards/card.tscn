@@ -1,10 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://cpu5xx3wc3f70"]
+[gd_scene load_steps=6 format=3 uid="uid://cpu5xx3wc3f70"]
 
 [ext_resource type="Script" uid="uid://du14xpyir4tuy" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardView.cs" id="1_v1gsj"]
+[ext_resource type="Shader" uid="uid://dwgek1b0b4xum" path="res://Core/Scenes/Cards/card.gdshader" id="2_datqy"]
 [ext_resource type="Texture2D" uid="uid://bv75xxb40d3vq" path="res://Core/Art/spritesheet_all.png" id="2_v1gsj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkl3"]
 size = Vector2(99, 129)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_datqy"]
+resource_local_to_scene = true
+shader = ExtResource("2_datqy")
 
 [node name="Card" type="Node2D" node_paths=PackedStringArray("sprite", "name", "supplyText", "demandText", "influenceText", "susText")]
 script = ExtResource("1_v1gsj")
@@ -25,11 +30,14 @@ position = Vector2(-0.5, -0.5)
 shape = SubResource("RectangleShape2D_gfkl3")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_datqy")
+instance_shader_parameters/enabled = true
 texture = ExtResource("2_v1gsj")
 region_enabled = true
 region_rect = Rect2(0, 0, 100, 150)
 
 [node name="<txt> Name" type="Label" parent="Sprite2D"]
+use_parent_material = true
 offset_left = -39.0
 offset_top = -55.0
 offset_right = 40.0
@@ -40,6 +48,7 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="<txt> Supply" type="Label" parent="Sprite2D"]
+use_parent_material = true
 offset_left = -40.0
 offset_top = -33.0
 offset_right = 40.0
@@ -47,6 +56,7 @@ offset_bottom = -10.0
 text = "Спрос: +1"
 
 [node name="<txt> Demand" type="Label" parent="Sprite2D"]
+use_parent_material = true
 offset_left = -40.0
 offset_top = -8.0
 offset_right = 45.0
@@ -55,6 +65,7 @@ theme_override_font_sizes/font_size = 9
 text = "Предложение: -1"
 
 [node name="<txt> Influence" type="Label" parent="Sprite2D"]
+use_parent_material = true
 offset_left = -39.0
 offset_top = 9.0
 offset_right = 38.0
@@ -63,6 +74,7 @@ theme_override_font_sizes/font_size = 12
 text = "Влияние: 2"
 
 [node name="<txt> Sus" type="Label" parent="Sprite2D"]
+use_parent_material = true
 offset_left = -40.0
 offset_top = 27.0
 offset_right = 37.0

@@ -1,6 +1,7 @@
 using DI;
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 namespace Game_events
 {
@@ -25,8 +26,9 @@ namespace Game_events
             eventsManager.onEndEvents -= LoadNextScene;
         }
 
-        private void LoadNextScene()
+        private async void LoadNextScene()
         {
+            await ToSignal(GetTree().CreateTimer(.001), "timeout");
             GetTree().ChangeSceneToFile("res://Core/Scenes/GameScenes/Market.tscn");
         }
     }

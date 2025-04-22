@@ -42,7 +42,7 @@ namespace Game_events
             {
                 DistrictName districtName = (DistrictName)i;
 
-                EventInfo info = jsonEventsFabric.GetActiveEvent(districtName);
+                EventInfo info = jsonEventsFabric.GetRandomEvent(districtName);
 
                 if (info.canActivate)
                 {
