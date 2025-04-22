@@ -280,12 +280,24 @@ namespace ZaSadka
             return dataByDistrict[name];
         }
 
+        private void removeCardFromSlotByID(DistrictName districtName, int slotID)
+        {
+            //clearing card slot
+            foreach (var slot in dataByDistrict[districtName].cardBySlot.Keys)
+            {
+                if (slot.GetID() == slotID)
+                {
+                    dataByDistrict[districtName].cardBySlot.Remove(slot);
+                    break;
+                }
+            }
+        }
+
         private void OnChoice(ChoiceData data)
         {
             List<ActionData> actions = data.actionsData;
             DistrictData districtData = dataByDistrict[data.districtName];
             Dictionary<int, ItemInfo> items = districtData.itemInfoByID;
-
 
             foreach (var action in actions)
             {
@@ -306,6 +318,7 @@ namespace ZaSadka
                     {
                         case ChangeStatType.randDestroy:
                             dataByDistrict[data.districtName].itemInfoByID.Remove(id);
+                            removeCardFromSlotByID(data.districtName, id);
                             count++;
                             break;
                         default:

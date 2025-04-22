@@ -28,7 +28,7 @@ namespace Game_events
 
         private async void LoadNextScene()
         {
-            await ToSignal(GetTree().CreateTimer(.01), "timeout");
+            await ToSignal(GetTree().CreateTimer(.001), "timeout");
             GetTree().ChangeSceneToFile("res://Core/Scenes/GameScenes/Market.tscn");
         }
     }
