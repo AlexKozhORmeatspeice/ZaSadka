@@ -60,7 +60,6 @@ namespace Cards
             view.InfluenceText = currentInfluence.ToString();
 
             districtsManager.onAddCard += OnAddCard;
-            districtsManager.onRemoveCard += OnRemoveCard;
 
             suspicionManager.onSuspicionChange += onSuspicionChange;
             influenceManager.onInfluenceChange += onInfluenceChange;
@@ -69,7 +68,6 @@ namespace Cards
         public void Disable()
         {
             districtsManager.onAddCard -= OnAddCard;
-            districtsManager.onRemoveCard -= OnRemoveCard;
             suspicionManager.onSuspicionChange -= onSuspicionChange;
             influenceManager.onInfluenceChange -= onInfluenceChange;
         }
@@ -87,19 +85,6 @@ namespace Cards
             }
 
             cardOnSlot = card;
-
-            // view.SupplyText = (info.supply + card.GetItemInfo().supply).ToString();
-            // view.DemandText = (info.demand + card.GetItemInfo().demand).ToString();
-            // view.InfluenceText = (info.influence + card.GetItemInfo().influence).ToString();
-            // view.SusText = (info.suspicion + card.GetItemInfo().suspicion).ToString();
-        }
-
-        private void OnRemoveCard(ICardSlot slot, ICardView card)
-        {
-            if (slot != view)
-                return;
-
-            // SetBaseInfo();
         }
 
         private void onSuspicionChange(DistrictName districtName, int newSuspicion)
@@ -121,9 +106,5 @@ namespace Cards
             view.InfluenceText = newInfluence.ToString();
         }
 
-        private void SetBaseInfo()
-        {
-            view._DistrictInfo = info;
-        }
     }
 }

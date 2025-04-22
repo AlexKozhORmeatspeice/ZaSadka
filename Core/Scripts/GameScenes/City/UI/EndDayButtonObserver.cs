@@ -12,14 +12,13 @@ namespace City_UI
     {
         void Enable();
         void Disable();
+        event Action OnDayEnded;
     }
 
     public class EndDayButtonObserver : IEndDayButtonObserver
     {
-        [Inject] private ISupplyDemandManager supplyDemandManager;
-        [Inject] private IMoneyManager moneyManager; //TODO: перенести логику внутрь MoneyManager. (меня бесит, что оно здесь, но уже 7 утра и я бля хочу поспать чутка)
-
         private INextSceneButton view;
+        public event Action OnDayEnded;
 
         public EndDayButtonObserver(INextSceneButton view)
         {
@@ -38,7 +37,7 @@ namespace City_UI
 
         private void LoadScene()
         {
-            moneyManager.ChangeMoney(supplyDemandManager.GetProfit());
+            OnDayEnded?.Invoke();
 
             view.GetTree().ChangeSceneToFile(view.GetNextScene());
         }

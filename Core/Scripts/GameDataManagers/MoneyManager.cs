@@ -1,3 +1,4 @@
+using City_UI;
 using DI;
 using Game_events;
 using Godot;
@@ -19,6 +20,8 @@ namespace ZaSadka
     public partial class MoneyManager : IMoneyManager, IStartable, IDispose
     {
         [Inject] private IEventsManager eventsManager;
+        [Inject] private IEndDayButtonObserver endDayButtonObserver;
+        [Inject] private ISupplyDemandManager supplyDemandManager;
 
         private const int startMoney = 30;
         private static int nowMoney = startMoney;
@@ -43,12 +46,26 @@ namespace ZaSadka
         {
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
+            
+            if (endDayButtonObserver != null)
+            {
+                endDayButtonObserver.OnDayEnded += GetDayPaycheck;
+            }
         }
 
         public void Dispose()
         {
             if (eventsManager != null)
-                eventsManager.onChoiceActivate += OnChoice;
+                eventsManager.onChoiceActivate -= OnChoice;
+            if (endDayButtonObserver != null)
+            {
+                endDayButtonObserver.OnDayEnded -= GetDayPaycheck;
+            }
+        }
+
+        private void GetDayPaycheck()
+        {
+            ChangeMoney(supplyDemandManager.GetProfit());
         }
 
         private void OnChoice(ChoiceData data)
