@@ -123,7 +123,7 @@ namespace ZaSadka
         {
             foreach (var districtInfl in influenceByDistrict.Values)
             {
-                if (districtInfl < 3)
+                if (districtInfl < maxInfluence)
                 {
                     return false;
                 }
