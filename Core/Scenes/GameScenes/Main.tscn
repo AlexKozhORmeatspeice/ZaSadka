@@ -25,7 +25,7 @@ cardViewScene = ExtResource("2_mycjp")
 
 [node name="Slots" type="Node2D" parent="CardSpawner" node_paths=PackedStringArray("slots")]
 script = ExtResource("3_ydenv")
-slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8")]
+slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8"), NodePath("CardSlot9"), NodePath("CardSlot10"), NodePath("CardSlot11"), NodePath("CardSlot12")]
 
 [node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(-458, -204)
@@ -54,6 +54,21 @@ districtName = 2
 
 [node name="CardSlot8" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
 position = Vector2(203, -206)
+districtName = 2
+
+[node name="CardSlot9" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-667, -205)
+
+[node name="CardSlot10" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(209, 224)
+districtName = 2
+
+[node name="CardSlot11" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-4, 224)
+districtName = 2
+
+[node name="CardSlot12" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(423, 221)
 districtName = 2
 
 [node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
