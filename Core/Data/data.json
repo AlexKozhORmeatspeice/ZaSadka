@@ -9,7 +9,7 @@
 				"name": "Точка сбыта",
 				"supply": "0",
 				"demand": "3",
-				"influence": "1",
+				"influence": "3",
 				"suspicion": "2"
 			},
 			{
@@ -18,7 +18,7 @@
 				"name": "Лаборатория",
 				"supply": "3",
 				"demand": "0",
-				"influence": "1",
+				"influence": "2",
 				"suspicion": "2"
 			},
 			{
@@ -36,7 +36,7 @@
 				"name": "Нелегальный склад",
 				"supply": "2",
 				"demand": "1",
-				"influence": "1",
+				"influence": "2",
 				"suspicion": "3"
 			}
 		],
@@ -48,7 +48,7 @@
 				"name": "Дилер",
 				"supply": "3",
 				"demand": "0",
-				"influence": "1",
+				"influence": "2",
 				"suspicion": "2",
 				"debuff_name": "",
 				"debuff_district_id": "",
@@ -60,7 +60,7 @@
 				"price": "6",
 				"name": "Охранник",
 				"supply": "0",
-				"demand": "3",
+				"demand": "1",
 				"influence": "1",
 				"suspicion": "2",
 				"debuff_name": "",
@@ -73,9 +73,9 @@
 				"price": "5",
 				"name": "Маркетолог",
 				"supply": "0",
-				"demand": "0",
-				"influence": "1",
-				"suspicion": "-3",
+				"demand": "3",
+				"influence": "2",
+				"suspicion": "2",
 				"debuff_name": "",
 				"debuff_district_id": "",
 				"debuff_item": "",
@@ -109,7 +109,7 @@
 				"building_max": "5",
 				"supply": "0",
 				"demand": "2",
-				"influence": "1",
+				"influence": "2",
 				"suspicion": "2"
 			}
 		],

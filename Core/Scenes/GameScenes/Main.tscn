@@ -21,41 +21,56 @@
 position = Vector2(1, 0)
 script = ExtResource("1_emt2l")
 cardDistance = 150.0
-startY = 200.0
+startY = 350.0
 cardViewScene = ExtResource("2_mycjp")
 
 [node name="Slots" type="Node2D" parent="CardSpawner" node_paths=PackedStringArray("slots")]
 script = ExtResource("3_ydenv")
-slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8")]
+slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8"), NodePath("CardSlot9"), NodePath("CardSlot10"), NodePath("CardSlot11"), NodePath("CardSlot12")]
 
 [node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-458, -204)
+position = Vector2(-458, -294)
 
 [node name="CardSlot2" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-235, -204)
+position = Vector2(-235, -294)
 
 [node name="CardSlot3" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-9, -204)
-districtName = 1
+position = Vector2(-9, -294)
+districtName = 2
 
 [node name="CardSlot4" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-10, 20)
-districtName = 1
+position = Vector2(-10, -70)
+districtName = 2
 
 [node name="CardSlot5" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-236, 21)
+position = Vector2(-236, -69)
 districtName = 1
 
 [node name="CardSlot6" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-454, 21)
+position = Vector2(-454, -69)
 
 [node name="CardSlot7" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(208, 18)
+position = Vector2(208, -72)
 districtName = 2
 
 [node name="CardSlot8" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(203, -206)
+position = Vector2(203, -296)
 districtName = 2
+
+[node name="CardSlot9" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(208, 151)
+districtName = 2
+
+[node name="CardSlot10" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-7, 151)
+districtName = 1
+
+[node name="CardSlot11" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-237, 151)
+districtName = 1
+
+[node name="CardSlot12" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
+position = Vector2(-458, 151)
 
 [node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
 visible = false
@@ -76,10 +91,10 @@ demandBar = NodePath("<bar> Demand")
 nextSceneButton = NodePath("<btn> EndDay")
 
 [node name="<bar> Supply" type="ProgressBar" parent="UI"]
-offset_left = 352.0
-offset_top = -97.0
-offset_right = 559.0
-offset_bottom = -70.0
+offset_left = 580.0
+offset_top = -367.0
+offset_right = 787.0
+offset_bottom = -340.0
 max_value = 1.0
 script = ExtResource("9_e7b4r")
 
@@ -91,10 +106,10 @@ offset_bottom = -4.0
 text = "Предложение"
 
 [node name="<bar> Demand" type="ProgressBar" parent="UI"]
-offset_left = 354.0
-offset_top = -152.0
-offset_right = 562.0
-offset_bottom = -125.0
+offset_left = 582.0
+offset_top = -422.0
+offset_right = 790.0
+offset_bottom = -395.0
 max_value = 1.0
 script = ExtResource("9_e7b4r")
 
