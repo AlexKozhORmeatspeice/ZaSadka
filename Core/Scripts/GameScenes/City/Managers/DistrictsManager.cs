@@ -141,6 +141,7 @@ namespace ZaSadka
                         AddCard(null, slot);
 
                         data.cardBySlot.Remove(slot);
+                        data.itemInfoByID.Remove(slot.GetID());
 
                         onRemoveCard?.Invoke(slot, card);
 
@@ -244,6 +245,7 @@ namespace ZaSadka
                         AddCard(null, slot);
 
                         data.cardBySlot.Remove(slot);
+                        data.itemInfoByID.Remove(slot.GetID());
 
                         card.Delete();
 
@@ -296,6 +298,7 @@ namespace ZaSadka
                     var card = data.cardBySlot[slot];
                     AddCard(null, slot);
                     data.cardBySlot.Remove(slot);
+                    data.itemInfoByID.Remove(slot.GetID());
                     card.Delete();
                     break;
                 }
