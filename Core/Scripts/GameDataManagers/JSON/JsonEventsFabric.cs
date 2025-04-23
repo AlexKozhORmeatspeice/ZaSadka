@@ -52,6 +52,7 @@ namespace Game_events
         //сохраняет все возможные ивенты, с вероятностью 50/50 выдаёт рандомный из них
         public EventInfo GetRandomEvent(DistrictName district)
         {
+            GD.Print("Getting random event");
             EventInfo info = new();
             List<EventInfo> possibleEvents = [];
 
@@ -60,6 +61,11 @@ namespace Game_events
                 Godot.Collections.Dictionary _event = events[i].AsGodotDictionary();
 
                 info = LoadInfo(_event, district);
+
+                if (i == 3)
+                {
+                    GD.Print(info.canActivate);
+                }
 
                 if (info.canActivate)
                 {
@@ -75,6 +81,11 @@ namespace Game_events
             }
 
             int randIndex = GD.RandRange(0, possibleEvents.Count - 1);
+
+            foreach (var posEv in possibleEvents)
+            {
+                GD.Print(posEv.name);
+            }
 
             return possibleEvents[randIndex];
         }
@@ -94,6 +105,10 @@ namespace Game_events
 
             if (_event.ContainsKey("condition"))
             {
+                if (info.ID == 3)
+                {
+                    GD.Print(_event["condition"].AsString());
+                }
                 info.canActivate = CheckConditions(_event["condition"].AsString(), district);
             }
 
@@ -116,7 +131,6 @@ namespace Game_events
             if (conditionsString.Contains("&"))
             {
                 string[] conditions = conditionsString.Split('&');
-
                 bool result = true;
                 foreach (var condition in conditions)
                 {
@@ -148,7 +162,7 @@ namespace Game_events
 
         private bool CheckCondition(string condition, DistrictName district)
         {
-            string[] symbols = { ">", "<", "=" };
+            string[] symbols = [">", "<", "="];
             string checkSym = "";
 
             foreach (var symbol in symbols)
@@ -186,12 +200,11 @@ namespace Game_events
                     values.Add(influenceManager.GetValue(district));
                     break;
                 case "units":
-                    foreach (var cardSlot in data.cardBySlot.Values)
+                    foreach (var info in data.itemInfoByID.Values)
                     {
-                        ItemInfo info = cardSlot.GetItemInfo();
                         if (info.type == ItemType.unit)
                         {
-                            values.Add(info.ID);
+                            values.Add(info.spriteId);
                         }
                     }
                     break;
@@ -199,12 +212,11 @@ namespace Game_events
                     values.Add(suspicionManager.GetValue(district));
                     break;
                 case "build":
-                    foreach (var cardSlot in data.cardBySlot.Values)
+                    foreach (var info in data.itemInfoByID.Values)
                     {
-                        ItemInfo info = cardSlot.GetItemInfo();
                         if (info.type == ItemType.building)
                         {
-                            values.Add(info.ID);
+                            values.Add(info.spriteId);
                         }
                     }
                     break;

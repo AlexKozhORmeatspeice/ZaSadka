@@ -78,7 +78,9 @@ namespace ZaSadka
 
         private void Change(DistrictName name, int value)
         {
+            GD.Print(suspicionByDistrict[name]);
             suspicionByDistrict[name] = suspicionByDistrict[name] + value;
+            GD.Print(suspicionByDistrict[name]);
 
             onSuspicionChange?.Invoke(name, suspicionByDistrict[name]);
         }
@@ -97,7 +99,7 @@ namespace ZaSadka
                 if (action.type != StatType.suspicion)
                     continue;
 
-                GD.Print("Invoked action: " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
+                GD.Print("Invoked action in " + data.districtName + ": " + data.name + ": " + action.type.ToString() + " " + action.changeStatType.ToString() + " " + action.value.ToString());
 
                 switch (action.changeStatType)
                 {

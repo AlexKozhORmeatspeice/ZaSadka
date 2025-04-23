@@ -125,7 +125,7 @@
 			{
 				"id": "1",
 				"name": "Внутренне расследование",
-				"condition": "sus > 5 & units > 0",
+				"condition": "sus > 5",
 				"choice_yes": "2",
 				"choice_no": "3"
 			},
@@ -139,7 +139,7 @@
 			{
 				"id": "3",
 				"name": "Голодный дилер",
-				"condition": "units = 0 & build = 0",
+				"condition": "units = 0 & build = 1",
 				"choice_yes": "6",
 				"choice_no": "7"
 			},
