@@ -1,22 +1,38 @@
-[gd_scene load_steps=8 format=3 uid="uid://ba5g7hvvve7mm"]
+[gd_scene load_steps=16 format=3 uid="uid://ba5g7hvvve7mm"]
 
 [ext_resource type="Script" uid="uid://b5vfte4r7os68" path="res://Core/Scenes/MainMenu/main_menu_scene.gd" id="1_nup7v"]
+[ext_resource type="Script" uid="uid://7sat4re2uaak" path="res://Core/Scenes/MainMenu/newspaper.gd" id="2_el0md"]
 [ext_resource type="Texture2D" uid="uid://vvdpsdwkrw" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/conv.png" id="2_fosqo"]
 [ext_resource type="Script" uid="uid://27or56u2ncj0" path="res://Core/Scenes/MainMenu/conveyor.gd" id="2_ifi6q"]
 [ext_resource type="Script" uid="uid://ce2lise58fnuq" path="res://Core/Scenes/MainMenu/sprite_2d.gd" id="3_c3s85"]
+[ext_resource type="Shader" uid="uid://cnabpnx3cq3yw" path="res://Core/Scenes/MainMenu/outline_shader.gdshader" id="3_h3ibk"]
+[ext_resource type="Texture2D" uid="uid://bftvpxr1mn5j8" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/newspaper.png" id="4_h3ibk"]
 [ext_resource type="Texture2D" uid="uid://d25jt1w3et8mn" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/machine_disabled.png" id="4_n2tws"]
 [ext_resource type="Texture2D" uid="uid://xfbdwghng0m1" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/potato_bag.png" id="5_vlg1y"]
+[ext_resource type="Script" uid="uid://cxhocusb1t208" path="res://Core/Scenes/MainMenu/conveyor_2.gd" id="7_d428k"]
+[ext_resource type="Texture2D" uid="uid://bv4xmvhp8mmbq" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/newspaper_opened.png" id="11_63y7x"]
+[ext_resource type="Script" uid="uid://n7j1jpdnh3af" path="res://Core/Scenes/MainMenu/lore_piece.gd" id="11_jqf84"]
 
 [sub_resource type="Theme" id="Theme_c3s85"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d428k"]
+shader = ExtResource("3_h3ibk")
+shader_parameter/line_color = Color(1, 1, 0.294118, 1)
+shader_parameter/line_thickness = 6.79
+shader_parameter/enabled = true
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_jqf84"]
+blend_mode = 3
 
 [node name="MainMenuScene" type="Node2D"]
 script = ExtResource("1_nup7v")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-offset_left = -31.0
+offset_left = -37.0
 offset_top = -29.0
-offset_right = 1961.0
+offset_right = 1955.0
 offset_bottom = 1096.0
+mouse_filter = 2
 color = Color(0.105845, 0.164657, 0.246991, 1)
 
 [node name="MenuRoot" type="Node2D" parent="."]
@@ -57,7 +73,8 @@ position = Vector2(1140.95, 815)
 texture = ExtResource("2_fosqo")
 
 [node name="Money_Machine" type="Sprite2D" parent="Animation root node/Conveyor"]
-z_index = 2
+light_mask = 0
+z_index = 1
 position = Vector2(1140, 389.645)
 scale = Vector2(0.689, 0.75)
 texture = ExtResource("4_n2tws")
@@ -67,9 +84,30 @@ position = Vector2(1135, -125)
 scale = Vector2(0.643251, 0.689922)
 texture = ExtResource("5_vlg1y")
 
+[node name="NewspaperNode" type="Node2D" parent="Animation root node/Conveyor"]
+light_mask = 0
+position = Vector2(478.195, -86.805)
+scale = Vector2(0.643251, 0.689922)
+script = ExtResource("2_el0md")
+
+[node name="Newspaper" type="Sprite2D" parent="Animation root node/Conveyor/NewspaperNode"]
+material = SubResource("ShaderMaterial_d428k")
+position = Vector2(10.8821, -14.4943)
+scale = Vector2(0.230713, 0.229601)
+texture = ExtResource("4_h3ibk")
+
+[node name="Area2D" type="Area2D" parent="Animation root node/Conveyor/NewspaperNode"]
+collision_layer = 255
+collision_mask = 255
+priority = 1
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Animation root node/Conveyor/NewspaperNode/Area2D"]
+light_mask = 0
+polygon = PackedVector2Array(60.6295, 81.1686, 79.2848, 72.472, 88.6124, 18.8427, 82.394, -30.4382, 79.2848, -91.3147, -63.7387, -94.2136, -59.0749, -18.8427, -65.2933, 63.7753, -31.092, 69.5731, -17.1006, 60.8765, 20.2098, 63.7753)
+
 [node name="Conveyor2" type="Node2D" parent="Animation root node"]
 position = Vector2(415.425, 0)
-script = ExtResource("2_ifi6q")
+script = ExtResource("7_d428k")
 
 [node name="conv1" type="Sprite2D" parent="Animation root node/Conveyor2"]
 position = Vector2(1140, -815)
@@ -91,5 +129,36 @@ position = Vector2(1150.57, -128)
 scale = Vector2(0.643251, 0.689922)
 texture = ExtResource("5_vlg1y")
 
+[node name="Lore piece" type="Node2D" parent="."]
+z_index = 2
+position = Vector2(-4.13, 0)
+script = ExtResource("11_jqf84")
+
+[node name="ColorRect" type="ColorRect" parent="Lore piece"]
+z_index = 1
+material = SubResource("CanvasItemMaterial_jqf84")
+offset_right = 1932.0
+offset_bottom = 1052.0
+color = Color(0.564962, 0.564962, 0.564962, 1)
+
+[node name="NP_opened" type="Sprite2D" parent="Lore piece"]
+z_index = 1
+position = Vector2(-8, 4)
+scale = Vector2(0.429444, 0.429444)
+texture = ExtResource("11_63y7x")
+
+[node name="Button" type="Button" parent="Lore piece/NP_opened"]
+offset_left = -402.543
+offset_top = 770.763
+offset_right = 458.457
+offset_bottom = 900.763
+theme_override_font_sizes/font_size = 51
+text = "Да черта с два я с этим смирюсь!"
+
 [connection signal="pressed" from="MenuRoot/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MenuRoot/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="input_event" from="Animation root node/Conveyor/NewspaperNode/Area2D" to="Animation root node/Conveyor/NewspaperNode" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="Animation root node/Conveyor/NewspaperNode/Area2D" to="Animation root node/Conveyor/NewspaperNode" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Animation root node/Conveyor/NewspaperNode/Area2D" to="Animation root node/Conveyor/NewspaperNode" method="_on_area_2d_mouse_exited"]
+[connection signal="mouse_shape_entered" from="Animation root node/Conveyor/NewspaperNode/Area2D" to="Animation root node/Conveyor/NewspaperNode" method="_on_area_2d_mouse_shape_entered"]
+[connection signal="pressed" from="Lore piece/NP_opened/Button" to="Lore piece" method="_on_button_pressed"]
