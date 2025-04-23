@@ -17,6 +17,7 @@ func chance(x: float) -> bool:
 func _ready():
 	bag.position = Vector2(conv.position.x,  - bag.texture.get_height() / 2 - randf_range(10, 1200))
 	bag.texture = load("res://Core/Scenes/MainMenu/MenuAnimations/Sprites/potato_bag.png")
+	machine.position.x = conv.position.x
 
 func _process(delta):
 	bag.position.y += conv_speed * delta 
