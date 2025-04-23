@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=13 format=3 uid="uid://c11wyfu81t43c"]
 
 [ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" uid="uid://nc70a3ac1ueo" path="res://Core/Scripts/GameScenes/City/UI/BarView.cs" id="9_e7b4r"]
 [ext_resource type="Script" uid="uid://cwkvtvpi85d5g" path="res://Core/Scripts/GameScenes/City/UI/CityUI.cs" id="9_h5xws"]
 [ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="10_kqv73"]
+[ext_resource type="Texture2D" uid="uid://km1kiwgrifh7" path="res://Core/Scenes/GameScenes/Art/Мейн.png" id="12_1ypml"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -116,3 +117,15 @@ mouseManager = NodePath("../Managers/MouseManager")
 cardMouseManager = NodePath("../Managers/CardMouseManager")
 slotsManager = NodePath("../CardSpawner/Slots")
 cityUI = NodePath("../UI")
+
+[node name="ArtRoot" type="Node2D" parent="."]
+z_index = 1
+position = Vector2(-960, -540)
+scale = Vector2(0.75, 0.75)
+
+[node name="TextureRect" type="TextureRect" parent="ArtRoot"]
+z_index = -3
+offset_right = 2556.0
+offset_bottom = 1640.0
+mouse_filter = 2
+texture = ExtResource("12_1ypml")
