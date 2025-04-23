@@ -11,6 +11,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_arffk"]
 shader = ExtResource("8_an8ib")
+shader_parameter/maincol = Color(0.106, 0.165, 0.247, 1)
+shader_parameter/dopcol = Color(0.21, 0.196, 0.327, 1)
 
 [node name="EventWindow" type="Node2D"]
 

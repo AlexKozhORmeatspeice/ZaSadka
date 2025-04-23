@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=15 format=3 uid="uid://c11wyfu81t43c"]
 
 [ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
@@ -12,6 +12,8 @@
 [ext_resource type="Script" uid="uid://cwkvtvpi85d5g" path="res://Core/Scripts/GameScenes/City/UI/CityUI.cs" id="9_h5xws"]
 [ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="10_kqv73"]
 [ext_resource type="Texture2D" uid="uid://km1kiwgrifh7" path="res://Core/Scenes/GameScenes/Art/Мейн.png" id="12_1ypml"]
+[ext_resource type="Texture2D" uid="uid://bd1rchdjj7tlc" path="res://Core/Scenes/GameScenes/Art/main_markdown.png" id="13_j4qtl"]
+[ext_resource type="PackedScene" uid="uid://rtchimgf8542" path="res://Core/Scenes/GameScenes/Art/info_bud/info_bud.tscn" id="14_wx8uu"]
 
 [node name="Node2D" type="Node2D"]
 
@@ -25,52 +27,53 @@ startY = 350.0
 cardViewScene = ExtResource("2_mycjp")
 
 [node name="Slots" type="Node2D" parent="CardSpawner" node_paths=PackedStringArray("slots")]
+visible = false
 script = ExtResource("3_ydenv")
 slots = [NodePath("CardSlot"), NodePath("CardSlot2"), NodePath("CardSlot3"), NodePath("CardSlot4"), NodePath("CardSlot5"), NodePath("CardSlot6"), NodePath("CardSlot7"), NodePath("CardSlot8"), NodePath("CardSlot9"), NodePath("CardSlot10"), NodePath("CardSlot11"), NodePath("CardSlot12")]
 
 [node name="CardSlot" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-458, -294)
+position = Vector2(-397.27, -294)
 
 [node name="CardSlot2" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-235, -294)
+position = Vector2(-230.935, -294)
 
 [node name="CardSlot3" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-9, -294)
+position = Vector2(1.99, -286.635)
 districtName = 2
 
 [node name="CardSlot4" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-10, -70)
+position = Vector2(9.66, -70)
 districtName = 2
 
 [node name="CardSlot5" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-236, -69)
+position = Vector2(-200.285, -59.96)
 districtName = 1
 
 [node name="CardSlot6" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-454, -69)
+position = Vector2(-404.14, -86.445)
 
 [node name="CardSlot7" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(208, -72)
+position = Vector2(183.395, -72)
 districtName = 2
 
 [node name="CardSlot8" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(203, -296)
+position = Vector2(181.525, -286.455)
 districtName = 2
 
 [node name="CardSlot9" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(208, 151)
+position = Vector2(190.74, 136.405)
 districtName = 2
 
 [node name="CardSlot10" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-7, 151)
+position = Vector2(-22.405, 157.525)
 districtName = 1
 
 [node name="CardSlot11" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-237, 151)
+position = Vector2(-187.205, 151)
 districtName = 1
 
 [node name="CardSlot12" parent="CardSpawner/Slots" instance=ExtResource("6_tk1h4")]
-position = Vector2(-458, 151)
+position = Vector2(-402.085, 115.92)
 
 [node name="Card" parent="CardSpawner" instance=ExtResource("2_mycjp")]
 visible = false
@@ -138,9 +141,30 @@ z_index = 1
 position = Vector2(-960, -540)
 scale = Vector2(0.75, 0.75)
 
-[node name="TextureRect" type="TextureRect" parent="ArtRoot"]
+[node name="background" type="TextureRect" parent="ArtRoot"]
 z_index = -3
 offset_right = 2556.0
 offset_bottom = 1640.0
 mouse_filter = 2
 texture = ExtResource("12_1ypml")
+
+[node name="markdown" type="TextureRect" parent="ArtRoot"]
+offset_right = 2572.0
+offset_bottom = 1663.0
+mouse_filter = 2
+texture = ExtResource("13_j4qtl")
+
+[node name="InfoBud" parent="." instance=ExtResource("14_wx8uu")]
+z_index = 2
+offset_left = 267.0
+offset_top = -395.0
+offset_right = 267.0
+offset_bottom = -395.0
+circle_color = Color(0.3, 0.7, 0.494, 1)
+heading_color = Color(0.249111, 0.758381, 0.601543, 1)
+text_color = Color(0.0568831, 0.0549269, 0.011505, 1)
+window_scale = Vector2(1.65, 1)
+heading = "Окраины"
+line1 = "-1 Спр"
+line2 = "-1 Предл"
+line3 = "-1 Вл"
