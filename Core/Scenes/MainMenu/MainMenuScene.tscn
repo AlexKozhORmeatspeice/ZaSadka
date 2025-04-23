@@ -1,6 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://ba5g7hvvve7mm"]
 
 [ext_resource type="Script" uid="uid://b5vfte4r7os68" path="res://Core/Scenes/MainMenu/main_menu_scene.gd" id="1_nup7v"]
+[ext_resource type="Theme" uid="uid://cwtq0vswqlk3x" path="res://Core/Scenes/MainMenu/MainMenuTheme.tres" id="2_338j4"]
 [ext_resource type="Script" uid="uid://7sat4re2uaak" path="res://Core/Scenes/MainMenu/newspaper.gd" id="2_el0md"]
 [ext_resource type="Texture2D" uid="uid://vvdpsdwkrw" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/conv.png" id="2_fosqo"]
 [ext_resource type="Script" uid="uid://27or56u2ncj0" path="res://Core/Scenes/MainMenu/conveyor.gd" id="2_ifi6q"]
@@ -12,8 +13,6 @@
 [ext_resource type="Script" uid="uid://cxhocusb1t208" path="res://Core/Scenes/MainMenu/conveyor_2.gd" id="7_d428k"]
 [ext_resource type="Texture2D" uid="uid://bv4xmvhp8mmbq" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/newspaper_opened.png" id="11_63y7x"]
 [ext_resource type="Script" uid="uid://n7j1jpdnh3af" path="res://Core/Scenes/MainMenu/lore_piece.gd" id="11_jqf84"]
-
-[sub_resource type="Theme" id="Theme_c3s85"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d428k"]
 shader = ExtResource("3_h3ibk")
@@ -48,13 +47,14 @@ theme_override_constants/separation = 10
 [node name="PlayButton" type="Button" parent="MenuRoot/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme = SubResource("Theme_c3s85")
+theme = ExtResource("2_338j4")
 theme_override_font_sizes/font_size = 31
 text = "Play ZaSadka!"
 
 [node name="ExitButton" type="Button" parent="MenuRoot/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme = ExtResource("2_338j4")
 theme_override_font_sizes/font_size = 31
 text = "Exit"
 
@@ -152,6 +152,7 @@ offset_left = -402.543
 offset_top = 770.763
 offset_right = 458.457
 offset_bottom = 900.763
+theme = ExtResource("2_338j4")
 theme_override_font_sizes/font_size = 51
 text = "Да черта с два я с этим смирюсь!"
 
