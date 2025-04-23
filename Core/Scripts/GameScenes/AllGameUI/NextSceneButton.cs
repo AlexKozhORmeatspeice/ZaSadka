@@ -17,7 +17,7 @@ namespace Market
     public partial class NextSceneButton : Node2D, INextSceneButton
     {
         [Export] private string nextScene = "res://Core/Scenes/GameScenes/EventsWindow.tscn"; 
-        [Export] private string finalScene;
+        [Export] private string finalScene = "res://Core/Scenes/GameScenes/game_win.tscn";
         [Export] private Button button;
         [Export] private string text;
 
