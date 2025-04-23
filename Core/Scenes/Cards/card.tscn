@@ -50,19 +50,19 @@ vertical_alignment = 1
 [node name="<txt> Supply" type="Label" parent="Sprite2D"]
 use_parent_material = true
 offset_left = -40.0
-offset_top = -33.0
-offset_right = 40.0
-offset_bottom = -10.0
-text = "Спрос: +1"
+offset_top = -5.0
+offset_right = 48.0
+offset_bottom = 9.0
+theme_override_font_sizes/font_size = 10
+text = "Предложение: +1"
 
 [node name="<txt> Demand" type="Label" parent="Sprite2D"]
 use_parent_material = true
 offset_left = -40.0
-offset_top = -8.0
+offset_top = -26.0
 offset_right = 45.0
-offset_bottom = 15.0
-theme_override_font_sizes/font_size = 9
-text = "Предложение: -1"
+offset_bottom = -3.0
+text = "Спрос: -1"
 
 [node name="<txt> Influence" type="Label" parent="Sprite2D"]
 use_parent_material = true

@@ -52,7 +52,6 @@ namespace Game_events
         //сохраняет все возможные ивенты, с вероятностью 50/50 выдаёт рандомный из них
         public EventInfo GetRandomEvent(DistrictName district)
         {
-            GD.Print("Getting random event");
             EventInfo info = new();
             List<EventInfo> possibleEvents = [];
 
@@ -61,11 +60,6 @@ namespace Game_events
                 Godot.Collections.Dictionary _event = events[i].AsGodotDictionary();
 
                 info = LoadInfo(_event, district);
-
-                if (i == 3)
-                {
-                    GD.Print(info.canActivate);
-                }
 
                 if (info.canActivate)
                 {
@@ -105,10 +99,6 @@ namespace Game_events
 
             if (_event.ContainsKey("condition"))
             {
-                if (info.ID == 3)
-                {
-                    GD.Print(_event["condition"].AsString());
-                }
                 info.canActivate = CheckConditions(_event["condition"].AsString(), district);
             }
 

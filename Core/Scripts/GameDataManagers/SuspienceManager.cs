@@ -78,9 +78,7 @@ namespace ZaSadka
 
         private void Change(DistrictName name, int value)
         {
-            GD.Print(suspicionByDistrict[name]);
             suspicionByDistrict[name] = suspicionByDistrict[name] + value;
-            GD.Print(suspicionByDistrict[name]);
 
             onSuspicionChange?.Invoke(name, suspicionByDistrict[name]);
         }
