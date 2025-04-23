@@ -1,8 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://cwoc7pi0f8ky5"]
+[gd_scene load_steps=6 format=3 uid="uid://cwoc7pi0f8ky5"]
 
 [ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="1_p8ibb"]
 [ext_resource type="Script" uid="uid://cel55goly56ec" path="res://Core/Scripts/GameScenes/GameWin/GameWinDi.cs" id="3_8bybl"]
 [ext_resource type="Script" uid="uid://da3vgtuxjxubd" path="res://Core/Scripts/GameScenes/GameWin/GameWinUi.cs" id="3_odpal"]
+[ext_resource type="Shader" uid="uid://jv5bbkdf0eaq" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="4_odpal"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dbm6k"]
+shader = ExtResource("4_odpal")
 
 [node name="GameWin" type="Node2D"]
 
@@ -27,3 +31,12 @@ gameWinUI = NodePath("../GameWinUI")
 [node name="GameWinUI" type="Node2D" parent="." node_paths=PackedStringArray("nextSceneButton")]
 script = ExtResource("3_odpal")
 nextSceneButton = NodePath("../NextSceneButton")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_dbm6k")
+offset_left = -986.0
+offset_top = -559.0
+offset_right = 976.0
+offset_bottom = 549.0
+color = Color(0.21011, 0.196313, 0.327124, 1)

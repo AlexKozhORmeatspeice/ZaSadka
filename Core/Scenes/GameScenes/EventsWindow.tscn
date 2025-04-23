@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://b5e1otu7yggk"]
+[gd_scene load_steps=10 format=3 uid="uid://b5e1otu7yggk"]
 
 [ext_resource type="PackedScene" uid="uid://1mtr6dubfac" path="res://Core/Scenes/Events/Managers/EventsSpawner.tscn" id="1_snaxd"]
 [ext_resource type="Script" uid="uid://ytbt8c3qi23x" path="res://Core/Scripts/GameScenes/GameEvents/UI/EventsUI.cs" id="2_08aqm"]
@@ -7,6 +7,10 @@
 [ext_resource type="Script" uid="uid://dxnlsavaod36f" path="res://Core/Scripts/DI/Containers/EventsDIContainer.cs" id="2_yv046"]
 [ext_resource type="Script" uid="uid://dg0s1t7b7gvsh" path="res://Core/Scripts/GameScenes/AllGameUI/GameText.cs" id="3_1d4q3"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="4_b0jpq"]
+[ext_resource type="Shader" uid="uid://jv5bbkdf0eaq" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="8_an8ib"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_arffk"]
+shader = ExtResource("8_an8ib")
 
 [node name="EventWindow" type="Node2D"]
 
@@ -59,3 +63,12 @@ eventsSpawner = NodePath("../UI/EventsSpawner")
 mouseManager = NodePath("../Managers/MouseManager")
 eventsUI = NodePath("../UI")
 endObserver = NodePath("../Managers/EndObserver")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+z_index = -1
+material = SubResource("ShaderMaterial_arffk")
+offset_left = -986.0
+offset_top = -559.0
+offset_right = 976.0
+offset_bottom = 549.0
+color = Color(0.21011, 0.196313, 0.327124, 1)
