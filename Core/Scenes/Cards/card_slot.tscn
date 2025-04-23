@@ -28,18 +28,18 @@ position = Vector2(-0.5, 1.5)
 shape = SubResource("RectangleShape2D_a20ru")
 
 [node name="<txt> Supply" type="Label" parent="."]
-offset_left = -97.0
-offset_top = -88.0
-offset_right = -53.0
-offset_bottom = -65.0
-text = "Сп: -1"
-
-[node name="<txt> Demand" type="Label" parent="."]
 offset_left = 56.0
 offset_top = -88.0
-offset_right = 96.0
+offset_right = 101.0
 offset_bottom = -65.0
 text = "Пр: -1"
+
+[node name="<txt> Demand" type="Label" parent="."]
+offset_left = -104.0
+offset_top = -88.0
+offset_right = -60.0
+offset_bottom = -65.0
+text = "Сп: -1"
 
 [node name="<txt> Influence" type="Label" parent="."]
 offset_left = -99.0
