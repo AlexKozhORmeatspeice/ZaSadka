@@ -80,7 +80,7 @@ namespace Cards
 
             if (info.supply != 0)
             {
-                supplyText.Text = "Спрос: " + info.supply.ToString();
+                supplyText.Text = "Предложение: " + info.supply.ToString();
             }
             else
             {
@@ -89,7 +89,7 @@ namespace Cards
 
             if (info.demand != 0)
             {
-                demandText.Text = "Предложение: " + info.demand.ToString();
+                demandText.Text = "Спрос: " + info.demand.ToString();
             }
             else
             {

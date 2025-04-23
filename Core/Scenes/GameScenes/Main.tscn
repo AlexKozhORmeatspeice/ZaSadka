@@ -75,10 +75,10 @@ demandBar = NodePath("<bar> Demand")
 nextSceneButton = NodePath("<btn> EndDay")
 
 [node name="<bar> Supply" type="ProgressBar" parent="UI"]
-offset_left = 350.0
-offset_top = -137.0
-offset_right = 557.0
-offset_bottom = -110.0
+offset_left = 352.0
+offset_top = -97.0
+offset_right = 559.0
+offset_bottom = -70.0
 max_value = 1.0
 script = ExtResource("9_e7b4r")
 
@@ -87,13 +87,13 @@ layout_mode = 0
 offset_top = -27.0
 offset_right = 142.0
 offset_bottom = -4.0
-text = "Спрос"
+text = "Предложение"
 
 [node name="<bar> Demand" type="ProgressBar" parent="UI"]
-offset_left = 350.0
-offset_top = -82.0
-offset_right = 558.0
-offset_bottom = -55.0
+offset_left = 354.0
+offset_top = -152.0
+offset_right = 562.0
+offset_bottom = -125.0
 max_value = 1.0
 script = ExtResource("9_e7b4r")
 
@@ -102,7 +102,7 @@ layout_mode = 0
 offset_top = -26.0
 offset_right = 40.0
 offset_bottom = -3.0
-text = "Предложение"
+text = "Спрос"
 
 [node name="<btn> EndDay" parent="UI" instance=ExtResource("10_kqv73")]
 position = Vector2(-108, -479)

@@ -49,7 +49,6 @@ namespace ZaSadka
             
             if (cityUI != null)
             {
-                GD.Print("Listening endDayBtnObserver");
                 cityUI.OnDayEnded += GetDayPaycheck;
             }
         }
@@ -66,7 +65,6 @@ namespace ZaSadka
 
         private void GetDayPaycheck()
         {
-            GD.Print("Daily paycheck");
             ChangeMoney(supplyDemandManager.GetProfit());
         }
 
