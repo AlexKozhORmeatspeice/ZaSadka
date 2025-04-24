@@ -1,8 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://cpu5xx3wc3f70"]
+[gd_scene load_steps=12 format=3 uid="uid://cpu5xx3wc3f70"]
 
 [ext_resource type="Script" uid="uid://du14xpyir4tuy" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardView.cs" id="1_v1gsj"]
 [ext_resource type="Shader" uid="uid://dwgek1b0b4xum" path="res://Core/Scenes/Cards/card.gdshader" id="2_datqy"]
 [ext_resource type="Texture2D" uid="uid://bv75xxb40d3vq" path="res://Core/Art/spritesheet_all.png" id="2_v1gsj"]
+[ext_resource type="AudioStream" uid="uid://dada1m5uvvo8p" path="res://Core/Sounds/Cards/cardPickUp.wav" id="2_xntn1"]
+[ext_resource type="AudioStream" uid="uid://buqp0ffrhvpt3" path="res://Core/Sounds/Cards/labaratory.wav" id="3_b5su3"]
+[ext_resource type="AudioStream" uid="uid://c2mhndd5xvdki" path="res://Core/Sounds/Cards/storage.wav" id="4_l8ogi"]
+[ext_resource type="Texture2D" uid="uid://yxumtqn1gebs" path="res://Core/Art/cross.png" id="4_ockng"]
+[ext_resource type="AudioStream" uid="uid://bccxg3fjh1mvk" path="res://Core/Sounds/Cards/bar.wav" id="5_3suf2"]
+[ext_resource type="AudioStream" uid="uid://bux27in4sttp4" path="res://Core/Sounds/Cards/unitPlaced (6).wav" id="6_1037s"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gfkl3"]
 size = Vector2(99, 129)
@@ -11,7 +17,7 @@ size = Vector2(99, 129)
 resource_local_to_scene = true
 shader = ExtResource("2_datqy")
 
-[node name="Card" type="Node2D" node_paths=PackedStringArray("sprite", "name", "supplyText", "demandText", "influenceText", "susText")]
+[node name="Card" type="Node2D" node_paths=PackedStringArray("sprite", "name", "supplyText", "demandText", "influenceText", "susText", "deleteButton", "audioStreamPlayer")]
 script = ExtResource("1_v1gsj")
 mouseDistToDetect = 120.0
 sprite = NodePath("Sprite2D")
@@ -22,6 +28,9 @@ supplyText = NodePath("Sprite2D/<txt> Supply")
 demandText = NodePath("Sprite2D/<txt> Demand")
 influenceText = NodePath("Sprite2D/<txt> Influence")
 susText = NodePath("Sprite2D/<txt> Sus")
+deleteButton = NodePath("Button")
+audioStreamPlayer = NodePath("AudioStreamPlayer2D")
+sounds = Array[AudioStream]([ExtResource("2_xntn1"), ExtResource("3_b5su3"), ExtResource("4_l8ogi"), ExtResource("5_3suf2"), ExtResource("6_1037s")])
 
 [node name="Area2D" type="Area2D" parent="."]
 
@@ -81,3 +90,15 @@ offset_right = 37.0
 offset_bottom = 50.0
 theme_override_font_sizes/font_size = 10
 text = "Подозрение: 2"
+
+[node name="Button" type="Button" parent="."]
+offset_left = 19.0
+offset_top = -80.0
+offset_right = 57.0
+offset_bottom = -47.0
+icon = ExtResource("4_ockng")
+flat = true
+icon_alignment = 1
+expand_icon = true
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

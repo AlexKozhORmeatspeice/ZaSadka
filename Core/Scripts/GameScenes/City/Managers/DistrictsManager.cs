@@ -38,6 +38,10 @@ namespace ZaSadka
         void AddCard(ICardView card, ICardSlot slot);
         void DeleteCard(ICardView card);
         void PermanentDelete(ICardView card);
+
+        float GetSupply(DistrictName districtName);
+        float GetDemand(DistrictName districtName);
+
         DistrictData GetData(DistrictName name);
     }
 
@@ -177,6 +181,11 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
         }
 
         public void Dispose()
@@ -194,6 +203,14 @@ namespace ZaSadka
                 eventsManager.onChoiceActivate -= OnChoice;
         }
 
+        private void ClearData()
+        {
+            GD.Print("Cleared data");
+            dataByDistrict[DistrictName.Outskirts].itemInfoByID.Clear();
+            dataByDistrict[DistrictName.OldDocks].itemInfoByID.Clear();
+            dataByDistrict[DistrictName.HistoricalCenter].itemInfoByID.Clear();
+        }
+
         private void CheckInSlot(ICardSlot slot)
         {
             if (choosedCard == null)
@@ -205,6 +222,9 @@ namespace ZaSadka
 
         private void SetCard(ICardView card)
         {
+            if (card == null || !card.isEnabled)
+                return;
+
             DeleteCard(card);
             choosedCard = card;
         }
@@ -243,6 +263,8 @@ namespace ZaSadka
                     if (data.cardBySlot[slot] == card)
                     {
                         AddCard(null, slot);
+
+                        onRemoveCard?.Invoke(slot, card);
 
                         data.cardBySlot.Remove(slot);
                         data.itemInfoByID.Remove(slot.GetID());
@@ -341,6 +363,46 @@ namespace ZaSadka
                 
             }
 
+        }
+
+        public float GetSupply(DistrictName districtName)
+        {   
+            DistrictData data = dataByDistrict[districtName];
+            if(data.cardBySlot == null || data.cardBySlot.Count == 0)
+                return 0.0f;
+
+            float res = 0.0f;
+            foreach(var slot in data.cardBySlot.Keys)
+            {
+                ICardView card = data.cardBySlot[slot];
+                if (card != null)
+                {
+                    ItemInfo item = card.GetItemInfo();
+                    res += item.supply + slot._DistrictInfo.supply;
+                }
+            }
+
+            return res;
+        }
+
+        public float GetDemand(DistrictName districtName)
+        {
+            DistrictData data = dataByDistrict[districtName];
+            if (data.cardBySlot == null || data.cardBySlot.Count == 0)
+                return 0.0f;
+
+            float res = 0.0f;
+            foreach (var slot in data.cardBySlot.Keys)
+            {
+                ICardView card = data.cardBySlot[slot];
+                if (card != null)
+                {
+                    ItemInfo item = card.GetItemInfo();
+                    res += item.demand + slot._DistrictInfo.demand;
+                }
+            }
+
+            return res;
         }
     }
 }

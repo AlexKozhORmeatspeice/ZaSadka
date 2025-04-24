@@ -21,6 +21,11 @@ namespace DI
         [Export] public CardMouseManager cardMouseManager;
         [Export] public SlotsManager slotsManager;
         [Export] public CityUI cityUI;
+        
+        [Export] private ToolTip ToolTip1;
+        [Export] private ToolTip ToolTip2;
+        [Export] private ToolTip ToolTip3;
+        
         override protected string name {get => "Main DI";}
 
         override protected void RegisterObjects()
@@ -44,6 +49,10 @@ namespace DI
             //В ГОДОТЕ НЕТ ПОИСКА ПО ИНТЕРФЕЙСАМ ПРИКРЕПЛЕННЫМ К ОБЪЕКТАМ (хотя логично с учетом того, что их GDScript даже не реализует)
             builder.Register<ICardSlot>(new CardSlot());
             builder.Register<ICardView>(new CardView());
+
+            builder.InjectDependencie(ToolTip1);
+            builder.InjectDependencie(ToolTip2);
+            builder.InjectDependencie(ToolTip3);
         }
     }
 }

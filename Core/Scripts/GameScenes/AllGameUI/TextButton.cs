@@ -13,6 +13,7 @@ namespace Market
     {
         [Export] private Button button;
         [Export] private string text;
+        [Export] private AudioStreamPlayer2D audioPlayer;
          
         public event Action onClick
         {
@@ -29,6 +30,21 @@ namespace Market
         public override void _Ready()
         {
             button.Text = text;
+
+            onClick += PlaySound;
+        }
+
+        public override void _ExitTree()
+        {
+            onClick -= PlaySound;
+        }
+
+        private void PlaySound()
+        {
+            if (audioPlayer != null)
+            {
+                audioPlayer.Play();
+            }
         }
     }
 }

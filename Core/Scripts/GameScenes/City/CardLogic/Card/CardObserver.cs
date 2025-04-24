@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using DI;
 using Godot;
+using Market;
 using ZaSadka;
 
 namespace Cards
@@ -18,6 +19,7 @@ namespace Cards
     internal class CardObserver : ICardObserver
     {
         [Inject] private ISlotMouseManager slotMouseManager;
+
         [Inject] private IPointerManager pointer;
         [Inject] private ICardSpawner cardSpawner;
         [Inject] private ICardMouseManager cardMouseManager;
@@ -45,21 +47,21 @@ namespace Cards
             g_MAXID++;
 
             isEnabled = enabled;
-
         }
 
         public void Enable()
         {
             nowSlot = null;
-
             isDragging = false;
+
+            cardView.SetButtonVisability(false);
 
             cardSpawner.onUpdatePosition += SetPosition;
             cardSpawner.onUpdateInfo += SetInfo;
-            
+
             pointer.onMove += MoveCard;
             pointer.onMove += ChangeScale;
-            
+
             cardMouseManager.onPointerDown += CheckCardOnDown;
             cardMouseManager.onPointerUp += CheckCardOnUp;
 
@@ -75,12 +77,52 @@ namespace Cards
 
             pointer.onMove -= MoveCard;
             pointer.onMove -= ChangeScale;
-            
+
             cardMouseManager.onPointerDown -= CheckCardOnDown;
             cardMouseManager.onPointerUp -= CheckCardOnUp;
 
             districtsManager.onAddCard -= SetInSlot;
             inventoryManager.onAddItem -= SetInInventory;
+
+            cardMouseManager.onPointerEnter -= CheckButtonOnEnter;
+            cardMouseManager.onPointerLeave -= CheckButtonOnExit;
+            cardView.onClick -= DeleteCard;
+        }
+
+        public void SetInSlotBuildingCard()
+        {
+            Disable();
+            GD.Print("Got card in building slot");
+
+            cardView.onClick += DeleteCard;
+            cardMouseManager.onPointerEnter += CheckButtonOnEnter;
+            cardMouseManager.onPointerLeave += CheckButtonOnExit;
+        }
+
+        private void CheckButtonOnEnter(ICardView view)
+        {
+            if (cardView != view)
+            {
+                cardView.SetButtonVisability(false);
+                return;
+            }
+
+            cardView.SetButtonVisability(true);
+        }
+
+        private void CheckButtonOnExit(ICardView view)
+        {
+            cardView.SetButtonVisability(false);
+        }
+
+        private void DeleteCard()
+        {
+            districtsManager.PermanentDelete(cardView);
+            inventoryManager.RemoveItem(itemInfo);
+
+            cardView.SetInfo(new ItemInfo(), false);
+
+            Disable();
         }
 
         private void CheckCardOnDown(ICardView card)
@@ -91,6 +133,7 @@ namespace Cards
                 return;
             }
 
+            cardView.PlaySound(CardSoundType.Take);
             isDragging = true;
         }
 
@@ -103,7 +146,7 @@ namespace Cards
         {
             if (card != cardView)
             {
-                if(nowSlot == null)
+                if (nowSlot == null)
                 {
                     SetStartPos();
                 }
@@ -111,6 +154,8 @@ namespace Cards
                 return;
             }
 
+
+            ChooseInSlotSound();
             nowSlot = slot;
             cardView.WorldPosition = slot.WorldPosition;
         }
@@ -119,7 +164,7 @@ namespace Cards
         {
             foreach (ItemInfo item in items)
             {
-                if(item.uniqueID == cardView.GetItemInfo().uniqueID)
+                if (item.uniqueID == cardView.GetItemInfo().uniqueID)
                 {
                     SetStartPos();
                     nowSlot = null;
@@ -132,7 +177,7 @@ namespace Cards
         {
             if (!isDragging)
             {
-                if(nowSlot == null)
+                if (nowSlot == null)
                 {
                     SetStartPos();
                 }
@@ -159,12 +204,12 @@ namespace Cards
             }
 
             Vector2 pointerScreenPos = pointer.NowWorldPosition;
-            Vector2 cardScreenPos = cardView.WorldPosition; 
-            
+            Vector2 cardScreenPos = cardView.WorldPosition;
+
             float dist = pointerScreenPos.DistanceTo(cardScreenPos);
             float mouseDist = cardView.MouseDistToDetect;
 
-            float scaleAlpha = 1.0f - Mathf.Clamp((dist - mouseDist * 0.5f) /(mouseDist), 0.0f, 1.0f);
+            float scaleAlpha = 1.0f - Mathf.Clamp((dist - mouseDist * 0.5f) / (mouseDist), 0.0f, 1.0f);
 
             cardView.ChangeScale(scaleAlpha);
         }
@@ -178,12 +223,12 @@ namespace Cards
             cardView.SetInfo(info, isEnabled);
         }
 
-        private void SetPosition(ICardView card,  Vector2 pos)
+        private void SetPosition(ICardView card, Vector2 pos)
         {
             if (card != cardView)
                 return;
 
-            posBeforeMove = pos;            
+            posBeforeMove = pos;
             cardView.WorldPosition = pos;
         }
 
@@ -192,5 +237,32 @@ namespace Cards
             cardView.WorldPosition = posBeforeMove;
         }
 
+        private void ChooseInSlotSound()
+        {
+            switch (itemInfo.type)
+            {
+                case ItemType.building:
+                    switch(itemInfo.spriteId)
+                    {
+                        case 0:
+                            cardView.PlaySound(CardSoundType.Bar);
+                            break;
+                        case 1:
+                            cardView.PlaySound(CardSoundType.Laboratory);
+                            break;
+                        default:
+                        case 2:
+                            cardView.PlaySound(CardSoundType.Storage);
+                            break;
+
+                    }
+                    break;
+                case ItemType.unit:
+                    cardView.PlaySound(CardSoundType.Unit);
+                    break;
+                default:
+                    break;
+            }
+        }
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b5e1otu7yggk"]
+[gd_scene load_steps=14 format=3 uid="uid://b5e1otu7yggk"]
 
 [ext_resource type="PackedScene" uid="uid://1mtr6dubfac" path="res://Core/Scenes/Events/Managers/EventsSpawner.tscn" id="1_snaxd"]
 [ext_resource type="Script" uid="uid://ytbt8c3qi23x" path="res://Core/Scripts/GameScenes/GameEvents/UI/EventsUI.cs" id="2_08aqm"]
@@ -7,7 +7,11 @@
 [ext_resource type="Script" uid="uid://dxnlsavaod36f" path="res://Core/Scripts/DI/Containers/EventsDIContainer.cs" id="2_yv046"]
 [ext_resource type="Script" uid="uid://dg0s1t7b7gvsh" path="res://Core/Scripts/GameScenes/AllGameUI/GameText.cs" id="3_1d4q3"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="4_b0jpq"]
-[ext_resource type="Shader" uid="uid://jv5bbkdf0eaq" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="8_an8ib"]
+[ext_resource type="Shader" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="8_an8ib"]
+[ext_resource type="AudioStream" uid="uid://dfes7l2a3wyb3" path="res://Core/Sounds/MainThemes/zsdkEvents loop.wav" id="9_arffk"]
+[ext_resource type="Script" uid="uid://c51ecq6rxv5vt" path="res://Core/Scripts/GameScenes/GameEvents/Managers/ChooseSoundManager.cs" id="10_j7ygj"]
+[ext_resource type="AudioStream" uid="uid://becimm676wg8s" path="res://Core/Sounds/UI/correct (5).wav" id="11_vamlu"]
+[ext_resource type="AudioStream" uid="uid://dg7bkveykh0f7" path="res://Core/Sounds/UI/wrong (5).wav" id="12_el4o6"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_arffk"]
 shader = ExtResource("8_an8ib")
@@ -37,7 +41,6 @@ offset_right = -447.0
 offset_bottom = 239.0
 scale = Vector2(1.12, 1)
 theme_override_font_sizes/font_size = 50
-text = "хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -49,7 +52,6 @@ offset_top = -211.0
 offset_right = 841.0
 offset_bottom = 239.0
 theme_override_font_sizes/font_size = 50
-text = "хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй хуй "
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
@@ -59,12 +61,14 @@ script = ExtResource("3_1d4q3")
 position = Vector2(0, 249)
 gameEventScene = ExtResource("2_ehfri")
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("eventsSpawner", "mouseManager", "eventsUI", "endObserver")]
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("eventsSpawner", "mouseManager", "eventsUI", "endObserver", "chooseSoundManager")]
+position = Vector2(3, -3)
 script = ExtResource("2_yv046")
 eventsSpawner = NodePath("../UI/EventsSpawner")
 mouseManager = NodePath("../Managers/MouseManager")
 eventsUI = NodePath("../UI")
 endObserver = NodePath("../Managers/EndObserver")
+chooseSoundManager = NodePath("../AudioStreamPlayer2D2")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 z_index = -1
@@ -74,3 +78,13 @@ offset_top = -559.0
 offset_right = 976.0
 offset_bottom = 549.0
 color = Color(0.21011, 0.196313, 0.327124, 1)
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_arffk")
+autoplay = true
+
+[node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." node_paths=PackedStringArray("audioPlayer")]
+script = ExtResource("10_j7ygj")
+audioPlayer = NodePath(".")
+goodChoiceSound = ExtResource("11_vamlu")
+badChoiceSound = ExtResource("12_el4o6")

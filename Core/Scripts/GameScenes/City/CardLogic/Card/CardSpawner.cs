@@ -50,6 +50,7 @@ namespace Cards
             inventoryManager.onRemoveItem += CreatePositions;
         }
 
+
         private void CreateCards(List<ItemInfo> items)
         {
             //get slots for cards
@@ -123,7 +124,7 @@ namespace Cards
                     cardObservers.Add(cardObserver);
                     if (nowItem.type == ItemType.building)
                     {
-                        cardObserver.Disable();
+                        cardObserver.SetInSlotBuildingCard();
                     }
                 }
             }

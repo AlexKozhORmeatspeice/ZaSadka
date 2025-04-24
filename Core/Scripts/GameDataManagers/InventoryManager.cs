@@ -34,6 +34,11 @@ namespace ZaSadka
                 districtsManager.onAddCard += RemoveCardWhenInSlot;
                 districtsManager.onRemoveCard += AddCardFromSlot;
             }
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
         }
 
         public void Dispose()
@@ -43,6 +48,11 @@ namespace ZaSadka
                 districtsManager.onAddCard -= RemoveCardWhenInSlot;
                 districtsManager.onRemoveCard -= AddCardFromSlot;
             }
+        }
+
+        private void ClearData()
+        {
+            items.Clear();
         }
 
         public void AddItem(ItemInfo item)

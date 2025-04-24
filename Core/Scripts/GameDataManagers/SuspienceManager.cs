@@ -14,6 +14,7 @@ namespace ZaSadka
     {
         event Action<DistrictName, int> onSuspicionChange;
         int GetValue(DistrictName district);
+        bool CheckLoseCondition();
     }
 
     internal class SuspicionManager : ISuspicionManager, IStartable, IDispose
@@ -42,6 +43,11 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
         }
 
         public void Dispose()
@@ -51,6 +57,23 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate -= OnChoice;
+        }
+
+        private void ClearData()
+        {
+            for (int i = 0; i < (int)DistrictName.DistrictNameNum; i++)
+            {
+                DistrictName name = (DistrictName)i;
+
+                if (!suspicionByDistrict.ContainsKey(name))
+                {
+                    suspicionByDistrict.Add(name, int.MinValue);
+                }
+                else
+                {
+                    suspicionByDistrict[name] = int.MinValue;
+                }
+            }
         }
 
         private void OnAddCard(ICardSlot slot, ICardView card)
@@ -118,7 +141,17 @@ namespace ZaSadka
             }
 
         }
-        
 
+        public bool CheckLoseCondition()
+        {
+            foreach (var districtSus in suspicionByDistrict.Values)
+            {
+                if (districtSus >= maxSuspicion)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

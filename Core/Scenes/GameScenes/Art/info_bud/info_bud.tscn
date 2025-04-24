@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://rtchimgf8542"]
 
-[ext_resource type="Script" uid="uid://bbwkcf6sctx51" path="res://Core/Scenes/GameScenes/Art/info_bud/info_bud.gd" id="1_1k7re"]
+[ext_resource type="Script" uid="uid://bqcbys640e2am" path="res://Core/Scripts/GameScenes/AllGameUI/ToolTip.cs" id="1_1k7re"]
 [ext_resource type="Texture2D" uid="uid://daola4m66v0xq" path="res://Core/Scenes/GameScenes/Art/info_bud/i.png" id="2_ek7tq"]
 [ext_resource type="Shader" uid="uid://do42ut18urm4e" path="res://Core/Scenes/GameScenes/Art/info_bud/info_bud.gdshader" id="3_q00dx"]
 
@@ -13,24 +13,23 @@ shader_parameter/u_color = Vector4(255, 0, 0, 0)
 [sub_resource type="CircleShape2D" id="CircleShape2D_1k7re"]
 radius = 17.0
 
-[node name="InfoBud" type="Control"]
+[node name="InfoBud" type="Control" node_paths=PackedStringArray("label", "parameters", "rect", "meshInstance", "toolTip", "control")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
+mouse_force_pass_scroll_events = false
 script = ExtResource("1_1k7re")
-circle_color = Color(0.990254, 0.330784, 0.567312, 1)
-heading_color = Color(0.987374, 0.460768, 0.597076, 1)
-text_color = Color(0.973154, 1.34766e-06, 0.544827, 1)
-heading = "Район"
-line1 = "хуй"
-line2 = "хуй"
-line3 = "хуй"
-heading_size = 24
-text_size = 20
+title = "s"
+label = NodePath("Root/TextWind/RichTextLabel")
+parameters = NodePath("Root/TextWind/RichTextLabel2")
+rect = NodePath("Root/TextWind/ColorRect")
+meshInstance = NodePath("Root/MeshInstance2D")
+toolTip = NodePath("Root/TextWind")
+control = NodePath("Root/Area2D")
+circle_color = Color(0.570717, 0.506961, 0.451214, 1)
 
 [node name="Root" type="Node2D" parent="."]
 
@@ -64,12 +63,17 @@ offset_top = 22.0
 offset_right = 177.0
 offset_bottom = 56.0
 theme_override_font_sizes/normal_font_size = 26
+text = "хуй"
 
 [node name="RichTextLabel2" type="RichTextLabel" parent="Root/TextWind"]
 offset_left = 27.0
 offset_top = 57.0
 offset_right = 178.0
 offset_bottom = 147.0
+text = "3 спрос
+2 предложение
+1 влияние
+2 подозрение"
 
 [connection signal="mouse_entered" from="Root/Area2D" to="." method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Root/Area2D" to="." method="_on_area_2d_mouse_exited"]

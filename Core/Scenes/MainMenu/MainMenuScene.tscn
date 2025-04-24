@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ba5g7hvvve7mm"]
+[gd_scene load_steps=18 format=3 uid="uid://ba5g7hvvve7mm"]
 
 [ext_resource type="Script" uid="uid://b5vfte4r7os68" path="res://Core/Scenes/MainMenu/main_menu_scene.gd" id="1_nup7v"]
 [ext_resource type="Theme" uid="uid://cwtq0vswqlk3x" path="res://Core/Scenes/MainMenu/MainMenuTheme.tres" id="2_338j4"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" uid="uid://cxhocusb1t208" path="res://Core/Scenes/MainMenu/conveyor_2.gd" id="7_d428k"]
 [ext_resource type="Texture2D" uid="uid://bv4xmvhp8mmbq" path="res://Core/Scenes/MainMenu/MenuAnimations/Sprites/newspaper_opened.png" id="11_63y7x"]
 [ext_resource type="Script" uid="uid://n7j1jpdnh3af" path="res://Core/Scenes/MainMenu/lore_piece.gd" id="11_jqf84"]
+[ext_resource type="Script" uid="uid://b2qpbod4qtwrv" path="res://Core/Scripts/DI/Containers/MenuDI.cs" id="14_8e65n"]
+[ext_resource type="AudioStream" uid="uid://doo41uxqkpmky" path="res://Core/Sounds/MainThemes/zsdkMenu loop (2).wav" id="15_awqds"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_d428k"]
 shader = ExtResource("3_h3ibk")
@@ -155,6 +157,13 @@ offset_bottom = 900.763
 theme = ExtResource("2_338j4")
 theme_override_font_sizes/font_size = 51
 text = "Да черта с два я с этим смирюсь!"
+
+[node name="Node2D" type="Node2D" parent="."]
+script = ExtResource("14_8e65n")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_awqds")
+autoplay = true
 
 [connection signal="pressed" from="MenuRoot/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]
 [connection signal="pressed" from="MenuRoot/VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

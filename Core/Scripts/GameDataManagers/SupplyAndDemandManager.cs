@@ -55,6 +55,11 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
         }
 
         public void Dispose()
@@ -64,6 +69,12 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate -= OnChoice;
+        }
+
+        private void ClearData()
+        {
+            supply = 0;
+            demand = 0;
         }
 
 		private void OnAddCard(ICardSlot slot, ICardView card)

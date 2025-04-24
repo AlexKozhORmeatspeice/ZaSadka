@@ -43,7 +43,7 @@ namespace Cards
         {
             var newCard = pointer.RaycastByType(typeof(ICardView)) as ICardView;
 
-            if (newCard == null || !newCard.isEnabled)
+            if (newCard == null)
             {
                 if (hoveredCard != null)
                 {

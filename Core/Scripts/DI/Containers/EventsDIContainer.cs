@@ -10,6 +10,7 @@ namespace Game_events
         [Export] private MouseManager mouseManager;
         [Export] private EventsUI eventsUI;
         [Export] private EndObserver endObserver;
+        [Export] private ChooseSoundManager chooseSoundManager;
         override protected string name {get => "Events DI";}
         override protected void RegisterObjects()
         {
@@ -27,6 +28,7 @@ namespace Game_events
             builder.Register<IPointerManager>(mouseManager);
             builder.Register<IEventsUI>(eventsUI);
             builder.Register<IEndObserver>(endObserver);
+            builder.Register<IChooseSoundManager>(chooseSoundManager);
         }
     }
 }

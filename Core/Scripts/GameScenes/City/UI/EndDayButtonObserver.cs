@@ -20,6 +20,7 @@ namespace City_UI
         private INextSceneButton view;
         public event Action OnDayEnded;
         [Inject] private IInfluenceManager influenceManager;
+        [Inject] private ISuspicionManager suspicionManager;
 
         public EndDayButtonObserver(INextSceneButton view)
         {
@@ -40,7 +41,15 @@ namespace City_UI
         {
             OnDayEnded?.Invoke();
 
-            string nextScene = influenceManager.CheckWinningCondition() ? view.GetFinalScene() : view.GetNextScene();
+            string nextScene = "";
+            if (suspicionManager.CheckLoseCondition())
+            {
+                nextScene = view.GetLoseScene();
+            }
+            else
+            {
+                nextScene = influenceManager.CheckWinningCondition() ? view.GetFinalScene() : view.GetNextScene();
+            }
 
             view.GetTree().ChangeSceneToFile(nextScene);
         }

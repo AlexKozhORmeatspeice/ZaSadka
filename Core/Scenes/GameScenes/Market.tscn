@@ -1,6 +1,7 @@
-[gd_scene load_steps=12 format=3 uid="uid://82fnuqgf23br"]
+[gd_scene load_steps=13 format=3 uid="uid://82fnuqgf23br"]
 
 [ext_resource type="Script" uid="uid://4r41hoj2bpaj" path="res://Core/Scripts/GameScenes/Market/MarketUI.cs" id="1_4j3vf"]
+[ext_resource type="AudioStream" uid="uid://bbh2qja045ok3" path="res://Core/Sounds/MainThemes/zsdkShop loop.wav" id="1_ct4m4"]
 [ext_resource type="Script" uid="uid://do3eugcvbho0h" path="res://Core/Scripts/GameScenes/Market/Item/ItemsSpawner.cs" id="1_jw0pw"]
 [ext_resource type="PackedScene" uid="uid://yb1otjqebmry" path="res://Core/Scenes/UI/TextButton.tscn" id="2_ct4m4"]
 [ext_resource type="Script" uid="uid://igi4vr1iu33g" path="res://Core/Scripts/DI/Containers/MarketDIContainer.cs" id="4_0v2d1"]
@@ -8,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://mmtjpi74g2s4" path="res://Core/Scenes/UI/NextSceneButton.tscn" id="5_2yurv"]
 [ext_resource type="PackedScene" uid="uid://bmvtjotkurujb" path="res://Core/Scenes/Market/Managers/item_mouse_manager.tscn" id="5_p083n"]
 [ext_resource type="PackedScene" uid="uid://cqcyjivlj00y1" path="res://Core/Scenes/Market/Managers/market_manager.tscn" id="6_0v2d1"]
-[ext_resource type="Shader" uid="uid://jv5bbkdf0eaq" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="10_4j3vf"]
+[ext_resource type="Shader" path="res://Core/Scenes/GameScenes/gameback.gdshader" id="10_4j3vf"]
 [ext_resource type="PackedScene" uid="uid://dfexddtip5dgf" path="res://Core/Scenes/AllGameManagers/mouse_manager.tscn" id="10_ct4m4"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct4m4"]
@@ -17,6 +18,10 @@ shader_parameter/maincol = Color(0.106, 0.165, 0.247, 1)
 shader_parameter/dopcol = Color(0.21, 0.196, 0.327, 1)
 
 [node name="CardMarket" type="Node2D"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("1_ct4m4")
+autoplay = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

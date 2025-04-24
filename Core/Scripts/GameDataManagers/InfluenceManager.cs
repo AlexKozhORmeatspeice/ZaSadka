@@ -45,6 +45,11 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
         }
 
         public void Dispose()
@@ -54,6 +59,23 @@ namespace ZaSadka
 
             if (eventsManager != null)
                 eventsManager.onChoiceActivate -= OnChoice;
+        }
+
+        private void ClearData()
+        {
+            for (int i = 0; i < (int)DistrictName.DistrictNameNum; i++)
+            {
+                DistrictName name = (DistrictName)i;
+
+                if (!influenceByDistrict.ContainsKey(name))
+                {
+                    influenceByDistrict.Add(name, int.MinValue);
+                }
+                else
+                {
+                    influenceByDistrict[name] = int.MinValue;
+                }
+            }
         }
 
         private void OnAddCard(ICardSlot slot, ICardView card)

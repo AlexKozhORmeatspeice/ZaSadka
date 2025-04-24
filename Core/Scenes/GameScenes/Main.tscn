@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://c11wyfu81t43c"]
+[gd_scene load_steps=21 format=3 uid="uid://c11wyfu81t43c"]
 
 [ext_resource type="Script" uid="uid://bl45ims4ljrmx" path="res://Core/Scripts/GameScenes/City/CardLogic/Card/CardSpawner.cs" id="1_emt2l"]
 [ext_resource type="PackedScene" uid="uid://cpu5xx3wc3f70" path="res://Core/Scenes/Cards/card.tscn" id="2_mycjp"]
@@ -15,6 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://km1kiwgrifh7" path="res://Core/Scenes/GameScenes/Art/Мейн.png" id="12_1ypml"]
 [ext_resource type="Texture2D" uid="uid://bd1rchdjj7tlc" path="res://Core/Scenes/GameScenes/Art/main_markdown.png" id="13_j4qtl"]
 [ext_resource type="PackedScene" uid="uid://rtchimgf8542" path="res://Core/Scenes/GameScenes/Art/info_bud/info_bud.tscn" id="14_wx8uu"]
+[ext_resource type="AudioStream" uid="uid://2xjknsc5gdi1" path="res://Core/Sounds/MainThemes/ZaJazzka loop.wav" id="16_j4nxm"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pbmq3"]
 bg_color = Color(0.226165, 0.304127, 0.464079, 0.42)
@@ -148,7 +149,7 @@ text = "Спрос"
 position = Vector2(-108, -479)
 text = "Закончить день"
 
-[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager", "slotsManager", "cityUI")]
+[node name="DI" type="Node2D" parent="." node_paths=PackedStringArray("slotMouseManager", "cardSpawner", "mouseManager", "cardMouseManager", "slotsManager", "cityUI", "ToolTip1", "ToolTip2", "ToolTip3")]
 script = ExtResource("3_02ccp")
 slotMouseManager = NodePath("../Managers/SlotMouseManager")
 cardSpawner = NodePath("../CardSpawner")
@@ -156,6 +157,9 @@ mouseManager = NodePath("../Managers/MouseManager")
 cardMouseManager = NodePath("../Managers/CardMouseManager")
 slotsManager = NodePath("../CardSpawner/Slots")
 cityUI = NodePath("../UI")
+ToolTip1 = NodePath("../InfoBud")
+ToolTip2 = NodePath("../InfoBud2")
+ToolTip3 = NodePath("../InfoBud3")
 
 [node name="ArtRoot" type="Node2D" parent="."]
 z_index = 1
@@ -176,17 +180,41 @@ offset_bottom = 1663.0
 mouse_filter = 2
 texture = ExtResource("13_j4qtl")
 
+[node name="InfoBud3" parent="." instance=ExtResource("14_wx8uu")]
+z_index = 2
+offset_left = -130.0
+offset_top = -398.0
+offset_right = -130.0
+offset_bottom = -398.0
+title = "Старые доки"
+headging_size = 20
+text_size = 13
+circle_color = Color(0.521569, 0.964706, 1, 1)
+
+[node name="InfoBud2" parent="." instance=ExtResource("14_wx8uu")]
+z_index = 2
+offset_left = -109.0
+offset_top = -161.0
+offset_right = -109.0
+offset_bottom = -161.0
+districtName = 1
+title = "Исторический центр"
+headging_size = 14
+text_size = 13
+circle_color = Color(0.729412, 0.670588, 0.368627, 1)
+
 [node name="InfoBud" parent="." instance=ExtResource("14_wx8uu")]
 z_index = 2
 offset_left = 267.0
 offset_top = -395.0
 offset_right = 267.0
 offset_bottom = -395.0
+districtName = 2
+title = "Окраины"
+headging_size = 20
+text_size = 13
 circle_color = Color(0.3, 0.7, 0.494, 1)
-heading_color = Color(0.249111, 0.758381, 0.601543, 1)
-text_color = Color(0.0568831, 0.0549269, 0.011505, 1)
-window_scale = Vector2(1.65, 1)
-heading = "Окраины"
-line1 = "-1 Спр"
-line2 = "-1 Предл"
-line3 = "-1 Вл"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("16_j4nxm")
+autoplay = true

@@ -46,7 +46,12 @@ namespace ZaSadka
         {
             if (eventsManager != null)
                 eventsManager.onChoiceActivate += OnChoice;
-            
+
+            if (MenuDI.instance != null)
+            {
+                ClearData();
+            }
+
             if (cityUI != null)
             {
                 cityUI.OnDayEnded += GetDayPaycheck;
@@ -57,10 +62,16 @@ namespace ZaSadka
         {
             if (eventsManager != null)
                 eventsManager.onChoiceActivate -= OnChoice;
+
             if (cityUI != null)
             {
                 cityUI.OnDayEnded -= GetDayPaycheck;
             }
+        }
+
+        private void ClearData()
+        {
+            nowMoney = startMoney;
         }
 
         private void GetDayPaycheck()

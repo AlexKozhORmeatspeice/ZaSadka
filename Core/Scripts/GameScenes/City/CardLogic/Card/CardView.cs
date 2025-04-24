@@ -1,13 +1,26 @@
 using Godot;
 using Market;
 using System;
+using System.ComponentModel.Design.Serialization;
+using System.IO;
 using ZaSadka;
 
 namespace Cards
 {
 
+    public enum CardSoundType
+    {
+        Take,
+        Laboratory,
+        Storage,
+        Bar,
+        Unit
+    }
+
     public interface ICardView
     {
+        event Action onClick;
+        
         Vector2 WorldPosition { get; set; }
         float MouseDistToDetect { get; }
         void SetCardSprite(Texture2D texture);
@@ -16,6 +29,9 @@ namespace Cards
         void SetInfo(ItemInfo info, bool enabled = true);
         void Delete();
         bool isEnabled {get;}
+        void SetButtonVisability(bool isVisible);
+
+        void PlaySound(CardSoundType soundType);
     }
 
     public partial class CardView : Node2D, ICardView
@@ -30,9 +46,19 @@ namespace Cards
         [Export] private Label demandText;
         [Export] private Label influenceText;
         [Export] private Label susText;
+        [Export] private Button deleteButton;
 
+        [Export] private AudioStreamPlayer2D audioStreamPlayer;
+        [Export] private AudioStream[] sounds;
+        
         private ItemInfo info;
         private bool isEnabled = true;
+
+        public event Action onClick
+        {
+            add => deleteButton.Pressed += value;
+            remove => deleteButton.Pressed -= value;
+        }
 
         public Vector2 WorldPosition 
         {
@@ -135,6 +161,43 @@ namespace Cards
         public void Delete()
         {
             GetTree().QueueDelete(this);
+        }
+
+        public void SetButtonVisability(bool isVisible)
+        {
+            deleteButton.Visible = isVisible;
+        }
+
+        public void PlaySound(CardSoundType soundType)
+        {
+            switch(soundType)
+            {
+                case CardSoundType.Take:
+                    audioStreamPlayer.Stream = sounds[0];
+                    break;
+                case CardSoundType.Laboratory:
+                    audioStreamPlayer.Stream = sounds[1];
+                    break;
+                case CardSoundType.Storage:
+                    audioStreamPlayer.Stream = sounds[2];
+                    break;
+                case CardSoundType.Bar:
+                    audioStreamPlayer.Stream = sounds[3];
+                    break;
+                case CardSoundType.Unit:
+                    audioStreamPlayer.Stream = sounds[4];
+                    break;
+                default:
+                    audioStreamPlayer.Stream = sounds[2];
+                    break;
+            }
+
+            if(audioStreamPlayer.Playing)
+            {
+                audioStreamPlayer.Stop();
+            }
+
+            audioStreamPlayer.Play();
         }
     }
 

@@ -10,6 +10,7 @@ namespace Market
 
 		string GetNextScene();
 		string GetFinalScene();
+		string GetLoseScene();
 
 		SceneTree GetTree();
 	}
@@ -18,7 +19,8 @@ namespace Market
 	{
 		[Export] private string nextScene = "res://Core/Scenes/GameScenes/EventsWindow.tscn"; 
 		[Export] private string finalScene = "res://Core/Scenes/GameScenes//game_win.tscn";
-		[Export] private Button button;
+		[Export] private string loseScene = "res://Core/Scenes/GameScenes/game_lose.tscn";
+        [Export] private Button button;
 		[Export] private string text;
 
 		public event Action onClick
@@ -46,5 +48,10 @@ namespace Market
 		{
 			button.Text = text;
 		}
-	}
+
+        public string GetLoseScene()
+        {
+			return loseScene;
+        }
+    }
 }

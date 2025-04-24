@@ -70,8 +70,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\CardLogic\\Card\\CardView.cs",
               "ViewState": "AgIAAGEAAAAAAAAAAAAawHUAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T15:09:28.075Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T15:09:28.075Z"
             },
             {
               "$type": "Document",
@@ -83,8 +82,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\JSON\\JsonDistrictManager.cs",
               "ViewState": "AgIAACYAAAAAAAAAAAAAACYAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:52:53.344Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:52:53.344Z"
             },
             {
               "$type": "Document",
@@ -96,8 +94,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemsSpawner.cs",
               "ViewState": "AgIAAC0AAAAAAAAAAAAAADcAAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:52:45.099Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:52:45.099Z"
             },
             {
               "$type": "Document",
@@ -109,8 +106,7 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\IDIBuilder.cs",
               "ViewState": "AgIAAGIAAAAAAAAAAAAAAH4AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:52:42.756Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:52:42.756Z"
             },
             {
               "$type": "Document",
@@ -122,8 +118,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\InventoryManager.cs",
               "ViewState": "AgIAADoAAAAAAAAAAAAYwC4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:52:22.717Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:52:22.717Z"
             },
             {
               "$type": "Document",
@@ -135,8 +130,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\JSON\\JsonCardManager.cs",
               "ViewState": "AgIAAC8AAAAAAAAAAIA+wE8AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:50:52.21Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:50:52.21Z"
             },
             {
               "$type": "Document",
@@ -148,8 +142,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\Market\\Item\\ItemObserver.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:50:27.378Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:50:27.378Z"
             },
             {
               "$type": "Document",
@@ -174,8 +167,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameScenes\\City\\Managers\\DistrictsManager.cs",
               "ViewState": "AgIAABcBAAAAAAAAAAAwwC8BAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:32:01.44Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:32:01.44Z"
             },
             {
               "$type": "Document",
@@ -187,8 +179,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\MoneyManager.cs",
               "ViewState": "AgIAADEAAAAAAAAAAAAwwD4AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:29:20.229Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:29:20.229Z"
             },
             {
               "$type": "Document",
@@ -200,8 +191,7 @@
               "RelativeToolTip": "Core\\Scripts\\GameDataManagers\\SupplyAndDemandManager.cs",
               "ViewState": "AgIAAIEAAAAAAAAAAADwv5EAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-21T14:09:52.896Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-21T14:09:52.896Z"
             },
             {
               "$type": "Document",
@@ -213,8 +203,7 @@
               "RelativeToolTip": "Core\\Scripts\\DI\\Containers\\EventsDIContainer.cs",
               "ViewState": "AgIAAAkAAAAAAAAAAAAAACUAAAA4AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-04-20T21:37:44.08Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-04-20T21:37:44.08Z"
             }
           ]
         }
