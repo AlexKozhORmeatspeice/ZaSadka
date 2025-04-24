@@ -1,7 +1,7 @@
 shader_type canvas_item;
 
-uniform vec3 maincol: source_color = vec3(0.106, 0.165, 0.247);
-uniform vec3 dopcol: source_color = vec3(0.21, 0.196, 0.327);
+const vec3 maincol = vec3(0.106, 0.165, 0.247) * 0.75;
+const vec3 dopcol = vec3(0.21, 0.196, 0.327);
 
 void fragment() {
 	vec4 col = texture(TEXTURE, UV);
