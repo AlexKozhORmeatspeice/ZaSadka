@@ -1,7 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://mmtjpi74g2s4"]
+[gd_scene load_steps=2 format=3 uid="uid://mmtjpi74g2s4"]
 
 [ext_resource type="Script" uid="uid://cpl5xaqqthog5" path="res://Core/Scripts/GameScenes/AllGameUI/NextSceneButton.cs" id="1_1u2fr"]
-[ext_resource type="Theme" uid="uid://cwtq0vswqlk3x" path="res://Core/Scenes/MainMenu/MainMenuTheme.tres" id="2_huuyk"]
 
 [node name="NextSceneButton" type="Node2D" node_paths=PackedStringArray("button")]
 script = ExtResource("1_1u2fr")
@@ -10,6 +9,5 @@ button = NodePath("Button")
 [node name="Button" type="Button" parent="."]
 offset_right = 248.0
 offset_bottom = 48.0
-theme = ExtResource("2_huuyk")
 theme_override_font_sizes/font_size = 29
 text = "Загрузить сцену"

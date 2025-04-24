@@ -13,8 +13,6 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ct4m4"]
 shader = ExtResource("10_4j3vf")
-shader_parameter/maincol = Color(0.106, 0.165, 0.247, 1)
-shader_parameter/dopcol = Color(0.21, 0.196, 0.327, 1)
 
 [node name="CardMarket" type="Node2D"]
 
